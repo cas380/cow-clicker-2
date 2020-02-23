@@ -7,4 +7,4 @@
 > gcloud app deploy
 
 ### VS Share:
-https://prod.liveshare.vsengsaas.visualstudio.com/join?946E20242FE3327C5AD1E9F93907B4D570E2
+https://prod.liveshare.vsengsaas.visualstudio.com/join?E06708AD4502D7BA2EE66F6734BD713C4478
