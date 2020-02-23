@@ -71,7 +71,7 @@ header {
       var points = 0;
 
       function clickThatCow() {
-        points += 100;
+        points += 100; // call to database, edit points
 
         // This retrieves the "div" element with id "Points"
         var pointsDiv = document.getElementById('Points');
@@ -100,13 +100,6 @@ header {
       <div class="Error">{{error_message}}</div>
     {% endif %}
     <h1>Template Demo{% if page_title %}: {{page_title}}{% endif %}</h1>
-    <nav>
-      <a href="index.html" class="NavLink">Home</a>
-      <a href="page1.html" class="NavLink">Page 1</a>
-      <a href="page2.html" class="NavLink">Page 2</a>
-      <a href="page3.html" class="NavLink">Page 3</a>
-      <a href="cowclicker" class="NavLink">Cow Clicker</a>
-    </nav>
     <header>
       {# 
         

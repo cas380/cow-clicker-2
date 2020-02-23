@@ -13,14 +13,14 @@ def root():
 
 
 @app.route('/')
-@app.route('/index.html')
+@app.route('/login.html')
 def login():
   test_put()
 
   #request form allows python to obtain data from Form in html
-  username = request.form['username']
-  password = request.form['password']
-  user = User(username, password)
+  #username = request.form['username']
+  #password = request.form['password'] No form yet
+  #user = User(username, password)
  
   # put this into database, will read up on stuff
   return render_template('login.html', page_title='Save your work dude')
