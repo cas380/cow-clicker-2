@@ -8,9 +8,9 @@ app = Flask(__name__)
 def root():
   # use render_template to convert the template code to HTML.
   # this function will look in the templates/ folder for your file.
-  return render_template('index.html', page_title='Main Page')
+  return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow')
 
-
+""" # don't route to these pages
 @app.route('/page1.html')
 def first_page():
   # We'll use this to demonstrate the error message on our page.
@@ -46,7 +46,7 @@ def third_page():
 @app.route('/cowclicker')
 def cow_clicker():
   return render_template('cowclicker.html', page_title='Click the Cow!')
-
+"""
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
