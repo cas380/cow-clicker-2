@@ -1,7 +1,4 @@
 from google.cloud import datastore
-from points import points
-
-POINTS = 'Points'
 
 def test_put(user, pointsSave, cowSave):
     client = datastore.Client()
