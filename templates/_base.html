@@ -47,98 +47,7 @@ header {
 }
     </style>
 
-    <span id="points">{{ init_points }}</span>
-    <span id="cows">{{ init_cows }}</span>
-
-    <script>
-      var points = 0; // store in HTML element and read onload
-      var debounce = false; // defeat race condition
-
-      document.getElementById('points').onload = function() {
-        points = document.getElementById('points').innerHTML;
-        console.log("Loaded " + points + " points. Thanks for returning!");
-        debounce = true;
-      };
-
-      function buyThatCow(imageElement) {
-        
-        // attempt to buy a cow in the store
-        var cowsDiv = document.getElementById('cows'); //Place holder until datastore works
-        var pointsDiv = document.getElementById('points'); //Place holder until datastore works
-        
-        // MAKE cows AN ARRAY!!!!!!!!!!!
-        
-        // if the user has enough points to buy a cow when it is clicked on,
-        // and it has not been bought before, change that cow's array value to non-null,
-        // so it loads instead of tall grass the next time cowclicker.html is loaded
-        switch(imageElement.src){
-          case "/static/cuteCow.jpg":
-            if(points >= 5000 && cows[1] == null){
-                cows[1] = 1;
-                points = points - 5000;
-            }
-            break;
-
-          case "/static/sillyCow.jpg":
-            if(points >= 10000 && cows[2] == null){
-                cows[2] = 1;
-                points = points - 10000;
-            }
-            break;
-
-          case "/static/chonkCow.jpg":
-            if(points >= 50000 && cows[3] == null){
-                cows[3] = 1;
-                points = points - 50000;
-            }
-            break;
-
-          case "/static/minecraftCow.jpg":
-            if(points >= 100000 && cows[4] == null){
-                cows[4] = 1;
-                points = points - 100000;
-            }
-            break;
-        }
-      }
-
-      function clickThatCow(imageElement) {
-        if (debounce) {
-          var inc;
-
-          // change the score incrementer based on which cow is clicked
-          switch(imageElement.src){
-            case "/static/cow.jpeg":
-              inc = 100;
-              break;
-
-            case "/static/cuteCow.jpg":
-              inc = 175;
-              break;
-
-            case "/static/sillyCow.jpg":
-              inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 99;
-              inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
-              break;
-
-            case "/static/chonkCow.jpg":
-              inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
-              break;
-            
-            case "/static/minecraftCow.jpg":
-              temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
-              inc = Math.pow(2, temp);
-              break;
-          }
-          points += inc;
-
-          // This retrieves the "div" element with id "Points"
-          var pointsDiv = document.getElementById('points');
-
-          pointsDiv.innerHTML = 'Points: <em>' + points + '</em>';
-
-          console.log("You now have " + points + " points!");
-       }
+   <script>
        
        //Send points to server (Javascript to Python)
        var httpRequest = new XMLHttpRequest();
@@ -169,10 +78,6 @@ header {
       <div class="Error">{{error_message}}</div>
     {% endif %}
     <h1>Template Demo{% if page_title %}: {{page_title}}{% endif %}</h1>
-    <nav>
-      <a href="login.html" class="NavLink">Login</a>
-      <a href="cowclicker.html" class="NavLink">cowclicker</a>
-    </nav>
     {# <h2>Loaded with <span id="points">{{ init_points }}</span> points</h2> #}
     <header>
       {# 
