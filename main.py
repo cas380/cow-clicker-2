@@ -12,7 +12,7 @@ def game():
   user = request.data
   entity = test_grab(user) # user's data for sure (needed to start game)
   #points = request.form["points"] #json get points from js                                        # entity['points']
-  return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=500)
+  return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'])
 #Nonetype from entity error 
 
 @app.route('/to-cow-game', methods=['POST'])
