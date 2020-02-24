@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import flask
 from DataStore import test_put, test_grab
 from User import User
 
@@ -7,13 +8,20 @@ app = Flask(__name__)
 @app.route('/cowclicker.html')
 def root():
   entity = test_grab(user) # user's data for sure (needed to start game)
+  points = request.form["points"]
   return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'])
 
-  
+
+@app.route('/store.html')
+def store():
+
+  return render_template('store.html', page_title='Buy some cows pls')
+
+
 @app.route('/to-cow-game', methods=['POST'])
 def signin():
-    username = request.form.get('username')
-    password = request.form.get('password')
+    username = flask.request.form.get('username')
+    password = flask.request.form.get('password')
     user = User(username, password)
 
     entity = test_grab(user) # user's data
@@ -21,7 +29,10 @@ def signin():
       test_put(user, 0, 0) # saves zeroes for new game
     entity = test_grab(user) # user's data for sure (needed to start game)
 
-    return redirect('/cowclicker.html')
+    return flask.redirect('/cowclicker.html')
+
+
+
 
 @app.route('/')
 @app.route('/login.html')
