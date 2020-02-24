@@ -1,7 +1,7 @@
 from google.cloud import datastore
-from points import points
 import os
-#file is uploaded to github
+
+# file is uploaded to github (THE PRIVATE KEY IS SHOWING!!!)
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'Cow Clicker 2-b9e05ca406a5.json'
 
 def test_put(user, pointsSave, cowSave):
