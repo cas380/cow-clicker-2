@@ -8,7 +8,7 @@ from User import User
 app = Flask(__name__)
 
 @app.route('/cowclicker.html')
-def root():
+def game():
   user = request.data.get('user')
   entity = test_grab(user) # user's data for sure (needed to start game)
   #points = request.form["points"] #json get points from js                                        # entity['points']
@@ -26,7 +26,7 @@ def signin():
       test_put(user, 0, 0) # saves zeroes for new game
     entity = test_grab(user) # user's data for sure (needed to start game)
 
-    return flask.redirect(flask.url_for('cowclicker', data=user), code=307) # Redirect code
+    return flask.redirect(flask.url_for('game', data=user), code=307) # Redirect code
 
 
 @app.route('/store.html')
