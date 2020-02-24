@@ -19,48 +19,7 @@ WELCOME TO COW CLICKER
 		console.log("Loaded " + points + " points. Thanks for returning!");
 		debounce = true;
 	};
-
-	function buyThatCow(imageElement) {
-		// attempt to buy a cow in the store
-		var cowsDiv = document.getElementById('cows'); //Place holder until datastore works
-		var pointsDiv = document.getElementById('points'); //Place holder until datastore works
-
-		// MAKE cows AN ARRAY!!!!!!!!!!!
-
-		// if the user has enough points to buy a cow when it is clicked on,
-		// and it has not been bought before, change that cow's array value to non-null,
-		// so it loads instead of tall grass the next time cowclicker.html is loaded
-		switch(imageElement.src){
-		  case "/static/cuteCow.jpg":
-			if(points >= 5000 && cows[1] == null){
-				cows[1] = 1;
-				points = points - 5000;
-			}
-			break;
-
-		  case "/static/sillyCow.jpg":
-			if(points >= 10000 && cows[2] == null){
-				cows[2] = 1;
-				points = points - 10000;
-			}
-			break;
-
-		  case "/static/chonkCow.jpg":
-			if(points >= 50000 && cows[3] == null){
-				cows[3] = 1;
-				points = points - 50000;
-			}
-			break;
-
-		  case "/static/minecraftCow.jpg":
-			if(points >= 100000 && cows[4] == null){
-				cows[4] = 1;
-				points = points - 100000;
-			}
-			break;
-		}
-	}
-
+	
 	function clickThatCow(imageElement) {
 		if (debounce) {
 		  var inc;
