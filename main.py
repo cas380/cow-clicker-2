@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/cowclicker.html')
 def root():
-  user = request.args['user']
+  user = session.get('user', None)
   entity = test_grab(user) # user's data for sure (needed to start game)
   #points = request.form["points"] #json get points from js 
   return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'])
@@ -25,7 +25,8 @@ def signin():
       test_put(user, 0, 0) # saves zeroes for new game
     entity = test_grab(user) # user's data for sure (needed to start game)
 
-    return flask.redirect('/cowclicker.html', user=user)
+    session['user'] = user
+    return flask.redirect('/cowclicker.html')
 
 
 @app.route('/store.html')
