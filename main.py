@@ -6,11 +6,10 @@ from DataStore import test_put, test_grab
 from User import User
 
 app = Flask(__name__)
-session = session.Session()
 
 @app.route('/cowclicker.html')
 def root():
-  user = session.get('user')
+  user = flask.session.get('user')
   entity = test_grab(user) # user's data for sure (needed to start game)
   #points = request.form["points"] #json get points from js 
   return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'])
@@ -27,7 +26,7 @@ def signin():
       test_put(user, 0, 0) # saves zeroes for new game
     entity = test_grab(user) # user's data for sure (needed to start game)
 
-    session['user'] = user
+    flask.session['user'] = user
     return flask.redirect('/cowclicker.html')
 
 
@@ -45,6 +44,7 @@ def login():
 if __name__ == '__main__':
     app.secret_key = '???'
     app.config['SESSION_TYPE'] = 'filesystem'
+    session = session.Session()
     session.init_app(app)
 
     app.run(host='127.0.0.1', port=8080, debug=True)
