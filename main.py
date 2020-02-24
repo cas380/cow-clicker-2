@@ -7,7 +7,7 @@ from User import User
 
 app = Flask(__name__)
 
-@app.route('/cowclicker.html')
+@app.route('/cowclicker.html', methods=['GET', 'POST']) # accept re-routing from form
 def game():
   user = request.data.get('user')
   entity = test_grab(user) # user's data for sure (needed to start game)
