@@ -12,8 +12,8 @@ def root():
   
 @app.route('/to-cow-game', methods=['POST'])
 def signin():
-    username = flask.request.form.get('username')
-    password = flask.request.form.get('password')
+    username = request.form.get('username')
+    password = request.form.get('password')
     user = User(username, password)
 
     entity = test_grab(user) # user's data
@@ -21,7 +21,7 @@ def signin():
       test_put(user, 0, 0) # saves zeroes for new game
     entity = test_grab(user) # user's data for sure (needed to start game)
 
-    return flask.redirect('/cowclicker.html')
+    return redirect('/cowclicker.html')
 
 @app.route('/')
 @app.route('/login.html')
