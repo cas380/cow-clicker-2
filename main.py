@@ -5,17 +5,13 @@ from User import User
 
 app = Flask(__name__)
 
+
 @app.route('/cowclicker.html')
 def root():
+  user = request.args['user']
   entity = test_grab(user) # user's data for sure (needed to start game)
-  points = request.form["points"]
+  #points = request.form["points"] #json get points from js 
   return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'])
-
-
-@app.route('/store.html')
-def store():
-
-  return render_template('store.html', page_title='Buy some cows pls')
 
 
 @app.route('/to-cow-game', methods=['POST'])
@@ -29,9 +25,12 @@ def signin():
       test_put(user, 0, 0) # saves zeroes for new game
     entity = test_grab(user) # user's data for sure (needed to start game)
 
-    return flask.redirect('/cowclicker.html')
+    return flask.redirect('/cowclicker.html', user=user)
 
 
+@app.route('/store.html')
+def store():
+  return render_template('store.html', page_title='Buy some cows pls')
 
 
 @app.route('/')
