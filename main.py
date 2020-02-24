@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/cowclicker.html')
 def root():
   entity = test_grab(user) # user's data for sure (needed to start game)
-  points = request.form["points"]
+  # points = request.form["points"] # doing a test run
   return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'])
 
 
