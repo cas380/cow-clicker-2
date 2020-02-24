@@ -1,26 +1,6 @@
 <html>
   <head>
-    {# 
-    
-      This is a comment - it won't show up in the HTML.
-
-      Templates allow us to dynamically generate HTML - this file will be 
-      interpreted and the output will be sent to the browser.  View the page 
-      source in your browser to see what actually comes through.
-      
-      The line below inserts the "page_title" variable into the HTML output.
-    
-    #}
     <title>{{page_title}}</title>
-    {# 
-    
-      Note that ordinarily we'd use an external stylesheet, but for 
-      simplicity we'll use the style tag here.
-
-      The exclamation point and hyphens are how we comment in HTML; the link
-      tag below will be ignored by the browser.
-
-    #}
     <!--link rel="stylesheet" href="static/style.css"-->
     <style>
 
@@ -67,39 +47,47 @@ header {
 }
     </style>
     <script>
+      var points = 0; // store in HTML element and read onload
+      var debounce = false; // defeat race condition
 
-      var points = 0;
+      document.getElementById('points').onload = function() {
+        points = document.getElementById('points').innerHTML;
+        console.log("Loaded " + points + " points. Thanks for returning!");
+        debounce = true;
+      };
 
       function clickThatCow() {
-        points += 100; // call to database, edit points
+        if (debounce) {
+          points += 100;
 
-        // This retrieves the "div" element with id "Points"
-        var pointsDiv = document.getElementById('Points');
+          // This retrieves the "div" element with id "Points"
+          var pointsDiv = document.getElementById('Points');
 
-        pointsDiv.innerHTML = 'Points: <em>' + points + '</em>';
+          pointsDiv.innerHTML = 'Points: <em>' + points + '</em>';
 
-        // We can use the code below to add a border around the points on every
-        // other click.
-        if (points % 200 === 0) {
-          pointsDiv.style.borderStyle = 'dashed';
-          pointsDiv.style.borderSize = 5;
-        } else {
-          pointsDiv.style.borderStyle = 'none';
-        }
-        console.log("You now have " + points + " points!");
+          // We can use the code below to add a border around the points on every
+          // other click.
+          if (points % 200 === 0) {
+            pointsDiv.style.borderStyle = 'dashed';
+            pointsDiv.style.borderSize = 5;
+          } else {
+            pointsDiv.style.borderStyle = 'none';
+          }
+          console.log("You now have " + points + " points!");
+       }
       }
     </script>
   </head>
   <body>
-    {# 
-
-      Only show the error message area if we've specified one when rendering.
-
-    #}
     {% if error_message %}
       <div class="Error">{{error_message}}</div>
     {% endif %}
     <h1>Template Demo{% if page_title %}: {{page_title}}{% endif %}</h1>
+    <nav>
+      <a href="login.html" class="NavLink">Login</a>
+      <a href="cowclicker.html" class="NavLink">cowclicker</a>
+    </nav>
+    <h2>Loaded with <span id="points">{{ init_points }}</span> points</h2>
     <header>
       {# 
         
