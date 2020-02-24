@@ -7,8 +7,40 @@ WELCOME TO COW CLICKER
 <div>
   Click the cow for points.
 </div>
+<script>
+  // If the user's "cows" data says they own a certain cow, then set the
+  // images src to the correct cow image source. If the user does not own 
+  // a certain cow then that image's source will be set to Tall Grass
+  if(cows[1] != null){
+    document.getElementById("cow1").src="static/cuteCow.jpg";
+  }else{
+    document.getElementById("cow1").src="static/tallGrass.jpg";
+  }
+
+  if(cows[2] != null){
+    document.getElementById("cow2").src="static/sillyCow.jpg";
+  }else{
+    document.getElementById("cow2").src="static/tallGrass.jpg";
+  }
+
+  if(cows[3] != null){
+    document.getElementById("cow3").src="static/chonkCow.jpg";
+  }else{
+    document.getElementById("cow3").src="static/tallGrass.jpg";
+  }
+
+  if(cows[4] != null){
+    document.getElementById("cow4").src="static/minecraftCow.jpg";
+  }else{
+    document.getElementById("cow4").src="static/tallGrass.jpg";
+  }
+</script>
 <div>
-<img src="/static/cow.jpeg" onclick="clickThatCow();">
+<img id="cow0" src= "/static/standardCow.jpeg" onclick="clickThatCow(this);">
+<img id="cow1" onclick="clickThatCow(this);">
+<img id="cow2" onclick="clickThatCow(this);">
+<img id="cow3" onclick="clickThatCow(this);">
+<img id="cow4" onclick="clickThatCow(this);">
 </div>
 <div id="Points"></div>
 

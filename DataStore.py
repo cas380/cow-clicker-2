@@ -1,4 +1,8 @@
 from google.cloud import datastore
+from points import points
+import os
+#file is uploaded to github
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'Cow Clicker 2-b9e05ca406a5.json'
 
 def test_put(user, pointsSave, cowSave):
     client = datastore.Client()
@@ -23,7 +27,7 @@ def test_grab(user):
     name = str(user) # Unique identifier for key... our user
     
     task_key = client.key(kind, name) # We have a key
-    entity = client.get(task_key) # We have the entity for this key
+    entity = client.get(key) # We have the entity for this key
     
     print(str(entity))
     return entity

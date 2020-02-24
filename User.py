@@ -1,3 +1,6 @@
+# User object containing username and password
+# stored in database
+
 class User(object):
     def __init__(self, username, password):
         self.username = username
