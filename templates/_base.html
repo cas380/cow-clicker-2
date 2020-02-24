@@ -46,6 +46,10 @@ header {
   font-style: italic;
 }
     </style>
+
+    <span id="points">{{ init_points }}</span>
+    <span id="cows">{{ init_cows }}</span>
+
     <script>
       var points = 0; // store in HTML element and read onload
       var debounce = false; // defeat race condition
@@ -61,7 +65,7 @@ header {
           points += 100;
 
           // This retrieves the "div" element with id "Points"
-          var pointsDiv = document.getElementById('Points');
+          var pointsDiv = document.getElementById('points');
 
           pointsDiv.innerHTML = 'Points: <em>' + points + '</em>';
 
@@ -76,6 +80,7 @@ header {
           console.log("You now have " + points + " points!");
        }
       }
+      
     </script>
   </head>
   <body>
@@ -87,7 +92,7 @@ header {
       <a href="login.html" class="NavLink">Login</a>
       <a href="cowclicker.html" class="NavLink">cowclicker</a>
     </nav>
-    <h2>Loaded with <span id="points">{{ init_points }}</span> points</h2>
+    {# <h2>Loaded with <span id="points">{{ init_points }}</span> points</h2> #}
     <header>
       {# 
         
