@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, session
-from flask.ext.session import Session
 # RuntimeError: The session is unavailable because no secret key was set. 
 # Set the secret_key on the application to something unique and secret.
 import flask
@@ -7,7 +6,7 @@ from DataStore import test_put, test_grab
 from User import User
 
 app = Flask(__name__)
-session = Session()
+session = session.Session()
 
 @app.route('/cowclicker.html')
 def root():
