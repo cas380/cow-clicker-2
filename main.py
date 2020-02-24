@@ -19,7 +19,7 @@ def root():
     test_put(user, 0, 0) # saves zeroes for new game
   entity = test_grab(user) # user's data for sure (needed to start game)
 
-  return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'])
+  return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=0)
 
 
 @app.route('/')
