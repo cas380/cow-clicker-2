@@ -10,6 +10,7 @@ app = Flask(__name__)
 @app.route('/cowclicker.html', methods=['GET', 'POST']) # accept re-routing from form
 def game():
   user = request.data
+  print(type(user))
   entity = test_grab(user) # user's data for sure (needed to start game)
   #points = request.form["points"] #json get points from js                                        # entity['points']
   if entity: # shouldn't ever be empty??????
