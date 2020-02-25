@@ -8,7 +8,7 @@ def test_put(user, pointsSave, cowSave):
     client = datastore.Client()
     
     kind = 'UserEntityType' # Enum!
-    name = str(user) # Unique identifier for key... our user
+    name = user.to_string() # Unique identifier for key... our user
     
     task_key = client.key(kind, name) # We have a key
     task = datastore.Entity(key=task_key) # We have an empty datastore entity
@@ -24,7 +24,7 @@ def test_grab(user):
     client = datastore.Client()
 
     kind = 'UserEntityType' # Enum!
-    name = str(user) # Unique identifier for key... our user
+    name = user.to_string() # Unique identifier for key... our user
     
     task_key = client.key(kind, name) # We have a key
     entity = client.get(task_key) # We have the entity for this key

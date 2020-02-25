@@ -1,0 +1,73 @@
+1. Description of the project
+    We will be making Cow Clicker 2, the ultimate cow clicking experience. 
+    Inspired by timothyrjames’s Cow Clicker project on the cs1520 GitHub 
+    repository, Cow Clicker 2 will feature multiple varieties of cow to 
+    click with the aim of getting infinite points.
+
+2. You team's vision for your MVP
+        There will be multiple different kinds of cows to own, each yielding 
+    a different number of points when clicked
+        # Original Cow, Roan Cow, Chocolate Cow, Strawberry Cow, …
+
+        # You start with Original Cow (also known as Cow) and can buy higher 
+        tier cows for points
+
+    Cows all live inside a Cow Pasture in the middle of the screen
+        # Cows will move in and out of frame inside the cow pasture
+
+            # Not every cow you own will be visible all the time
+            
+    The game is won when you buy The Progenitor Cow, a golden cow that awards 
+    Infinity points when clicked
+
+
+3. Plans for M1
+    # Set up the Cow Pasture so cows can roam around inside it
+
+    # Create the Cow Shop
+
+    # Add the click functionality to cows
+
+    # Do a bunch of CSS to make it all look pretty (Cow Pasture will be fenced 
+    in, shops may be on other pages)
+
+    #   Hi team,
+
+        I think your idea is great, but make sure that you keep it text-based 
+    for Milestone 1. You will have plenty of work to do, especially because this 
+    needs to be a persistent app, where I can log in from any computer and see 
+    my cows and retain my shop purchases. This means your Datastore will have 
+    to be connected by Milestone 1. Most of the features described as Milestone 
+    2 feel like they belong in the End of Semester category. Make sure that the 
+    basic loop of clicking on a cow and updating points in the database works
+    before adding extra art and game features.
+
+    Overall:
+    Reduce the scope a little bit and make sure that you are integrating with the backend early. I will accept a text-only version of this project, so don't invest too much time in art early on.
+
+    Looking forward to seeing your first presentation!
+    Jake
+
+
+4. Plans for M2
+    # Add support for enemy invasions
+
+        # Has a rare chance of happening every minute
+
+        # A rivaling farm will send its cows to attack your pasture and drain 
+        its points, click the cows to destroy them
+
+        # Winning an invasion (destroying all the invading cows) will reward you 
+        with Hostage Cow and return your stolen points
+
+        # Losing an invasion (some cows successfully escape) will not reward you anything
+
+
+5. Plans for end of term
+    # Add mortality to each cow
+
+    # Each cow will have a health bar that slowly drains over time
+
+    # If health hits 0, the cow dies
+
+    # You will have the option to butcher your cow before it dies and sell the meat for points (some percentage of the cost to purchase that cow from the shop).
