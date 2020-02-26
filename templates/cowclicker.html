@@ -17,15 +17,19 @@ WELCOME TO COW CLICKER
   Click the cow for points.
 </div>
 
-<span id="points">{{ init_points }}</span>
-<span id="cows">{{ init_cows }}</span>
+<!-- Make the data we actually pull from off the page display: none; -->
+<div id="POINTS">You have <span id="points">{{ init_points }}</span> points.</div>
+<div id="COWS">The state of your cows is <span id="cows">{{ init_cows }}</span>.</div>
+
 <script>
 	// var points = 0;  store in HTML element and read onload
 	var debounce = false; // defeat race condition
 
 	document.getElementById('points').onload = function() {
 		points = document.getElementById('points').innerHTML;
+		cows = document.getElementById('cows').innerHTML;
 		console.log("Loaded " + points + " points. Thanks for returning!");
+		console.log("Loaded " + cows + " as the state of your cows. Thanks for returning!");
 		debounce = true;
 	};
 	
@@ -58,11 +62,10 @@ WELCOME TO COW CLICKER
 			  break;
 		  }
 		  points += inc;
-		  test_put(user, points, cows);
+		  
 		  // This retrieves the "div" element with id "Points"
-		  var pointsDiv = document.getElementById('points');
-
-		  pointsDiv.innerHTML = 'Points: <em>' + points + '</em>';
+		  var pointsSpan = document.getElementById('points');
+		  pointsSpan.innerHTML = points;
 
 		  console.log("You now have " + points + " points!");
 		}
@@ -93,15 +96,14 @@ WELCOME TO COW CLICKER
     document.getElementById("cow4").src="static/minecraftCow.jpg";
   }else{
     document.getElementById("cow4").src="static/tallGrass.jpg";
-  }
+  } // make sure this runs after stuff loads???
 </script>
 <div>
-<img id="cow0" style="width:500px;height:600px;" onclick="clickThatCow(this);">
-<img id="cow1" style="width:500px;height:600px;" onclick="clickThatCow(this);">
-<img id="cow2" style="width:500px;height:600px;" onclick="clickThatCow(this);">
-<img id="cow3" style="width:500px;height:600px;" onclick="clickThatCow(this);">
+<img id="cow0" src="static/cuteCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
+<img id="cow1" src="static/sillyCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
+<img id="cow2" src="static/chonkCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
+<img id="cow3" src="static/minecraftCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
 <img id="cow4" style="width:500px;height:600px;" onclick="clickThatCow(this);">
 </div>
-<div id="Points"></div>
 
 {% endblock %}
