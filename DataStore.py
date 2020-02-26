@@ -1,6 +1,7 @@
 from google.cloud import datastore
 import os
 from User import User
+import sys
 
 # file is uploaded to github (THE PRIVATE KEY IS SHOWING!!!)
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'Cow Clicker 2-b9e05ca406a5.json'
@@ -23,7 +24,8 @@ def test_put(user: User, pointsSave, cowSave):
 #Returns NoneType if user doesn't exist
 def test_grab(user):
     client = datastore.Client()
-
+    
+    print(sys.stderr, type(user))
     kind = 'UserEntityType' # Enum!
     name = user.to_string() # Unique identifier for key... our user
     

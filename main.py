@@ -4,13 +4,14 @@ from flask import Flask, render_template, request, session
 import flask
 from DataStore import test_put, test_grab
 from User import User
+import sys
 
 app = Flask(__name__)
 
 @app.route('/cowclicker.html', methods=['GET', 'POST']) # accept re-routing from form
 def game():
   user = request.data
-  print(type(user))
+  print(sys.stderr, type(user))
   entity = test_grab(user) # user's data for sure (needed to start game)
   #points = request.form["points"] #json get points from js                                        # entity['points']
   if entity: # shouldn't ever be empty??????
