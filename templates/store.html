@@ -13,6 +13,10 @@
 
 {% block content %}
     <body>
+	<div onload="loadGameState()">
+	    <div id="POINTz">You have <span id="points">{{ init_points }}</span> points.</div>
+	    <div id="COWz">The state of your cows is <span id="cows">{{ init_cows }}</span>.</div>
+	</div>
         <div>
         </div>
         <figure>
