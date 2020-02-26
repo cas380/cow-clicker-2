@@ -23,11 +23,11 @@ WELCOME TO COW CLICKER
 </div>
 
 <div id="thePasture">
-	<img class="clickableCow" id="cow0" src="static/cuteCow.jpg" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow1" src="static/sillyCow.jpg" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow2" src="static/chonkCow.jpg" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow3" src="static/minecraftCow.jpg" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow4" src="static/standardCow.jpeg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow0" src="static/cuteCow.jpg" onclick="clickThatCow(1);">
+	<img class="clickableCow" id="cow1" src="static/sillyCow.jpg" onclick="clickThatCow(2);">
+	<img class="clickableCow" id="cow2" src="static/chonkCow.jpg" onclick="clickThatCow(3);">
+	<img class="clickableCow" id="cow3" src="static/minecraftCow.jpg" onclick="clickThatCow(4);">
+	<img class="clickableCow" id="cow4" src="static/standardCow.jpeg" onclick="clickThatCow(0);">
 </div>
 
 <script>
@@ -55,24 +55,29 @@ WELCOME TO COW CLICKER
 
 		  // change the score incrementer based on which cow is clicked
 		  switch(imageElement.src){
-			case "https://cow-clicker-2.appspot.com/static/standardCow.jpeg":
+			  case "0":
+			//case "https://cow-clicker-2.appspot.com/static/standardCow.jpeg":
 			  inc = 100;
 			  break;
-
-			case "https://cow-clicker-2.appspot.com/static/cuteCow.jpg":
+	
+			  case "1":
+			//case "https://cow-clicker-2.appspot.com/static/cuteCow.jpg":
 			  inc = 175;
 			  break;
 
-			case "https://cow-clicker-2.appspot.com/static/sillyCow.jpg":
+			  case "2":
+			//case "https://cow-clicker-2.appspot.com/static/sillyCow.jpg":
 			  inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
 			  inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
 			  break;
-
-			case "https://cow-clicker-2.appspot.com/static/chonkCow.jpg":
+				  
+			  case "3":
+			//case "https://cow-clicker-2.appspot.com/static/chonkCow.jpg":
 			  inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
 			  break;
 			
-			case "https://cow-clicker-2.appspot.com/static/minecraftCow.jpg":
+			  case "4":
+			//case "https://cow-clicker-2.appspot.com/static/minecraftCow.jpg":
 			  temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
 			  inc = Math.pow(2, temp);
 			  break;
