@@ -3,7 +3,14 @@
 {% block header %}
     WELCOME  to the Cow Store!!
 {% endblock %}
-    
+
+{% block nav %}
+<nav>
+	<a href="store.html" target="_self" class="NavLink">Cow Store</a>
+	<a href="cowclicker.html" target="_self" class="NavLink">The Pasture</a>
+</nav>
+{% endblock %}
+
 {% block content %}
 	<div id="demo" onload = "loadXMLPoints()">
 	<p>

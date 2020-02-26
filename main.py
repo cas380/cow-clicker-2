@@ -15,11 +15,11 @@ def game():
 
   print(type(user)) # is a User
   entity = test_grab(user) # user's data for sure (needed to start game)
-  #points = request.form["points"] #json get points from js                                        # entity['points']
+  #points = request.form["points"] #json get points from js
   if entity: # shouldn't ever be empty??????
-    return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'])
+    return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'], init_cows=entity['cows'])
   else:
-    return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=0)
+    return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=0, init_cows=1)
   # Nonetype from entity error
 
 @app.route('/to-cow-game', methods=['POST'])
@@ -32,7 +32,7 @@ def signin():
     if not entity:
       test_put(user, 0, 0) # saves zeroes for new game
     entity = test_grab(user) # user's data for sure (needed to start game)
-    
+
     return flask.redirect(flask.url_for('game', theUsername=user.get_username(), thePassword=user.get_password()), code=307) # Redirect code
 
 

@@ -3,14 +3,6 @@
 WELCOME TO COW CLICKER
 {% endblock %}
 
-{% block nav %}
-<nav>
-	<a href="store.html" target="_self" class="NavLink">Cow Store</a>
-	<a href="cowclicker.html" target="_self" class="NavLink">The Pasture</a>
-</nav>
-{% endblock %}
-
-
 {% block content %}
 
 <div>
@@ -20,6 +12,14 @@ WELCOME TO COW CLICKER
 <!-- Make the data we actually pull from off the page display: none; -->
 <div id="POINTS">You have <span id="points">{{ init_points }}</span> points.</div>
 <div id="COWS">The state of your cows is <span id="cows">{{ init_cows }}</span>.</div>
+
+<div id="thePasture">
+	<img id="cow0" src="static/cuteCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
+	<img id="cow1" src="static/sillyCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
+	<img id="cow2" src="static/chonkCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
+	<img id="cow3" src="static/minecraftCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
+	<img id="cow4" style="width:500px;height:600px;" onclick="clickThatCow(this);">
+</div>
 
 <script>
 	// var points = 0;  store in HTML element and read onload
@@ -101,12 +101,5 @@ WELCOME TO COW CLICKER
 		}
 	}
 </script>
-<div id="thePasture">
-	<img id="cow0" src="static/cuteCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
-	<img id="cow1" src="static/sillyCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
-	<img id="cow2" src="static/chonkCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
-	<img id="cow3" src="static/minecraftCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
-	<img id="cow4" style="width:500px;height:600px;" onclick="clickThatCow(this);">
-</div>
 
 {% endblock %}
