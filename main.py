@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session
-# RuntimeError: The session is unavailable because no secret key was set. 
+# RuntimeError: The session is unavailable because no secret key was set.
 # Set the secret_key on the application to something unique and secret.
 import flask
 from DataStore import test_put, test_grab
@@ -10,6 +10,7 @@ app = Flask(__name__)
 @app.route('/cowclicker.html', methods=['GET', 'POST']) # accept re-routing from form
 def game():
   user = request.args.get("theUser")
+
   print(type(user)) # is a User
   entity = test_grab(user) # user's data for sure (needed to start game)
   #points = request.form["points"] #json get points from js                                        # entity['points']
@@ -17,7 +18,7 @@ def game():
     return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'])
   else:
     return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=0)
-#Nonetype from entity error 
+#Nonetype from entity error
 
 @app.route('/to-cow-game', methods=['POST'])
 def signin():
@@ -43,6 +44,6 @@ def store():
 def login():
   # put this into database, will read up on stuff
   return render_template('login.html', page_title='Save your work dude')
-  
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
