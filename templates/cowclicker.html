@@ -42,30 +42,30 @@ WELCOME TO COW CLICKER
 	
 	function clickThatCow(imageElement) {
 		console.log("Outside debounce");
-		//if (debounce) {
+	//  if (debounce) {
 		  var inc = 0;
 		  console.log("Entering switch");
 
 		  // change the score incrementer based on which cow is clicked
 		  switch(imageElement.src){
-			case "static/standardCow.jpeg":
+			case "https://cow-clicker-2.appspot.com/static/standardCow.jpeg":
 			  inc = 100;
 			  break;
 
-			case "static/cuteCow.jpg":
+			case "https://cow-clicker-2.appspot.com/static/cuteCow.jpg":
 			  inc = 175;
 			  break;
 
-			case "static/sillyCow.jpg":
+			case "https://cow-clicker-2.appspot.com/static/sillyCow.jpg":
 			  inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
 			  inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
 			  break;
 
-			case "static/chonkCow.jpg":
+			case "https://cow-clicker-2.appspot.com/static/chonkCow.jpg":
 			  inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
 			  break;
 			
-			case "static/minecraftCow.jpg":
+			case "https://cow-clicker-2.appspot.com/static/minecraftCow.jpg":
 			  temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
 			  inc = Math.pow(2, temp);
 			  break;
@@ -76,10 +76,7 @@ WELCOME TO COW CLICKER
 				break;
 		  }
 		  points += inc;
-		  
-		  // This retrieves the "div" element with id "Points"
-		  var pointsSpan = document.getElementById('points');
-		  pointsSpan.innerHTML = points;
+		  document.getElementById('points').innerHTML = ""+points;
 
 		  console.log("You now have " + points + " points!");
 	//	}
