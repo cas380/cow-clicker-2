@@ -4,14 +4,13 @@ from flask import Flask, render_template, request, session
 import flask
 from DataStore import test_put, test_grab
 from User import User
-import sys
 
 app = Flask(__name__)
 
-@app.route('/cowclicker.html', methods=['GET', 'POST']) # accept re-routing from form
-def game():
-  user = request.data
-  print(sys.stderr, type(user))
+@app.route('/cowclicker.html?data=<string:user>', methods=['GET', 'POST']) # accept re-routing from form
+def game(user):
+  #user = request.data
+  print(type(user)) # is a User
   entity = test_grab(user) # user's data for sure (needed to start game)
   #points = request.form["points"] #json get points from js                                        # entity['points']
   if entity: # shouldn't ever be empty??????
@@ -31,7 +30,7 @@ def signin():
       test_put(user, 0, 0) # saves zeroes for new game
     entity = test_grab(user) # user's data for sure (needed to start game)
 
-    return flask.redirect(flask.url_for('game', data=user), code=307) # Redirect code
+    return flask.redirect(flask.url_for('game', data=user.to_string()), code=307) # Redirect code
 
 
 @app.route('/store.html')
