@@ -42,7 +42,12 @@ WELCOME TO COW CLICKER
 		debounce = true;
 	};
 	
+	isStart = true;
 	function clickThatCow(imageElement) {
+		if (isStart) {
+			isStart = false
+			loadGameState() // onload does not work...
+		}
 		console.log("Outside debounce");
 	//  if (debounce) {
 		  var inc = 0;
@@ -77,9 +82,10 @@ WELCOME TO COW CLICKER
 				inc = 0;
 				break;
 		  }
-		  points += inc;
-		  document.getElementById('points').innerHTML = points;
+		  points = Number(points)
+		  points += inc; // JS is dumb
 
+		  document.getElementById('points').innerHTML = points;
 		  console.log("You now have " + points + " points!");
 	//	}
 	}
