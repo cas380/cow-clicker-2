@@ -23,7 +23,7 @@ WELCOME TO COW CLICKER
 
 <script>
 	// var points = 0;  store in HTML element and read onload
-	var debounce = false; // defeat race condition
+	var debounce = false; // race condition might not be so detrimental
 
 	document.getElementById('points').onload = function() {
 		points = document.getElementById('points').innerHTML;
@@ -35,7 +35,7 @@ WELCOME TO COW CLICKER
 	
 	function clickThatCow(imageElement) {
 		console.log("Outside debounce");
-		if (debounce) {
+		//if (debounce) {
 		  var inc;
 		  console.log("Entering switch");
 
@@ -70,7 +70,7 @@ WELCOME TO COW CLICKER
 		  pointsSpan.innerHTML = points;
 
 		  console.log("You now have " + points + " points!");
-		}
+	//	}
 	}
 
 	// run once all the cows have loaded
