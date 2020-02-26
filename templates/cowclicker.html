@@ -17,8 +17,10 @@ WELCOME TO COW CLICKER
 </div>
 
 <!-- Make the data we actually pull from off the page display: none; -->
-<div id="POINTS">You have <span id="points">{{ init_points }}</span> points.</div>
-<div id="COWS">The state of your cows is <span id="cows">{{ init_cows }}</span>.</div>
+<div onload="loadGameState()">
+	<div id="POINTz">You have <span id="points">{{ init_points }}</span> points.</div>
+	<div id="COWz">The state of your cows is <span id="cows">{{ init_cows }}</span>.</div>
+</div>
 
 <div id="thePasture">
 	<img class="clickableCow" id="cow0" src="static/cuteCow.jpg" onclick="clickThatCow(this);">
@@ -32,7 +34,7 @@ WELCOME TO COW CLICKER
 	// var points = 0;  store in HTML element and read onload
 	var debounce = false; // race condition might not be so detrimental
 
-	document.getElementById('points').onload = function() {
+	function loadGameState() {
 		points = document.getElementById('points').innerHTML;
 		cows = document.getElementById('cows').innerHTML;
 		console.log("Loaded " + points + " points. Thanks for returning!");
@@ -76,7 +78,7 @@ WELCOME TO COW CLICKER
 				break;
 		  }
 		  points += inc;
-		  document.getElementById('points').innerHTML = ""+points;
+		  document.getElementById('points').innerHTML = points;
 
 		  console.log("You now have " + points + " points!");
 	//	}
