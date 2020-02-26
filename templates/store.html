@@ -12,11 +12,6 @@
 {% endblock %}
 
 {% block content %}
-	<div id="demo" onload = "loadXMLPoints()">
-	<p>
-		points
-	</p>
-	</div>
     <body>
         <div>
         </div>
@@ -39,28 +34,23 @@
 	</body>
 	<script>
 
-		//Request Data
-		function loadXMLPoints() {
-			var httpRequest = new XMLHttpRequest();
+	/*Request Data
+	function loadXMLPoints() {
+		var httpRequest = new XMLHttpRequest();
 
-			if (!httpRequest){
-			alert('I\'m giving up on you');
-			return false;
-			}
-			var httpRequest = new XMLHttpRequest();
-			httpRequest.onreadystatechange = function(){ handlePost(httpRequest, points) };
-
-			httpRequest.open("GET", changetgis);
-			var data = "points" = points;
-			document.getElementById("demo").innerHTML = data;
+		if (!httpRequest){
+		alert('I\'m giving up on you');
+		return false;
 		}
-		
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.onreadystatechange = function(){ handlePost(httpRequest, points) };
 
-		//Display points
-		var pointsDiv = document.getElementById('points');
-		pointsDiv.innerHTML = 'Points: <em>' + points + '</em>';
-		console.log("You have " + points + " points!");
-
+		httpRequest.open("GET", changetgis);
+		var data = "points" = points;
+		document.getElementById("demo").innerHTML = data;
+	}
+	*/
+	
 	function buyThatCow(imageElement) {
 		// attempt to buy a cow in the store
 		var cowsDiv = document.getElementById('cows'); //Place holder until datastore works
