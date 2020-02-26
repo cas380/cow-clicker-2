@@ -3,6 +3,13 @@
 WELCOME TO COW CLICKER
 {% endblock %}
 
+{% block nav %}
+<nav>
+	<a href="store.html" target="_self" class="NavLink">Cow Store</a>
+	<a href="cowclicker.html" target="_self" class="NavLink">The Pasture</a>
+</nav>
+{% endblock %}
+
 {% block content %}
 
 <div>
@@ -36,7 +43,7 @@ WELCOME TO COW CLICKER
 	function clickThatCow(imageElement) {
 		console.log("Outside debounce");
 		//if (debounce) {
-		  var inc;
+		  var inc = 0;
 		  console.log("Entering switch");
 
 		  // change the score incrementer based on which cow is clicked
@@ -62,6 +69,11 @@ WELCOME TO COW CLICKER
 			  temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
 			  inc = Math.pow(2, temp);
 			  break;
+
+			default:
+				console.log("Default case ran!")
+				inc = 0;
+				break;
 		  }
 		  points += inc;
 		  

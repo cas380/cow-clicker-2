@@ -30,7 +30,7 @@ def signin():
 
     entity = test_grab(user) # user's data
     if not entity:
-      test_put(user, 0, 0) # saves zeroes for new game
+      test_put(user, 0, 1) # saves zero points and a cow value of 1
     entity = test_grab(user) # user's data for sure (needed to start game)
 
     return flask.redirect(flask.url_for('game', theUsername=user.get_username(), thePassword=user.get_password()), code=307) # Redirect code
