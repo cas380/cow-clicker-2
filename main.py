@@ -9,7 +9,9 @@ app = Flask(__name__)
 
 @app.route('/cowclicker.html', methods=['GET', 'POST']) # accept re-routing from form
 def game():
-  user = request.args.get("theUser")
+  username = request.args.get("theUsername")
+  password = request.args.get("thePassword")
+  user = User(username, password)
 
   print(type(user)) # is a User
   entity = test_grab(user) # user's data for sure (needed to start game)
@@ -18,7 +20,7 @@ def game():
     return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'])
   else:
     return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=0)
-#Nonetype from entity error
+  # Nonetype from entity error
 
 @app.route('/to-cow-game', methods=['POST'])
 def signin():
@@ -31,7 +33,7 @@ def signin():
       test_put(user, 0, 0) # saves zeroes for new game
     entity = test_grab(user) # user's data for sure (needed to start game)
 
-    return flask.redirect(flask.url_for('game', theUser=user), code=307) # Redirect code
+    return flask.redirect(flask.url_for('game', theUsername=username, thePassword=password), code=307) # Redirect code
 
 
 @app.route('/store.html')
