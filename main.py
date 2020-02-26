@@ -7,9 +7,9 @@ from User import User
 
 app = Flask(__name__)
 
-@app.route('/cowclicker.html?data=<string:user>', methods=['GET', 'POST']) # accept re-routing from form
-def game(user):
-  #user = request.data
+@app.route('/cowclicker.html', methods=['GET', 'POST']) # accept re-routing from form
+def game():
+  user = request.data
   print(type(user)) # is a User
   entity = test_grab(user) # user's data for sure (needed to start game)
   #points = request.form["points"] #json get points from js                                        # entity['points']
