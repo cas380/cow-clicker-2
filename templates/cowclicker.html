@@ -14,11 +14,11 @@ WELCOME TO COW CLICKER
 <div id="COWS">The state of your cows is <span id="cows">{{ init_cows }}</span>.</div>
 
 <div id="thePasture">
-	<img id="cow0" src="static/cuteCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
-	<img id="cow1" src="static/sillyCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
-	<img id="cow2" src="static/chonkCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
-	<img id="cow3" src="static/minecraftCow.jpg" style="width:500px;height:600px;" onclick="clickThatCow(this);">
-	<img id="cow4" style="width:500px;height:600px;" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow0" src="static/cuteCow.jpg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow1" src="static/sillyCow.jpg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow2" src="static/chonkCow.jpg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow3" src="static/minecraftCow.jpg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow4" src="static/standardCow.jpeg" onclick="clickThatCow(this);">
 </div>
 
 <script>
@@ -34,29 +34,31 @@ WELCOME TO COW CLICKER
 	};
 	
 	function clickThatCow(imageElement) {
+		console.log("Outside debounce");
 		if (debounce) {
 		  var inc;
+		  console.log("Entering switch");
 
 		  // change the score incrementer based on which cow is clicked
 		  switch(imageElement.src){
-			case "/static/standardCow.jpeg":
+			case "static/standardCow.jpeg":
 			  inc = 100;
 			  break;
 
-			case "/static/cuteCow.jpg":
+			case "static/cuteCow.jpg":
 			  inc = 175;
 			  break;
 
-			case "/static/sillyCow.jpg":
+			case "static/sillyCow.jpg":
 			  inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
 			  inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
 			  break;
 
-			case "/static/chonkCow.jpg":
+			case "static/chonkCow.jpg":
 			  inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
 			  break;
 			
-			case "/static/minecraftCow.jpg":
+			case "static/minecraftCow.jpg":
 			  temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
 			  inc = Math.pow(2, temp);
 			  break;

@@ -5,3 +5,9 @@ form {
 title {
     text-align: center;
 }
+
+.clickableCow {
+    width: 500px;
+    height: 600px;
+    cursor: pointer;
+}
