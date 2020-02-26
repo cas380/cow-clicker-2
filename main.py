@@ -11,7 +11,7 @@ app = Flask(__name__)
 def game():
   username = request.args.get("theUsername")
   password = request.args.get("thePassword")
-  user = User(username, password)
+  user = User(username, password, False)
 
   print(type(user)) # is a User
   entity = test_grab(user) # user's data for sure (needed to start game)
@@ -26,14 +26,14 @@ def game():
 def signin():
     username = flask.request.form.get('username')
     password = flask.request.form.get('password')
-    user = User(username, password)
+    user = User(username, password, True)
 
     entity = test_grab(user) # user's data
     if not entity:
       test_put(user, 0, 0) # saves zeroes for new game
     entity = test_grab(user) # user's data for sure (needed to start game)
 
-    return flask.redirect(flask.url_for('game', theUsername=username, thePassword=password), code=307) # Redirect code
+    return flask.redirect(flask.url_for('game', theUsername=user.get_username(), thePassword=user.get_password()), code=307) # Redirect code
 
 
 @app.route('/store.html')

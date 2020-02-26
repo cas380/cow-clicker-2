@@ -3,16 +3,25 @@
 from hashlib import sha256
 
 class User(object):
-    def __init__(self, username, password):
+    def __init__(self, username, password, doHash):
         self.username = username
-        self.password = sha256(bytes(password, encoding='utf-8')).hexdigest()
-        # if password == '5ab5c89513f...' some hash
+        if doHash:
+            self.password = sha256(bytes(password, encoding='utf-8')).hexdigest()
+            # if password == '5ab5c89513f...' some hash
+        else:
+            self.password = password
     
     def to_dict(self):
         return {
             'username': self.username,
             'password': self.password,
         }
+
+    def get_username():
+        return self.username
+
+    def get_password():
+        return self.password
 
     def to_string(self):
         return "User({}, {})".format(self.username, self.password)
