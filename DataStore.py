@@ -1,6 +1,6 @@
 from google.cloud import datastore
 import os
-from User import User, to_string
+from User import User
 
 # file is uploaded to github (THE PRIVATE KEY IS SHOWING!!!)
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'Cow Clicker 2-b9e05ca406a5.json'
