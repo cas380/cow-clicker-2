@@ -17,6 +17,26 @@
 		points
 	</p>
 	</div>
+    <body>
+        <div>
+        </div>
+        <figure>
+            <img src="/static/cuteCow.jpg" style="width:500px;height:600px;" onclick="buyThatCow(this);">
+            <figcaption>Cute Cow (5,000 Points): Gives 175 points/click</figcaption>
+        </figure>
+        <figure>
+            <img src="/static/sillyCow.jpg" style="width:500px;height:600px;" onclick="buyThatCow(this);">
+            <figcaption>Silly Cow (10,000 Points): Gives a random point/click value from -500 to +500</figcaption>
+        </figure>
+        <figure>
+            <img src="/static/chonkCow.jpg" style="width:500px;height:600px;" onclick="buyThatCow(this);">
+            <figcaption>Chonk Cow (50,000 Points): Gives 300 points/click with a 20% chance to give 600 points instead</figcaption>
+        </figure>
+        <figure>
+            <img src="/static/minecraftCow.jpg" style="width:500px;height:600px;" onclick="buyThatCow(this);">
+            <figcaption>Minecraft Cow (100,000 Points): 10% chance to give a points/click of any power of 2 from 0 - 10</figcaption>
+        </figure>
+	</body>
 	<script>
 
 		//Request Data
@@ -80,24 +100,4 @@
 		}
 	}
 	</script>
-    <body>
-        <div>
-        </div>
-        <figure>
-            <img src="/static/cuteCow.jpg" style="width:500px;height:600px;" onclick="buyThatCow(this);">
-            <figcaption>Cute Cow (5,000 Points): Gives 175 points/click</figcaption>
-        </figure>
-        <figure>
-            <img src="/static/sillyCow.jpg" style="width:500px;height:600px;" onclick="buyThatCow(this);">
-            <figcaption>Silly Cow (10,000 Points): Gives a random point/click value from -500 to +500</figcaption>
-        </figure>
-        <figure>
-            <img src="/static/chonkCow.jpg" style="width:500px;height:600px;" onclick="buyThatCow(this);">
-            <figcaption>Chonk Cow (50,000 Points): Gives 300 points/click with a 20% chance to give 600 points instead</figcaption>
-        </figure>
-        <figure>
-            <img src="/static/minecraftCow.jpg" style="width:500px;height:600px;" onclick="buyThatCow(this);">
-            <figcaption>Minecraft Cow (100,000 Points): 10% chance to give a points/click of any power of 2 from 0 - 10</figcaption>
-        </figure>
-    </body>
 {% endblock %}
