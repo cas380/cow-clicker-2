@@ -32,10 +32,8 @@ def signin():
     if not entity:
       test_put(user, 0, 0) # saves zeroes for new game
     entity = test_grab(user) # user's data for sure (needed to start game)
-
-    sendUser = user.get_username()
-    sendPass = user.get_password()
-    return flask.redirect(flask.url_for('game', theUsername=sendUser, thePassword=sendPass), code=307) # Redirect code
+    
+    return flask.redirect(flask.url_for('game', theUsername=user.get_username(), thePassword=user.get_password()), code=307) # Redirect code
 
 
 @app.route('/store.html')

@@ -17,10 +17,10 @@ class User(object):
             'password': self.password,
         }
 
-    def get_username():
+    def get_username(self):
         return self.username
 
-    def get_password():
+    def get_password(self):
         return self.password
 
     def to_string(self):
