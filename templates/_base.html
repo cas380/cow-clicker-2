@@ -4,83 +4,83 @@
     <!--link rel="stylesheet" href="static/style.css"-->
     <style>
 
-#Points {
-  color: yellow;
-  font-size: 28pt;
-  font-weight: bold;
-}
-
-.Error {
-  font-weight: bold;
-  color: red;
-}
-
-nav a.NavLink {
-  text-decoration: none;
-  border-right: 2px solid black;
-  padding-right: 5px;
-}
-
-nav a.NavLink:last-child {
-  border-right: 0px;
-}
-
-body {
-  font-family: Helvetica, sans-serif;
-  font-size: 10pt;
-  margin: 4px;
-}
-
-nav {
-  margin-top: 0px;
-  margin-bottom: 16px;
-}
-
-td {
-  border: 2px solid blue;
-  padding: 12px;
-}
-
-header {
-  margin-bottom: 20px;
-  font-style: italic;
-}
-    </style>
-
-   <script>
-       
-       //Send points to server (Javascript to Python)
-       var httpRequest = new XMLHttpRequest();
-
-       if (!httpRequest){
-          alert('I\'m giving up on you');
-          return false;
-       }
+      #Points {
+        color: yellow;
+        font-size: 28pt;
+        font-weight: bold;
       }
 
-      httpRequest.onreadystatechange = function(){ handlePost(httpRequest, points) };
-      httpRequest.open("POST", changetgis);
-      httpRequest.setRequestHeader('Content-Type',
-            'application/x-www-form-urlencoded');
-          
-      var data = "points" = points;
-      httpRequest.send(data);
+      .Error {
+        font-weight: bold;
+        color: red;
+      }
+
+      nav a.NavLink {
+        text-decoration: none;
+        border-right: 2px solid black;
+        padding-right: 5px;
+      }
+
+      nav a.NavLink:last-child {
+        border-right: 0px;
+      }
+
+      body {
+        font-family: Helvetica, sans-serif;
+        font-size: 10pt;
+        margin: 4px;
+      }
+
+      nav {
+        margin-top: 0px;
+        margin-bottom: 16px;
+      }
+
+      td {
+        border: 2px solid blue;
+        padding: 12px;
+      }
+
+      header {
+        margin-bottom: 20px;
+        font-style: italic;
+      }
+    </style>
+
+    <script>
+       
+      //Send points to server (Javascript to Python)
+      var httpRequest = new XMLHttpRequest();
+
+      if (!httpRequest){
+        alert('I\'m giving up on you');
+      } else{
+        httpRequest.onreadystatechange = function(){ handlePost(httpRequest, points) };
+        httpRequest.open("POST", changetgis);
+        httpRequest.setRequestHeader('Content-Type',
+              'application/x-www-form-urlencoded');
+            
+        var data = "points" = points;
+        httpRequest.send(data);
+      }
 
       /**
-       * put add code where-ever in Python that you need to retrieve points
-       * request.form["points"]
-       **/
+      * put add code where-ever in Python that you need to retrieve points
+      * request.form["points"]
+      **/
       
     </script>
+
   </head>
+
   <body>
     {% if error_message %}
       <div class="Error">{{error_message}}</div>
     {% endif %}
     <h1>Template Demo{% if page_title %}: {{page_title}}{% endif %}</h1>
-    <nav>
-      <a href="store.html" target="_Blank" class="NavLink">Store</a>
-    </nav>
+    
+    {% block nav %}{% endblock %}
+
     {# <h2>Loaded with <span id="points">{{ init_points }}</span> points</h2> #}
     <header>
       {# 
@@ -91,8 +91,11 @@ header {
       #}
       {% block header %}{% endblock %}
     </header>
+
     <section>
       {% block content %}{% endblock %}
     </section>
+
   </body>
+
 </html>

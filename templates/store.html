@@ -1,11 +1,39 @@
 {% extends '_base.html' %}
 
 {% block header %}
-    WELCOME 
+    WELCOME  to the Cow Store!!
 {% endblock %}
     
 {% block content %}
+	<div id="demo" onload = "loadXMLPoints()">
+	<p>
+		points
+	</p>
+	</div>
 	<script>
+
+		//Request Data
+		function loadXMLPoints() {
+			var httpRequest = new XMLHttpRequest();
+
+			if (!httpRequest){
+			alert('I\'m giving up on you');
+			return false;
+			}
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.onreadystatechange = function(){ handlePost(httpRequest, points) };
+
+			httpRequest.open("GET", changetgis);
+			var data = "points" = points;
+			document.getElementById("demo").innerHTML = data;
+		}
+		
+
+		//Display points
+		var pointsDiv = document.getElementById('points');
+		pointsDiv.innerHTML = 'Points: <em>' + points + '</em>';
+		console.log("You have " + points + " points!");
+
 	function buyThatCow(imageElement) {
 		// attempt to buy a cow in the store
 		var cowsDiv = document.getElementById('cows'); //Place holder until datastore works
@@ -18,54 +46,54 @@
 		// so it loads instead of tall grass the next time cowclicker.html is loaded
 		switch(imageElement.src){
 		  case "/static/cuteCow.jpg":
-			if(points >= 5000 && cows[1] == null){
-				cows[1] = 1;
+			if(points >= 5000 && (cows & 2 != 2)){
+				cows = cows + 2;
 				points = points - 5000;
 			}
 			break;
 
 		  case "/static/sillyCow.jpg":
-			if(points >= 10000 && cows[2] == null){
-				cows[2] = 1;
+			if(points >= 10000 && (cows & 4 != 4)){
+				cows = cows + 4;
 				points = points - 10000;
 			}
 			break;
 
 		  case "/static/chonkCow.jpg":
-			if(points >= 50000 && cows[3] == null){
-				cows[3] = 1;
+			if(points >= 50000 && (cows & 8 != 8)){
+				cows = cows + 8;
 				points = points - 50000;
 			}
 			break;
 
 		  case "/static/minecraftCow.jpg":
-			if(points >= 100000 && cows[4] == null){
-				cows[4] = 1;
+			if(points >= 100000 && (cows & 16 != 16)){
+				cows = cows + 16;
 				points = points - 100000;
 			}
 			break;
 		}
+		test_put(user, points, cows);
 	}
 	</script>
     <body>
         <div>
-            Welcome to the cow store!
         </div>
         <figure>
-            <img src="/static/cuteCow.jpg" onclick="buyThatCow(this);">
-            <figcaption>Cute Cow (5,000 Points): Gives 175 points</figcaption>
+            <img src="/static/cuteCow.jpg" style="width:500px;height:600px;" onclick="buyThatCow(this);">
+            <figcaption>Cute Cow (5,000 Points): Gives 175 points/click</figcaption>
         </figure>
         <figure>
-            <img src="/static/sillyCow.jpg" onclick="buyThatCow(this);">
-            <figcaption>Silly Cow (10,000 Points): Gives a random point value from -500 to +500</figcaption>
+            <img src="/static/sillyCow.jpg" style="width:500px;height:600px;" onclick="buyThatCow(this);">
+            <figcaption>Silly Cow (10,000 Points): Gives a random point/click value from -500 to +500</figcaption>
         </figure>
         <figure>
-            <img src="/static/chonkCow.jpg" onclick="buyThatCow(this);">
-            <figcaption>Chonk Cow (50,000 Points): Gives 300 points with a 20% chance to give 600 points instead</figcaption>
+            <img src="/static/chonkCow.jpg" style="width:500px;height:600px;" onclick="buyThatCow(this);">
+            <figcaption>Chonk Cow (50,000 Points): Gives 300 points/click with a 20% chance to give 600 points instead</figcaption>
         </figure>
         <figure>
-            <img src="/static/minecraftCow.jpg" onclick="buyThatCow(this);">
-            <figcaption>Minecraft Cow (100,000 Points): Gives a 10% chance to add points of any power of 2 from 0 - 10</figcaption>
+            <img src="/static/minecraftCow.jpg" style="width:500px;height:600px;" onclick="buyThatCow(this);">
+            <figcaption>Minecraft Cow (100,000 Points): 10% chance to give a points/click of any power of 2 from 0 - 10</figcaption>
         </figure>
     </body>
 {% endblock %}
