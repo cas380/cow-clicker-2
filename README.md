@@ -1,6 +1,6 @@
 # Cow Clicker 2
 
-> Vs Share: https://prod.liveshare.vsengsaas.visualstudio.com/join?29C558AFCD666DB89A2FE9FBDD43EF7B412A
+> Vs Share: https://prod.liveshare.vsengsaas.visualstudio.com/join?52C892C47662DC9B52468D8BF78A35E5ED25
 
 > git clone https://github.com/cas380/cow-clicker-2
 
