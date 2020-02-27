@@ -116,35 +116,34 @@ WELCOME TO COW CLICKER
 		// a certain cow then that image's source will be set to Tall Grass
 
 		console.log("Cow state is apparently " + cows);
-		cows = Number(cows) // ...JS is dumb
 
 		/* This is a given; listed for consistency
-		if(cows & 1 == 1){
+		if (cows & 1 == 1){
 			document.getElementById("cow0").src="static/standardCow.jpeg";
 		}else{
 			document.getElementById("cow0").src="static/tallGrass.jpg";
 		}
 		*/
 
-		if(cows & 2 == 2){
+		if (Number(cows) & 2 == 2){
 			document.getElementById("cow1").src="static/cuteCow.jpg";
 		}else{
 			document.getElementById("cow1").src="static/tallGrass.jpg";
 		}
 
-		if(cows & 4 == 4){
+		if (Number(cows) & 4 == 4){
 			document.getElementById("cow2").src="static/sillyCow.jpg";
 		}else{
 			document.getElementById("cow2").src="static/tallGrass.jpg";
 		}
 
-		if(cows & 8 == 8){
+		if (Number(cows) & 8 == 8){
 			document.getElementById("cow3").src="static/chonkCow.jpg";
 		}else{
 			document.getElementById("cow3").src="static/tallGrass.jpg";
 		}
 
-		if(cows & 16 == 16){
+		if (Number(cows) & 16 == 16){
 			document.getElementById("cow4").src="static/minecraftCow.jpg";
 		}else{
 			document.getElementById("cow4").src="static/tallGrass.jpg";
