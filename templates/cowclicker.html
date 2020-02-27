@@ -43,7 +43,7 @@ WELCOME TO COW CLICKER
 	};
 	
 	isStart = true;
-	function clickThatCow(imageElement) {
+	function clickThatCow(cowID) {
 		if (isStart) {
 			isStart = false
 			loadGameState() // onload does not work...
@@ -54,7 +54,7 @@ WELCOME TO COW CLICKER
 		  console.log("Entering switch");
 
 		  // change the score incrementer based on which cow is clicked
-		  switch(imageElement.src){
+		  switch(cowID){
 			  case "0":
 			//case "https://cow-clicker-2.appspot.com/static/standardCow.jpeg":
 			  inc = 100;

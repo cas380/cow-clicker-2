@@ -55,7 +55,7 @@
 	}
 	*/
 	
-	function buyThatCow(imageElement) {
+	function buyThatCow(cowID) {
 		// attempt to buy a cow in the store
 		var cowsDiv = document.getElementById('cows'); //Place holder until datastore works
 		var pointsDiv = document.getElementById('points'); //Place holder until datastore works
@@ -63,7 +63,7 @@
 		// if the user has enough points to buy a cow when it is clicked on,
 		// and it has not been bought before, change that cow's array value to non-null,
 		// so it loads instead of tall grass the next time cowclicker.html is loaded
-		switch(imageElement.src){
+		switch(cowID){
 			case "1":
 		  //case "https://cow-clicker-2.appspot.com/static/cuteCow.jpg":
 			if(points >= 5000 && (cows & 2 != 2)){
