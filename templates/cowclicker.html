@@ -59,33 +59,40 @@ WELCOME TO COW CLICKER
 		console.log("Outside debounce");
 	//  if (debounce) {
 		  var inc = 0;
+		  var index = 40;
+		  var str = imageElement.src;
+		  if(str.charAt(40) == '/'){
+			  index = 41;
+		  }
+		  var res = str.substring(index);
+		
 		  console.log("Entering switch");
 
 		  // change the score incrementer based on which cow is clicked
-		  switch(imageElement.src){
+		  switch(res){
 			//case 0:
-			case "http://cow-clicker-2.appspot.com/static/standardCow.jpeg":
+			case "standardCow.jpeg":
 			  inc = 100;
 			  break;
 	
 			//case 1:
-			case "http://cow-clicker-2.appspot.com/static/cuteCow.jpg":
+			case "cuteCow.jpg":
 			  inc = 175;
 			  break;
 
 			//case 2:
-			case "http://cow-clicker-2.appspot.com/static/sillyCow.jpg":
+			case "sillyCow.jpg":
 			  inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
 			  inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
 			  break;
 				  
 			//case 3:
-			case "http://cow-clicker-2.appspot.com/static/chonkCow.jpg":
+			case "chonkCow.jpg":
 			  inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
 			  break;
 			
 			//case 4:
-			case "http://cow-clicker-2.appspot.com/static/minecraftCow.jpg":
+			case "minecraftCow.jpg":
 			  temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
 			  inc = Math.pow(2, temp);
 			  break;
