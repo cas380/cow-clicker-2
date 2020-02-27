@@ -23,11 +23,11 @@ WELCOME TO COW CLICKER
 </div>
 
 <div id="thePasture">
-	<img class="clickableCow" id="cow0" src="static/tallGrass.jpg" onclick="clickThatCow(1);">
-	<img class="clickableCow" id="cow1" src="static/tallGrass.jpg" onclick="clickThatCow(2);">
-	<img class="clickableCow" id="cow2" src="static/tallGrass.jpg" onclick="clickThatCow(3);">
-	<img class="clickableCow" id="cow3" src="static/tallGrass.jpg" onclick="clickThatCow(4);">
-	<img class="clickableCow" id="cow4" src="static/standardCow.jpeg" onclick="clickThatCow(0);">
+	<img class="clickableCow" id="cow0" src="static/standardCow.jpeg" onclick="clickThatCow(0);">
+	<img class="clickableCow" id="cow1" src="static/tallGrass.jpg" onclick="clickThatCow(1);">
+	<img class="clickableCow" id="cow2" src="static/tallGrass.jpg" onclick="clickThatCow(2);">
+	<img class="clickableCow" id="cow3" src="static/tallGrass.jpg" onclick="clickThatCow(3);">
+	<img class="clickableCow" id="cow4" src="static/tallGrass.jpg" onclick="clickThatCow(4);">
 	<!--
 	<img class="clickableCow" id="cow0" src="static/cuteCow.jpg" onclick="clickThatCow(1);">
 	<img class="clickableCow" id="cow1" src="static/sillyCow.jpg" onclick="clickThatCow(2);">
@@ -114,6 +114,17 @@ WELCOME TO COW CLICKER
 		// If the user's "cows" data says they own a certain cow, then set the
 		// images src to the correct cow image source. If the user does not own 
 		// a certain cow then that image's source will be set to Tall Grass
+
+		console.log("Cow state is apparently " + cows);
+
+		/* This is a given; listed for consistency
+		if(cows & 1 == 1){
+			document.getElementById("cow0").src="static/standardCow.jpeg";
+		}else{
+			document.getElementById("cow0").src="static/tallGrass.jpg";
+		}
+		*/
+
 		if(cows & 2 == 2){
 			document.getElementById("cow1").src="static/cuteCow.jpg";
 		}else{
