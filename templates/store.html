@@ -54,8 +54,21 @@
 		document.getElementById("demo").innerHTML = data;
 	}
 	*/
+	var points, cows;
+
+	function loadGameState() { // need to actually pass points to this page (xml?)
+		points = Number(document.getElementById('points').innerHTML);
+		cows = Number(document.getElementById('cows').innerHTML);
+		console.log("Loaded " + points + " points. Thanks for returning!");
+		console.log("Loaded " + cows + " as the state of your cows. Thanks for returning!");
+	};
 	
+	isStart = true
 	function buyThatCow(cowID) {
+		if (isStart) {
+			loadGameState()
+			isStart = false
+		}
 		// attempt to buy a cow in the store
 		var cowsDiv = document.getElementById('cows'); //Place holder until datastore works
 		var pointsDiv = document.getElementById('points'); //Place holder until datastore works

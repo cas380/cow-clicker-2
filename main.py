@@ -19,7 +19,7 @@ def game():
   if entity: # shouldn't ever be empty??????
     return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'], init_cows=entity['cows'])
   else:
-    return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=0, init_cows=1)
+    return render_template('cowclicker.html', init_points=0, init_cows=1)
   # Nonetype from entity error
 
 @app.route('/to-cow-game', methods=['POST'])
@@ -35,17 +35,20 @@ def signin():
 
     return flask.redirect(flask.url_for('game', theUsername=user.get_username(), thePassword=user.get_password()), code=307) # Redirect code
 
+@app.route('/to-store')
+def loadState():
+	return json.dumps()
 
 @app.route('/store.html')
 def store():
-  return render_template('store.html', page_title='Buy some cows pls')
+  return render_template('store.html')
 
 
 @app.route('/')
 @app.route('/login.html')
 def login():
   # put this into database, will read up on stuff
-  return render_template('login.html', page_title='Save your work dude')
+  return render_template('login.html')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
