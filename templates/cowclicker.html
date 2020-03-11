@@ -28,25 +28,16 @@ WELCOME TO COW CLICKER
 	<img class="clickableCow" id="cow2" src="static/tallGrass.jpg" style="width:500px;height:500px;" onclick="clickThatCow(this);">
 	<img class="clickableCow" id="cow3" src="static/tallGrass.jpg" style="width:500px;height:500px;" onclick="clickThatCow(this);">
 	<img class="clickableCow" id="cow4" src="static/tallGrass.jpg" style="width:500px;height:500px;" onclick="clickThatCow(this);">
-	<!--
-	<img class="clickableCow" id="cow0" src="static/cuteCow.jpg" onclick="clickThatCow(1);">
-	<img class="clickableCow" id="cow1" src="static/sillyCow.jpg" onclick="clickThatCow(2);">
-	<img class="clickableCow" id="cow2" src="static/chonkCow.jpg" onclick="clickThatCow(3);">
-	<img class="clickableCow" id="cow3" src="static/minecraftCow.jpg" onclick="clickThatCow(4);">
-	<img class="clickableCow" id="cow4" src="static/standardCow.jpeg" onclick="clickThatCow(0);">
-	-->
 </div>
 
 <script>
-	// var points = 0;  store in HTML element and read onload
-	var debounce = false; // race condition might not be so detrimental
-
+	// var points = 0;  // store in HTML element and read onload
+	
 	function loadGameState() {
 		points = document.getElementById('points').innerHTML;
 		cows = document.getElementById('cows').innerHTML;
 		console.log("Loaded " + points + " points. Thanks for returning!");
 		console.log("Loaded " + cows + " as the state of your cows. Thanks for returning!");
-		debounce = true;
 	};
 	
 	isStart = true;
@@ -56,68 +47,52 @@ WELCOME TO COW CLICKER
 			loadGameState() // onload does not work...
 			loadUnlockedCows()
 		}
-		console.log("Outside debounce");
-	    //  if (debounce) {
-		  var inc = 0;
-		  var index = 40;
-		  var str = imageElement.src;
-		  if(str.charAt(40) == '/'){
-			  index = 41;
-		  }
-		  var res = str.substring(index);
 		
-		  console.log("Entering switch");
+		var inc = 0;
+		var str = imageElement.src;
 
-		  // change the score incrementer based on which cow is clicked
-		  switch(res){
-			//case 0:
+		var n = str.indexOf("static");
+		var imgName = str.substring(n+7);
+
+		console.log("Entering switch");
+		switch (imgName) {
 			case "standardCow.jpeg":
-			  inc = 100;
-			  break;
-	
-			//case 1:
+				inc = 100;
+				break;
 			case "cuteCow.jpg":
-			  inc = 175;
-			  break;
-
-			//case 2:
+				inc = 175;
+				break;
 			case "sillyCow.jpg":
-			  inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
-			  inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
-			  break;
-				  
-			//case 3:
+				inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
+				inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
+				break;
 			case "chonkCow.jpg":
-			  inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
-			  break;
-			
-			//case 4:
+				inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
+				break;
 			case "minecraftCow.jpg":
-			  temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
-			  inc = Math.pow(2, temp);
-			  break;
+				temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
+				inc = Math.pow(2, temp);
+				break;
+			default: // tallGrass.jpg
+				console.log("Default case ran! Clicked tall grass.")
+				inc = 0;
+				break;
+		}
 
-			/*case "http://cow-clicker-2.appspot.com/static/tallGrass.jpg":
-			  inc = 0;
-			  break;*/
+		points = Number(points)
+		points += inc; // JS is dumb
 
-			default: // "https://cow-clicker-2.appspot.com/static/tallGrass.jpg"
-			  console.log("Default case ran! Clicked tall grass.")
-			  inc = 0;
-			  break;
-		  }
-		  points = Number(points)
-		  points += inc; // JS is dumb
-
-		  document.getElementById('points').innerHTML = points;
-		  console.log("You now have " + points + " points!");
-	//	}
+		document.getElementById('points').innerHTML = points;
+		console.log("You now have " + points + " points!");
 	}
-
 
 	// run once all the cows have loaded
 	document.getElementById("thePasture").onload = function() {
+		alert("please go!");
 		loadUnlockedCows() // on load has proven to be finnicky, so this also happens in first click
+	}
+	window.onload = function() {
+		alert("let's go!");
 	}
 
 	// Run on first click
