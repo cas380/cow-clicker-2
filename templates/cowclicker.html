@@ -44,8 +44,8 @@ WELCOME TO COW CLICKER
 	function clickThatCow(imageElement) {
 		if (isStart) {
 			isStart = false
-			loadGameState() // onload does not work...
-			loadUnlockedCows()
+			//loadGameState() // onload does not work...
+			//loadUnlockedCows()
 		}
 		
 		var inc = 0;
@@ -86,13 +86,11 @@ WELCOME TO COW CLICKER
 		console.log("You now have " + points + " points!");
 	}
 
-	// run once all the cows have loaded
-	document.getElementById("thePasture").onload = function() {
-		alert("please go!");
-		loadUnlockedCows() // on load has proven to be finnicky, so this also happens in first click
-	}
+	// Doesn't work for:
+	// document.getElementById("thePasture")
 	window.onload = function() {
-		alert("let's go!");
+		loadGameState()
+		loadUnlockedCows()
 	}
 
 	// Run on first click
@@ -100,9 +98,7 @@ WELCOME TO COW CLICKER
 		// If the user's "cows" data says they own a certain cow, then set the
 		// images src to the correct cow image source. If the user does not own 
 		// a certain cow then that image's source will be set to Tall Grass
-
 		console.log("Cow state is apparently " + cows);
-
 
 		if ((Number(cows) & 2) == 2){
 			document.getElementById("cow1").src="static/cuteCow.jpg";
