@@ -1,4 +1,4 @@
-// https://flask.palletsprojects.com/en/1.1.x/quickstart/#sessions
+# https://flask.palletsprojects.com/en/1.1.x/quickstart/#sessions
 from flask import Flask, render_template, redirect, url_for, request, session
 from markupsafe import escape
 
