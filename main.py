@@ -1,7 +1,10 @@
-from flask import Flask, render_template, request, session
+import flask // https://flask.palletsprojects.com/en/1.1.x/quickstart/#sessions
+from flask import Flask, render_template, redirect, url_for, request, session
+from markupsafe import escape
+
 # RuntimeError: The session is unavailable because no secret key was set.
 # Set the secret_key on the application to something unique and secret.
-import flask
+
 from DataStore import test_put, test_grab
 from User import User
 
@@ -42,7 +45,6 @@ def loadState():
 @app.route('/store.html')
 def store():
   return render_template('store.html')
-
 
 @app.route('/')
 @app.route('/login.html')
