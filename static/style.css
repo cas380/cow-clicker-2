@@ -9,8 +9,9 @@ title {
 #topFence {
 	width: 700px;
 	height: 100px;
-	background-image: url("static/northFence.png");
+	background-image: url("northFence.png");
 	background-repeat: repeat-x;
+	background-size: contain;
 }
 
 #largerPasture {
