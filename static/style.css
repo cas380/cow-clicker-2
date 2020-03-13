@@ -9,6 +9,7 @@ title {
 #topFence {
 	width: 700px;
 	height: 100px;
+
 	background-image: url("northFence.png");
 	background-repeat: repeat-x;
 	background-size: contain;
@@ -27,6 +28,9 @@ title {
 	margin: auto;
     background-color: forestgreen;
 	overflow: hidden;
+
+	background-image: url("grassTexture.jpg");
+	background-repeat: repeat;
 
 	position: relative;
 }
