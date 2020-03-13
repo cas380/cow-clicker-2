@@ -22,12 +22,16 @@ WELCOME TO COW CLICKER
 	<div id="COWz">The state of your cows is <span id="cows">{{ init_cows }}</span>.</div>
 </div>
 
-<div id="thePasture">
-	<img class="clickableCow" id="cow0" src="static/standardCow.jpeg" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow1" src="static/cuteCow.jpg" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow2" src="static/sillyCow.jpg" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow3" src="static/chonkCow.jpg" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow4" src="static/minecraftCow.jpg" onclick="clickThatCow(this);">
+<div id="largerPasture">
+	<div id="topFence">
+	</div>
+	<div id="thePasture">
+		<img class="clickableCow" id="cow0" src="static/standardCow.jpeg" onclick="clickThatCow(this);">
+		<img class="clickableCow" id="cow1" src="static/cuteCow.jpg" onclick="clickThatCow(this);">
+		<img class="clickableCow" id="cow2" src="static/sillyCow.jpg" onclick="clickThatCow(this);">
+		<img class="clickableCow" id="cow3" src="static/chonkCow.jpg" onclick="clickThatCow(this);">
+		<img class="clickableCow" id="cow4" src="static/minecraftCow.jpg" onclick="clickThatCow(this);">
+	</div>
 </div>
 
 <script>
@@ -137,14 +141,14 @@ WELCOME TO COW CLICKER
 					if (leftSpace > 500) {
 						// Under the rightmost wall
 						directionX = false;
-						hold = 100*((Math.floor(Math.random()*4)) + 5); // Random number between 500 and 800 inclusive
+						hold = 2*((Math.floor(Math.random()*4)) + 5); // Random number between 10 and 16 inclusive
 					}
 				} else {
 					leftSpace -= 2;
 					if (leftSpace < -100) {
 						// Under the leftmost wall
 						directionX = true;
-						hold = 100*((Math.floor(Math.random()*4)) + 5); // Random number between 500 and 800 inclusive
+						hold = 2*((Math.floor(Math.random()*4)) + 5); // Random number between 10 and 16 inclusive
 					}
 				}
 
@@ -153,14 +157,14 @@ WELCOME TO COW CLICKER
 					if (topSpace > 300) {
 						// Under the bottommost wall
 						directionY = false;
-						hold = 100*((Math.floor(Math.random()*4)) + 5); // Random number between 500 and 800 inclusive
+						hold = 2*((Math.floor(Math.random()*4)) + 5); // Random number between 10 and 16 inclusive
 					}
 				} else {
 					topSpace -= 2;
 					if (topSpace < -100) {
 						// Under the topmost wall
 						directionY = true;
-						hold = 100*((Math.floor(Math.random()*4)) + 5); // Random number between 500 and 800 inclusive
+						hold = 2*((Math.floor(Math.random()*4)) + 5); // Random number between 10 and 16 inclusive
 					}
 				}
 			}
