@@ -24,10 +24,10 @@ WELCOME TO COW CLICKER
 
 <div id="thePasture">
 	<img class="clickableCow" id="cow0" src="static/standardCow.jpeg" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow1" src="static/tallGrass.jpg" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow2" src="static/tallGrass.jpg" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow3" src="static/tallGrass.jpg" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow4" src="static/tallGrass.jpg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow1" src="static/cuteCow.jpg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow2" src="static/sillyCow.jpg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow3" src="static/chonkCow.jpg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow4" src="static/minecraftCow.jpg" onclick="clickThatCow(this);">
 </div>
 
 <script>
@@ -88,51 +88,80 @@ WELCOME TO COW CLICKER
 		// images src to the correct cow image source. If the user does not own 
 		// a certain cow then that image's source will be set to Tall Grass
 		console.log("Cow state is apparently " + cows);
-
-		if ((cows & 2) == 2){
-			document.getElementById("cow1").src="static/cuteCow.jpg";
+		
+		if ((cows & 1) == 1) {
+			document.getElementById("cow0").style.display = "inline";
+		}
+		if ((cows & 2) == 2) {
 			document.getElementById("cow1").style.display = "inline";
 		}
-		if ((cows & 4) == 4){
-			document.getElementById("cow2").src="static/sillyCow.jpg";
+		if ((cows & 4) == 4) {
 			document.getElementById("cow2").style.display = "inline";
 		}
-		if ((cows & 8) == 8){
-			document.getElementById("cow3").src="static/chonkCow.jpg";
+		if ((cows & 8) == 8) {
 			document.getElementById("cow3").style.display = "inline";
 		}
-		if ((cows & 16) == 16){
-			document.getElementById("cow4").src="static/minecraftCow.jpg";
+		if ((cows & 16) == 16) {
 			document.getElementById("cow4").style.display = "inline";
 		}
 	}
 
 	// Give each cow its own copy of variables
 	function animateThisCow(cowCount) { // Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
-		let leftSpace = 0;
-		let topSpace = 0;
-		let direction = true;
+		let leftSpace = 2*(Math.floor(Math.random()*301) + 1) - 102; // Random even number between -100 and 500 inclusive
+		let topSpace = 2*(Math.floor(Math.random()*201) + 1) - 102; // Random even number between -100 and 300 inclusive
+
+		let directionX = Math.random() <= .5 ? true : false;
+		let directionY = Math.random() <= .5 ? true : false;
+
 		let newCow = null;
+		let hold = 0;
 
 		do {
 			newCow = document.getElementById("cow"+cowCount);
 		} while (newCow == null);
 
-		setInterval(function() {
-			newCow.style.left = leftSpace+"px";
-			newCow.style.top = topSpace+"px";
+		// Start at the random position
+		newCow.style.left = leftSpace+"px";
+		newCow.style.top = topSpace+"px";
 
-			if (direction) {
-				leftSpace++;
-				topSpace++;
-				if (leftSpace > 200) {
-					direction = false;
-				}
+		setInterval(function() {
+			if (hold > 0) {
+				hold--;
 			} else {
-				leftSpace--;
-				topSpace--;
-				if (leftSpace == 0) {
-					direction = true;
+				newCow.style.left = leftSpace+"px";
+				newCow.style.top = topSpace+"px";
+
+				if (directionX) {
+					leftSpace += 2;
+					if (leftSpace > 500) {
+						// Under the rightmost wall
+						directionX = false;
+						hold = 100*((Math.floor(Math.random()*4)) + 5); // Random number between 500 and 800 inclusive
+					}
+				} else {
+					leftSpace -= 2;
+					if (leftSpace < -100) {
+						// Under the leftmost wall
+						directionX = true;
+						hold = 100*((Math.floor(Math.random()*4)) + 5); // Random number between 500 and 800 inclusive
+					}
+				}
+
+				if (directionY) {
+					topSpace += 2;
+					if (topSpace > 300) {
+						// Under the bottommost wall
+						directionY = false;
+						hold = 100*((Math.floor(Math.random()*4)) + 5); // Random number between 500 and 800 inclusive
+					}
+				} else {
+					topSpace -= 2;
+					if (topSpace < -100) {
+						// Under the topmost wall
+						directionY = true;
+						hold = 100*((Math.floor(Math.random()*4)) + 5); // Random number between 500 and 800 inclusive
+					}
 				}
 			}
 		}, 200);
