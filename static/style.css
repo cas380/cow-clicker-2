@@ -57,6 +57,7 @@ title {
 	width: 500px;
 	height: 300px;
 	margin: auto;
+	float: right;
     background-color: forestgreen;
 	overflow: hidden;
 
