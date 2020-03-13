@@ -122,6 +122,8 @@ WELCOME TO COW CLICKER
 
 		let newCow = null;
 		let hold = 0;
+		let stepX = 1;
+		let stepY = 1;
 
 		do {
 			newCow = document.getElementById("cow"+cowCount);
@@ -138,15 +140,19 @@ WELCOME TO COW CLICKER
 				newCow.style.left = leftSpace+"px";
 				newCow.style.top = topSpace+"px";
 
+				// Changes every increment, adds a dawdle animation
+				stepX = Math.floor(Math.random()*4) // Random number between 0 and 3
+				stepY = Math.floor(Math.random()*4) // Random number between 0 and 3
+
 				if (directionX) {
-					leftSpace += 2;
+					leftSpace += stepX;
 					if (leftSpace > 500) {
 						// Under the rightmost wall
 						directionX = false;
 						hold = 2*((Math.floor(Math.random()*4)) + 5); // Random number between 10 and 16 inclusive
 					}
 				} else {
-					leftSpace -= 2;
+					leftSpace -= stepX;
 					if (leftSpace < -100) {
 						// Under the leftmost wall
 						directionX = true;
@@ -155,14 +161,14 @@ WELCOME TO COW CLICKER
 				}
 
 				if (directionY) {
-					topSpace += 2;
+					topSpace += stepY;
 					if (topSpace > 300) {
 						// Under the bottommost wall
 						directionY = false;
 						hold = 2*((Math.floor(Math.random()*4)) + 5); // Random number between 10 and 16 inclusive
 					}
 				} else {
-					topSpace -= 2;
+					topSpace -= stepY;
 					if (topSpace < -100) {
 						// Under the topmost wall
 						directionY = true;
