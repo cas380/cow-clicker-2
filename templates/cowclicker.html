@@ -32,6 +32,10 @@ WELCOME TO COW CLICKER
 		<img class="clickableCow" id="cow2" src="static/sillyCow.jpg" onclick="clickThatCow(this);">
 		<img class="clickableCow" id="cow3" src="static/chonkCow.jpg" onclick="clickThatCow(this);">
 		<img class="clickableCow" id="cow4" src="static/minecraftCow.jpg" onclick="clickThatCow(this);">
+		<script>
+			// When adding a new cow, make sure to adjust this variable!
+			const TOTAL_COWS = 5; // Used in for loop below to animate
+		</script>
 	</div>
 	<div id="bottomFence"><img src="static/southFence.png" style="display: none;" /><!-- Serve static image --></div>
 </div>
@@ -70,7 +74,7 @@ WELCOME TO COW CLICKER
 				inc = Math.pow(2, temp);
 				break;
 			default: // tallGrass.jpg
-				console.log("Default case ran! Clicked tall grass.");
+				alert("Default case ran! Problem in clickThatCow switch.");
 				inc = 0;
 				break;
 		}
@@ -181,7 +185,7 @@ WELCOME TO COW CLICKER
 
 	// Animate the cows!!!
 	function animateCows() {
-		for (var cowCount = 0; cowCount <= 4; cowCount++) {
+		for (var cowCount = 0; cowCount < TOTAL_COWS; cowCount++) {
 			animateThisCow(cowCount);
 		}
 	}
