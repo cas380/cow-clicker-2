@@ -23,38 +23,28 @@ WELCOME TO COW CLICKER
 </div>
 
 <div id="thePasture">
-	<img class="clickableCow" id="cow0" src="static/standardCow.jpeg" style="width:500px;height:500px;" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow1" src="static/tallGrass.jpg" style="width:500px;height:500px;" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow2" src="static/tallGrass.jpg" style="width:500px;height:500px;" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow3" src="static/tallGrass.jpg" style="width:500px;height:500px;" onclick="clickThatCow(this);">
-	<img class="clickableCow" id="cow4" src="static/tallGrass.jpg" style="width:500px;height:500px;" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow0" src="static/standardCow.jpeg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow1" src="static/tallGrass.jpg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow2" src="static/tallGrass.jpg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow3" src="static/tallGrass.jpg" onclick="clickThatCow(this);">
+	<img class="clickableCow" id="cow4" src="static/tallGrass.jpg" onclick="clickThatCow(this);">
 </div>
 
 <script>
-	// var points = 0;  // store in HTML element and read onload
+	// document.getElementById("thePasture").onload does not work
+	window.onload = function() {
+		loadGameState();
+		loadUnlockedCows();
+        animateCows();
+	}
 	
-	function loadGameState() {
-		points = document.getElementById('points').innerHTML;
-		cows = document.getElementById('cows').innerHTML;
-		console.log("Loaded " + points + " points. Thanks for returning!");
-		console.log("Loaded " + cows + " as the state of your cows. Thanks for returning!");
-	};
-	
-	isStart = true;
 	function clickThatCow(imageElement) {
-		if (isStart) {
-			isStart = false
-			//loadGameState() // onload does not work...
-			//loadUnlockedCows()
-		}
-		
 		var inc = 0;
-		var str = imageElement.src;
 
+		var str = imageElement.src;
 		var n = str.indexOf("static");
 		var imgName = str.substring(n+7);
 
-		console.log("Entering switch");
 		switch (imgName) {
 			case "standardCow.jpeg":
 				inc = 100;
@@ -74,54 +64,84 @@ WELCOME TO COW CLICKER
 				inc = Math.pow(2, temp);
 				break;
 			default: // tallGrass.jpg
-				console.log("Default case ran! Clicked tall grass.")
+				console.log("Default case ran! Clicked tall grass.");
 				inc = 0;
 				break;
 		}
 
-		points = Number(points)
+		points = Number(points);
 		points += inc; // JS is dumb
 
 		document.getElementById('points').innerHTML = points;
 		console.log("You now have " + points + " points!");
 	}
 
-	// Doesn't work for:
-	// document.getElementById("thePasture")
-	window.onload = function() {
-		loadGameState()
-		loadUnlockedCows()
+	function loadGameState() {
+		points = Number(document.getElementById('points').innerHTML);
+		cows = Number(document.getElementById('cows').innerHTML);
+		console.log("Loaded " + points + " points. Thanks for returning!");
+		console.log("Loaded " + cows + " as the state of your cows. Thanks for returning!");
 	}
 
-	// Run on first click
 	function loadUnlockedCows() {
 		// If the user's "cows" data says they own a certain cow, then set the
 		// images src to the correct cow image source. If the user does not own 
 		// a certain cow then that image's source will be set to Tall Grass
 		console.log("Cow state is apparently " + cows);
 
-		if ((Number(cows) & 2) == 2){
+		if ((cows & 2) == 2){
 			document.getElementById("cow1").src="static/cuteCow.jpg";
-		}else{
-			document.getElementById("cow1").src="static/tallGrass.jpg";
+			document.getElementById("cow1").style.display = "inline";
 		}
-		
-		if ((Number(cows) & 4) == 4){
+		if ((cows & 4) == 4){
 			document.getElementById("cow2").src="static/sillyCow.jpg";
-		}else{
-			document.getElementById("cow2").src="static/tallGrass.jpg";
+			document.getElementById("cow2").style.display = "inline";
 		}
-		
-		if ((Number(cows) & 8) == 8){
+		if ((cows & 8) == 8){
 			document.getElementById("cow3").src="static/chonkCow.jpg";
-		}else{
-			document.getElementById("cow3").src="static/tallGrass.jpg";
+			document.getElementById("cow3").style.display = "inline";
 		}
-		
-		if ((Number(cows) & 16) == 16){
+		if ((cows & 16) == 16){
 			document.getElementById("cow4").src="static/minecraftCow.jpg";
-		}else{
-			document.getElementById("cow4").src="static/tallGrass.jpg";
+			document.getElementById("cow4").style.display = "inline";
+		}
+	}
+
+	// Give each cow its own copy of variables
+	function animateThisCow(cowCount) { // Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
+		let leftSpace = 0;
+		let topSpace = 0;
+		let direction = true;
+		let newCow = null;
+
+		do {
+			newCow = document.getElementById("cow"+cowCount);
+		} while (newCow == null);
+
+		setInterval(function() {
+			newCow.style.left = leftSpace+"px";
+			newCow.style.top = topSpace+"px";
+
+			if (direction) {
+				leftSpace++;
+				topSpace++;
+				if (leftSpace > 200) {
+					direction = false;
+				}
+			} else {
+				leftSpace--;
+				topSpace--;
+				if (leftSpace == 0) {
+					direction = true;
+				}
+			}
+		}, 200);
+	}
+
+	// Animate the cows!!!
+	function animateCows() {
+		for (var cowCount = 0; cowCount <= 4; cowCount++) {
+			animateThisCow(cowCount);
 		}
 	}
 </script>
