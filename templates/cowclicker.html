@@ -22,6 +22,35 @@ WELCOME TO COW CLICKER
 	<div id="COWz">The state of your cows is <span id="cows">{{ init_cows }}</span>.</div>
 </div>
 
+
+<style>
+	.logBox {
+	width: 400px;
+	height: 100px;
+	overflow-y: scroll;
+	margin: auto;
+
+	border-style: solid;
+	border-width: 2px;
+	border-color: #333;
+}
+
+.logItem {
+	border-top: solid;
+	border-width: 1px;
+	border-color: gray;
+}
+</style>
+<div class="logBox">
+	<p id="init_msg">Loading...</p>
+	<p class="logItem">I am a message!</p>
+	<p class="logItem">I am a message!</p>
+	<p class="logItem">I am a message!</p>
+	<p class="logItem">I am a message!</p>
+	<p class="logItem">I am a message!</p>
+	<p class="logItem">I am a message!</p>
+</div>
+
 <div id="largerPasture">
 	<div id="topFence"><img src="static/northFence.png" style="display: none;" /><!-- Serve static image --></div>
 	<div id="rightFence"><img src="static/eastFence.png" style="display: none;" /><!-- Serve static image --></div>
@@ -73,8 +102,8 @@ WELCOME TO COW CLICKER
 				temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
 				inc = Math.pow(2, temp);
 				break;
-			default: // tallGrass.jpg
-				alert("Default case ran! Problem in clickThatCow switch.");
+			default:
+				alert("Default case ran! Problem in clickThatCow switch. Perhaps you forgot to fully implement this cow?");
 				inc = 0;
 				break;
 		}
@@ -89,8 +118,7 @@ WELCOME TO COW CLICKER
 	function loadGameState() {
 		points = Number(document.getElementById('points').innerHTML);
 		cows = Number(document.getElementById('cows').innerHTML);
-		console.log("Loaded " + points + " points. Thanks for returning!");
-		console.log("Loaded " + cows + " as the state of your cows. Thanks for returning!");
+		document.getElementById("init_msg").innerHTML = "Loaded " + points + " points and " + cows + " as the state of your cows.";
 	}
 
 	function loadUnlockedCows() {

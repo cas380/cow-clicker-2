@@ -76,3 +76,28 @@ title {
 	left: -100px;
 	top: -100px;
 }
+
+.logBox {
+	width: 400px;
+	height: 100px;
+	overflow-y: scroll;
+	margin: auto;
+
+	border-style: solid;
+	border-width: 2px;
+	border-color: #444;
+}
+
+#init_msg {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.logItem {
+	border-top: solid;
+	border-width: 1px;
+	border-color: gray;
+	vertical-align: middle;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+}
