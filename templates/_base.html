@@ -1,52 +1,7 @@
 <html>
   <head>
-    <title>{{page_title}}</title>
-    <link rel="stylesheet" href="static/style.css">
-    <style>
-
-      #Points {
-        color: yellow;
-        font-size: 28pt;
-        font-weight: bold;
-      }
-
-      .Error {
-        font-weight: bold;
-        color: red;
-      }
-
-      nav a.NavLink {
-        text-decoration: none;
-        border-right: 2px solid black;
-        padding-right: 5px;
-      }
-
-      nav a.NavLink:last-child {
-        border-right: 0px;
-      }
-
-      body {
-        font-family: Helvetica, sans-serif;
-        font-size: 10pt;
-        margin: 4px;
-      }
-
-      nav {
-        margin-top: 0px;
-        margin-bottom: 16px;
-      }
-
-      td {
-        border: 2px solid blue;
-        padding: 12px;
-      }
-
-      header {
-        margin-bottom: 20px;
-        font-style: italic;
-      }
-    </style>
-
+    <title>Cow Clicker 2</title>
+    <link rel="stylesheet" href="static/style.css" />
     <!--
     <script>
        
@@ -72,32 +27,19 @@
       
     </script>
     -->
-
   </head>
 
   <body>
     {% if error_message %}
       <div class="Error">{{error_message}}</div>
     {% endif %}
-    <!-- <h1>Template Demo{% if page_title %}: {{page_title}}{% endif %}</h1> -->
     
     {% block nav %}{% endblock %}
 
-    {# <h2>Loaded with <span id="points">{{ init_points }}</span> points</h2> #}
     <header>
-      {# 
-        
-        The header and content areas will be replaced in templates that extend
-        this one.
-
-      #}
       {% block header %}{% endblock %}
     </header>
-
-    <section>
-      {% block content %}{% endblock %}
-    </section>
-
+    {% block content %}{% endblock %}
   </body>
 
 </html>

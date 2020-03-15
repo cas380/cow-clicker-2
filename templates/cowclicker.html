@@ -1,22 +1,15 @@
 {% extends '_base.html' %}
-{% block header %}
-WELCOME TO COW CLICKER
-{% endblock %}
-
-{% block nav %}
-
-{% endblock %}
 
 {% block content %}
 
 <!-- invisible node to pull data from -->
 <span id="cows" style="display: none;">{{ init_cows }}</span>
 
-<table style="margin: auto;">
+<table style="margin: auto; font-size: 12px;">
 	<tr>
 		<td width="150" style="text-align: center;">
 			You have<br />
-			<span id="points">{{ init_points }}</span><br />
+			<div id="points" style="overflow: hidden; width: 150px; display: inline-block;">{{ init_points }}</div><br />
 			points.
 		</td>
 		<td>
@@ -109,6 +102,9 @@ WELCOME TO COW CLICKER
 			node.classList.add("red");													// black (default) otherwise
 		}
 		var logger = document.getElementById("logBox");
+		if (logger.childNodes.length > 100) {
+			logger.removeChild(logger.childNodes[0]);									// Remove the oldest node once the limit has been reached
+		}
 		logger.appendChild(node);														// Append <p> to the logger
 		logger.scrollTop = logger.scrollHeight;											// scroll down in the logger
 	}
@@ -157,7 +153,7 @@ WELCOME TO COW CLICKER
 
 		do {
 			newCow = document.getElementById("cow"+cowCount);
-		} while (newCow == null);
+		} while (newCow == null); // spinwait until cow loads
 
 		// Start at the random position
 		newCow.style.left = leftSpace+"px";

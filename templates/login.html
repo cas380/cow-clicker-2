@@ -1,17 +1,21 @@
 {% extends '_base.html' %}
-
-{% block header %}
-    WELCOME TO COW CLICKER 2!!
-{% endblock %}
     
 {% block content %}
-    <body>
-        <form action="/to-cow-game" method="POST">
-        Username: 
-        <input type="text" name="username"><br />
-        Password:
-        <input type="password" name="password"><br />
-        <input type="submit" value="Submit"> <br />
-        </form>
-    </body> 
- {% endblock %}
+    <h1>Welcome to Cow Clicker 2</h1>
+    <br />
+    <form action="/to-cow-game" method="POST">
+        <table style="margin: auto;">
+            <tr>
+                <td>Username: </td>
+                <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;"><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}

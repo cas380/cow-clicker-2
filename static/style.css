@@ -1,8 +1,9 @@
-form {
+h1 {
+	font-size: 26px;
     text-align: center;
 }
 
-title {
+form {
     text-align: center;
 }
 
@@ -92,6 +93,7 @@ title {
 	padding-left: 10px;
 	padding-right: 10px;
 }
+
 .logItem {
 	border-top: solid;
 	border-width: 1px;
@@ -101,6 +103,7 @@ title {
 	padding-right: 10px;
 	padding-top: 12px;
 }
+
 .green {
 	color: #1cc326;
 }
