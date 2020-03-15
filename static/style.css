@@ -77,15 +77,15 @@ title {
 	top: -100px;
 }
 
-.logBox {
+#logBox {
 	width: 400px;
 	height: 100px;
 	overflow-y: scroll;
-	margin: auto;
 
 	border-style: solid;
 	border-width: 2px;
 	border-color: #444;
+	background-color: #f7ffff;
 }
 
 #init_msg {
@@ -99,5 +99,11 @@ title {
 	vertical-align: middle;
 	padding-left: 10px;
 	padding-right: 10px;
-	padding-top: 5px;
+	padding-top: 12px;
+}
+.green {
+	color: #1cc326;
+}
+.red {
+	color: lightcoral;
 }

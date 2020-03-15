@@ -4,53 +4,30 @@ WELCOME TO COW CLICKER
 {% endblock %}
 
 {% block nav %}
-<nav>
-	<a href="store.html" target="_self" class="NavLink">Cow Store</a>
-	<a href="cowclicker.html" target="_self" class="NavLink">The Pasture</a>
-</nav>
+
 {% endblock %}
 
 {% block content %}
 
-<div>
-  Click the cow for points.
-</div>
-
-<!-- Make the data we actually pull from off the page display: none; -->
-<div onload="loadGameState()">
-	<div id="POINTz">You have <span id="points">{{ init_points }}</span> points.</div>
-	<div id="COWz">The state of your cows is <span id="cows">{{ init_cows }}</span>.</div>
-</div>
-
-
-<style>
-	.logBox {
-	width: 400px;
-	height: 100px;
-	overflow-y: scroll;
-	margin: auto;
-
-	border-style: solid;
-	border-width: 2px;
-	border-color: #333;
-}
-
-.logItem {
-	border-top: solid;
-	border-width: 1px;
-	border-color: gray;
-}
-</style>
-<div class="logBox">
-	<p id="init_msg">Loading...</p>
-	<p class="logItem">I am a message!</p>
-	<p class="logItem">I am a message!</p>
-	<p class="logItem">I am a message!</p>
-	<p class="logItem">I am a message!</p>
-	<p class="logItem">I am a message!</p>
-	<p class="logItem">I am a message!</p>
-</div>
-
+<table style="margin: auto;">
+	<tr>
+		<td width="150" style="text-align: center;">
+			You have<br />
+			<span id="points">{{ init_points }}</span><br />
+			points.
+		</td>
+		<td>
+			<div id="logBox">
+				<p id="init_msg">Loading...</p>
+			</div>
+		</td>
+		<td width="150" style="text-align: center;">
+			Go to the<br />
+			<strong><a href="store.html" target="_self" class="NavLink" style="font-size: 24px; text-decoration: none;">COW STORE</a></strong>
+		</td>
+	</tr>
+</table>
+<br />
 <div id="largerPasture">
 	<div id="topFence"><img src="static/northFence.png" style="display: none;" /><!-- Serve static image --></div>
 	<div id="rightFence"><img src="static/eastFence.png" style="display: none;" /><!-- Serve static image --></div>
@@ -70,37 +47,44 @@ WELCOME TO COW CLICKER
 </div>
 
 <script>
-	// document.getElementById("thePasture").onload does not work
+	// loads the game
 	window.onload = function() {
 		loadGameState();
 		loadUnlockedCows();
         animateCows();
 	}
 	
+	// runs when a cow is clicked
 	function clickThatCow(imageElement) {
 		var inc = 0;
 
 		var str = imageElement.src;
 		var n = str.indexOf("static");
 		var imgName = str.substring(n+7);
+		let cow = "Error";
 
 		switch (imgName) {
 			case "standardCow.jpeg":
 				inc = 100;
+				cow = "Standard Cow";
 				break;
 			case "cuteCow.jpg":
 				inc = 175;
+				cow = "Cute Cow";
 				break;
 			case "sillyCow.jpg":
 				inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
 				inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
+				cow = "Silly Cow";
 				break;
 			case "chonkCow.jpg":
 				inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
+				cow = "Chonk Cow";
 				break;
 			case "minecraftCow.jpg":
 				temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
 				inc = Math.pow(2, temp);
+				cow = "Minecraft Cow";
 				break;
 			default:
 				alert("Default case ran! Problem in clickThatCow switch. Perhaps you forgot to fully implement this cow?");
@@ -108,11 +92,22 @@ WELCOME TO COW CLICKER
 				break;
 		}
 
-		points = Number(points);
-		points += inc; // JS is dumb
-
+		points += inc;
 		document.getElementById('points').innerHTML = points;
-		console.log("You now have " + points + " points!");
+
+		// Add a log (manipulate the DOM)
+		var node = document.createElement("p");											// Create a <p> node
+		var textnode = document.createTextNode(cow + " gave you " + inc + " points!");	// Create the text for it
+		node.appendChild(textnode);														// Append the text to <p>
+		node.classList.add("logItem");													// Treat this like a log item...
+		if (inc > 0) {
+			node.classList.add("green");												// Make the text green for positive point values...
+		} else if (inc < 0) {															// red for negative point values...
+			node.classList.add("red");													// black (default) otherwise
+		}
+		var logger = document.getElementById("logBox");
+		logger.appendChild(node);														// Append <p> to the logger
+		logger.scrollTop = logger.scrollHeight;											// scroll down in the logger
 	}
 
 	function loadGameState() {
