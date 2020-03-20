@@ -202,11 +202,11 @@ function makePost() {
 }
 
 function alertResult(httpRequest) {
-    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+    /*if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
             alert("ALERTING!  Value sent to server!");
         } else {
             alert("ALERTING!  There was a problem with the request.");
         }
-    }
+    }*/ // No need for a callback right now
 }
