@@ -1,10 +1,8 @@
 function setup() {
     let pasture = document.getElementById("thePasture");
-
-    for (let child = 0; child < pasture.childNodes.length; child++) {
-        if (pasture.childNodes[child] instanceof HTMLImageElement) {
-            pasture.childNodes[child].addEventListener("click", makePost, true);
-        }
+    // stratifying by image breaks this...
+    for (let cowCount = 0; cowCount < pasture.childNodes.length; cowCount++) {
+        pasture.childNodes[cowCount].addEventListener("click", makePost, true);
     }
 }
 

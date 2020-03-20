@@ -47,12 +47,17 @@
 </div>
 
 <script type=text/javascript>
-	// loads the game
+	/* loads the game
 	window.onload = function() {
 		loadGameState();
 		loadUnlockedCows();
         animateCows();
-	}
+	}*/
+	window.addEventListener('load', function() {
+		loadGameState();
+		loadUnlockedCows();
+        animateCows();
+	});
 	
 	// runs when a cow is clicked
 	function clickThatCow(imageElement) {
@@ -155,9 +160,9 @@
 		let stepX = 1;
 		let stepY = 1;
 
-		// do {
-		newCow = document.getElementById("cow"+cowCount);
-		// } while (newCow == null); // spinwait until cow loads
+		//do {
+			newCow = document.getElementById("cow"+cowCount);
+		//} while (newCow == null); // spinwait until cow loads
 
 		// Start at the random position
 		newCow.style.left = leftSpace+"px";
