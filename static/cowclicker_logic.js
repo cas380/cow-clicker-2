@@ -1,5 +1,8 @@
+var saveCheck;
+
 // load the game
 window.addEventListener('load', function() {
+	saveCheck = 0;
     loadGameState();
     loadUnlockedCows();
     animateCows();
@@ -8,6 +11,8 @@ window.addEventListener('load', function() {
 
 // runs when a cow is clicked
 function clickThatCow(imageElement) {
+	saveCheck++;
+	document.getElementById("saveCheckDiv").innerHTML = "Saving...";
     var inc = 0;
 
     var str = imageElement.src;
@@ -202,11 +207,13 @@ function makePost() {
 }
 
 function alertResult(httpRequest) {
-    /*if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        if (httpRequest.status === 200) {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+		saveCheck--;
+		if (saveCheck == 0) {
+			document.getElementById("saveCheckDiv").innerHTML = "";
+		}
+        /*if (httpRequest.status === 200) {
             alert("ALERTING!  Value sent to server!");
-        } else {
-            alert("ALERTING!  There was a problem with the request.");
-        }
-    }*/ // No need for a callback right now
+        }*/ // No need to stratify by code yet...
+    } 
 }

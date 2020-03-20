@@ -91,6 +91,13 @@ form {
 	top: -100px;
 }
 
+#saveCheckDiv {
+	text-align: center;
+	color: #42E838;
+	font-size: 18px;
+	opacity: 0.8;
+}
+
 #logBox {
 	width: 400px;
 	height: 100px;
