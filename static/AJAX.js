@@ -1,9 +1,11 @@
 function setup() {
     let pasture = document.getElementById("thePasture");
-    // stratifying by image breaks this...
-    for (let cowCount = 0; cowCount < pasture.childNodes.length; cowCount++) {
-        pasture.childNodes[cowCount].addEventListener("click", makePost, true);
+    for (var children = 0; children < pasture.childNodes.length; children++) {
+        if (pasture.childNodes[children] instanceof HTMLImageElement) {
+            pasture.childNodes[children].addEventListener("click", makePost, true);
+        }
     }
+    alert("Listeners added.");
 }
 
 function makePost() {
@@ -22,10 +24,12 @@ function makePost() {
 	var data;
 	data = "points=" + document.getElementById("points").innerHTML + "&cows=" + document.getElementById("cows").innerHTML;
 	
+    alert("Sending request...");
 	httpRequest.send(data);
 }
 
 function alertResult(httpRequest) {
+	alert("ALERTING!  readyState:  " + httpRequest.readyState);
 	if (httpRequest.readyState === XMLHttpRequest.DONE) {
 		if (httpRequest.status === 200) {
 			alert("ALERTING!  Value sent to server!");
