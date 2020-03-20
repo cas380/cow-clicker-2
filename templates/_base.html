@@ -7,33 +7,8 @@
       font-family: Helvetica, sans-serif;
       font-size: 12px;
     }
-    </style> <!--  -->
-
-    <!--
-    <script>
-       
-      //Send points to server (Javascript to Python)
-      var httpRequest = new XMLHttpRequest();
-
-      if (!httpRequest){
-        alert('I\'m giving up on you');
-      } else{
-        httpRequest.onreadystatechange = function(){ handlePost(httpRequest, points) };
-        httpRequest.open("POST", changetgis);
-        httpRequest.setRequestHeader('Content-Type',
-              'application/x-www-form-urlencoded');
-            
-        var data = "points" = points;
-        httpRequest.send(data);
-      }
-
-      /**
-      * put add code where-ever in Python that you need to retrieve points
-      * request.form["points"]
-      **/
-      
-    </script>
-    -->
+    </style> <!-- Not working in external??????? -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   </head>
 
   <body>

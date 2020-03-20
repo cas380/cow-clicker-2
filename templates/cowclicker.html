@@ -1,5 +1,10 @@
 {% extends '_base.html' %}
 
+{% block extra_head %}
+<script type="text/javascript" src="{{ url_for('static', filename='AJAX.js') }}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+{% endblock %}
+
 {% block content %}
 
 <!-- invisible node to pull data from -->
@@ -31,21 +36,17 @@
 	<div id="topFence"><img src="static/northFence.png" style="display: none;" /><!-- Serve static image --></div>
 	<div id="rightFence"><img src="static/eastFence.png" style="display: none;" /><!-- Serve static image --></div>
 	<div id="leftFence"><img src="static/westFence.png" style="display: none;" /><!-- Serve static image --></div>
-	<div id="thePasture"><img src="static/grassTexture.jpg" style="display: none;" /><!-- Serve static image -->
-		<img class="clickableCow" id="cow0" src="static/standardCow.jpeg" onclick="clickThatCow(this);">
-		<img class="clickableCow" id="cow1" src="static/cuteCow.jpg" onclick="clickThatCow(this);">
-		<img class="clickableCow" id="cow2" src="static/sillyCow.jpg" onclick="clickThatCow(this);">
-		<img class="clickableCow" id="cow3" src="static/chonkCow.jpg" onclick="clickThatCow(this);">
-		<img class="clickableCow" id="cow4" src="static/minecraftCow.jpg" onclick="clickThatCow(this);">
-		<script>
-			// When adding a new cow, make sure to adjust this variable!
-			const TOTAL_COWS = 5; // Used in for loop below to animate
-		</script>
+	<div id="thePasture"><img src="static/grassTexture.jpg" style="display: none;" />
+		<img class="clickableCow" id="cow0" src="static/standardCow.jpeg" onclick="clickThatCow(this);" />
+		<img class="clickableCow" id="cow1" src="static/cuteCow.jpg" onclick="clickThatCow(this);" />
+		<img class="clickableCow" id="cow2" src="static/sillyCow.jpg" onclick="clickThatCow(this);" />
+		<img class="clickableCow" id="cow3" src="static/chonkCow.jpg" onclick="clickThatCow(this);" />
+		<img class="clickableCow" id="cow4" src="static/minecraftCow.jpg" onclick="clickThatCow(this);" />
 	</div>
 	<div id="bottomFence"><img src="static/southFence.png" style="display: none;" /><!-- Serve static image --></div>
 </div>
 
-<script>
+<script type=text/javascript>
 	// loads the game
 	window.onload = function() {
 		loadGameState();
@@ -154,9 +155,9 @@
 		let stepX = 1;
 		let stepY = 1;
 
-		do {
-			newCow = document.getElementById("cow"+cowCount);
-		} while (newCow == null); // spinwait until cow loads
+		// do {
+		newCow = document.getElementById("cow"+cowCount);
+		// } while (newCow == null); // spinwait until cow loads
 
 		// Start at the random position
 		newCow.style.left = leftSpace+"px";
@@ -210,8 +211,14 @@
 
 	// Animate the cows!!!
 	function animateCows() {
-		for (var cowCount = 0; cowCount < TOTAL_COWS; cowCount++) {
-			animateThisCow(cowCount);
+		let pasture = document.getElementById("thePasture")
+		var cowCount = 0;
+
+		for (var children = 0; children < pasture.childNodes.length; children++) {
+			if (pasture.childNodes[children] instanceof HTMLImageElement) {
+				animateThisCow(cowCount);
+				cowCount++;
+			}
 		}
 	}
 </script>

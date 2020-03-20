@@ -1,6 +1,11 @@
-import flask # https://flask.palletsprojects.com/en/1.1.x/quickstart/#sessions
-from flask import Flask, render_template, redirect, url_for, request, session
-from markupsafe import escape
+# https://palletsprojects.com/en/1.1.x/quickstart/#sessions
+from flask import Flask, render_template # basic back-end utilities
+from flask import redirect, url_for # Redirects
+  # url_for("handler_method_name", argument1=None, ...)
+  # request.args.get("argument1")
+from flask import request, session # Sessions
+from flask import jsonify # ...
+import json
 
 # RuntimeError: The session is unavailable because no secret key was set.
 # Set the secret_key on the application to something unique and secret.
@@ -9,26 +14,19 @@ from DataStore import test_put, test_grab
 from User import User
 
 app = Flask(__name__)
+app.secret_key = b'0`[x;g.s|+ddi~9^mc@z?'
 
-@app.route('/cowclicker.html', methods=['GET', 'POST']) # accept re-routing from form
-def game():
-  username = request.args.get("theUsername")
-  password = request.args.get("thePassword")
-  user = User(username, password, False)
+# Main page of site; the login
+@app.route('/')
+@app.route('/login.html')
+def login():
+  return render_template('login.html')
 
-  print(type(user)) # is a User
-  entity = test_grab(user) # user's data for sure (needed to start game)
-  #points = request.form["points"] #json get points from js
-  if entity: # shouldn't ever be empty??????
-    return render_template('cowclicker.html', page_title='Index Title Python Variable hehehaha cow', init_points=entity['points'], init_cows=entity['cows'])
-  else:
-    return render_template('cowclicker.html', init_points=0, init_cows=1)
-  # Nonetype from entity error
-
+# Midpage to put user data in a session, routing to the game
 @app.route('/to-cow-game', methods=['POST'])
 def signin():
-    username = flask.request.form.get('username')
-    password = flask.request.form.get('password')
+    username = request.form.get('username')
+    password = request.form.get('password')
     user = User(username, password, True)
 
     entity = test_grab(user) # user's data
@@ -36,7 +34,43 @@ def signin():
       test_put(user, 0, 1) # saves zero points and a cow value of 1
     entity = test_grab(user) # user's data for sure (needed to start game)
 
-    return flask.redirect(flask.url_for('game', theUsername=user.get_username(), thePassword=user.get_password()), code=307) # Redirect code
+    session["userDict"] = user.to_dict()
+    return redirect(url_for("game"))
+
+@app.route('/cowclicker.html', methods=['GET', 'POST']) # accept re-routing from form
+def game():
+  if "userDict" in session:
+    username = session["userDict"]["username"]
+    password = session["userDict"]["password"]
+    user = User(username, password, False)
+  else: # check to make sure someone didn't type out this URL
+    return redirect(url_for("login"))
+
+  print(type(user)) # is a User
+  print(user) # is a User
+  entity = test_grab(user) # user's data for sure (needed to start game)
+  #points = request.form["points"] #json get points from js
+  if entity: # shouldn't ever be empty??????
+    return render_template('cowclicker.html', init_points=entity['points'], init_cows=entity['cows'])
+  else:
+    return render_template('cowclicker.html', init_points=0, init_cows=1)
+
+# Fired from within cowclicker whenever a cow is clicked
+@app.route('/update-user', methods=['POST'])
+def save_to_datastore():
+  if "userDict" in session:
+    username = session["userDict"]["username"]
+    password = session["userDict"]["password"]
+    user = User(username, password, False)
+  else: # check to make sure someone didn't type out this URL
+    return redirect(url_for("login"))
+
+  points = request.form["points"]
+  cows = request.form["cows"]
+  user = User(username, password, False)
+  
+  test_put(user, points, cows)
+  return "OK!"
 
 @app.route('/to-store')
 def loadState():
@@ -45,12 +79,6 @@ def loadState():
 @app.route('/store.html')
 def store():
   return render_template('store.html')
-
-@app.route('/')
-@app.route('/login.html')
-def login():
-  # put this into database, will read up on stuff
-  return render_template('login.html')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
