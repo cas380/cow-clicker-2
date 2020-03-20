@@ -39,4 +39,4 @@ function alertResult(httpRequest) {
 	}
 }
 
-window.addEventListener("load", setup, true);
+//window.addEventListener("load", setup, true);
