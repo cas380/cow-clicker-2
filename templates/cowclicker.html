@@ -161,13 +161,11 @@
 		let stepX = 1;
 		let stepY = 1;
 
-		//do {
-			newCow = document.getElementById("cow"+cowCount);
-		//} while (newCow == null); // spinwait until cow loads
-
-		// Start at the random position
-		newCow.style.left = leftSpace+"px";
-		newCow.style.top = topSpace+"px";
+		newCow = document.getElementById("cow"+cowCount);
+		if newCow != null {
+			newCow.style.left = leftSpace+"px";
+			newCow.style.top = topSpace+"px";
+		} // WHAT?????????????????????
 
 		setInterval(function() {
 			if (hold > 0) {
