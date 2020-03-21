@@ -5,6 +5,7 @@ from flask import redirect, url_for # Redirects
   # request.args.get("argument1")
 from flask import request, session # Sessions
 from flask import jsonify # ...
+from flask import flash #for error messages
 import json
 
 # RuntimeError: The session is unavailable because no secret key was set.
