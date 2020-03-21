@@ -16,7 +16,7 @@ function clickThatCow(imageElement) {
     var inc = 0;
 
     var str = imageElement.src;
-    var n = str.indexOf("static");
+    var n = str.indexOf("static/cows");
     var imgName = str.substring(n+7);
     let cow = "Error";
 
