@@ -18,7 +18,7 @@ function clickThatCow(imageElement) {
     var str = imageElement.src;
 	var precedingCow = "static/cows/"; // Whatever comes before the cow image name
     var n = str.indexOf(precedingCow);
-    var imgName = str.substring(n+precedingCow.length-1);
+    var imgName = str.substring(n+precedingCow.length);
     let cow = "Error";
 
     switch (imgName) {
