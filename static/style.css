@@ -25,7 +25,7 @@ form {
 	height: 50px;
 	float: left;
 
-	background-image: url("northFence.png");
+	background-image: url("media/northFence.png");
 	background-repeat: repeat-x;
 	background-size: contain;
 }
@@ -35,7 +35,7 @@ form {
 	height: 350px;
 	float: left;
 
-	background-image: url("westFence.png");
+	background-image: url("media/westFence.png");
 	background-repeat: repeat-y;
 	background-size: contain;
 }
@@ -45,7 +45,7 @@ form {
 	height: 350px;
 	float: right;
 
-	background-image: url("eastFence.png");
+	background-image: url("media/eastFence.png");
 	background-repeat: repeat-y;
 	background-size: contain;
 }
@@ -55,7 +55,7 @@ form {
 	height: 50px;
 	float: right;
 
-	background-image: url("southFence.png");
+	background-image: url("media/southFence.png");
 	background-repeat: repeat-x;
 	background-size: contain;
 }
@@ -74,7 +74,7 @@ form {
     background-color: forestgreen;
 	overflow: hidden;
 
-	background-image: url("grassTexture.jpg");
+	background-image: url("media/grassTexture.jpg");
 	background-repeat: repeat;
 
 	position: relative;
