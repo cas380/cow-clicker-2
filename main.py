@@ -22,18 +22,33 @@ app.secret_key = b'0`[x;g.s|+ddi~9^mc@z?'
 def login():
   return render_template('login.html')
 
+#Register page
+@app.route('/register.html')
+def registerPage():
+  return render_template('register.html')
+
+@app.route('/register', methods=['POST'])
+def register():
+  username = request.form.get('username')
+  password = request.form.get('password')
+  user = User(username, password, True)
+  test_put(user, 0, 1)
+    
+  return redirect(url_for("login"))
+
 # Midpage to put user data in a session, routing to the game
 @app.route('/to-cow-game', methods=['POST'])
 def signin():
-    username = request.form.get('username')
-    password = request.form.get('password')
-    user = User(username, password, True)
+  username = request.form.get('username')
+  password = request.form.get('password')
+  user = User(username, password, True)
 
-    entity = test_grab(user) # user's data
-    if not entity:
-      test_put(user, 0, 1) # saves zero points and a cow value of 1
+  entity = test_grab(user) # user's data
+  if not entity:
+    flash("User does not exist")
+    return render_template('login.html')
+  else:
     entity = test_grab(user) # user's data for sure (needed to start game)
-
     session["userDict"] = user.to_dict()
     return redirect(url_for("game"))
 

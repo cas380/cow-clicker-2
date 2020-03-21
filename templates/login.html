@@ -19,5 +19,17 @@
                 <td colspan="2" style="text-align: center;"><input style="margin-top: 10px;" type="submit" value="Submit"></td>
             </tr>
         </table>
+        Don't have an account? <a href="register.html">Register</a>
     </form>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </ul>
+        </div>
+    {% endif %}
+    {% endwith %}
 {% endblock %}
