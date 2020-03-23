@@ -20,4 +20,15 @@
             </tr>
         </table>
     </form>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </ul>
+        </div>
+    {% endif %}
+    {% endwith %}
 {% endblock %}

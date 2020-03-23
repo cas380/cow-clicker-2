@@ -32,10 +32,17 @@ def registerPage():
 def register():
   username = request.form.get('username')
   password = request.form.get('password')
+  
   user = User(username, password, True)
-  test_put(user, 0, 1)
-    
-  return redirect(url_for("login"))
+  entity = test_grab(user)
+
+  if not entity:
+    test_put(user, 0, 1)
+    return redirect(url_for("login"))
+  else: 
+    flash("User already exists")
+    return render_template('register.html')
+  
 
 # Midpage to put user data in a session, routing to the game
 @app.route('/to-cow-game', methods=['POST'])
