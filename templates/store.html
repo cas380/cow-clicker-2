@@ -4,21 +4,31 @@
     WELCOME  to the Cow Store!!
 {% endblock %}
 
-{% block nav %}
-<nav>
-	<a href="store.html" target="_self" class="NavLink">Cow Store</a>
-	<a href="cowclicker.html" target="_self" class="NavLink">The Pasture</a>
-</nav>
+{% block extra_head %}
+<script type="text/javascript" src="{{ url_for('static', filename='cowclicker_logic.js') }}"></script>
 {% endblock %}
 
 {% block content %}
+<table style="margin: auto; font-size: 12px;">
+	<tr>
+		<td width="150" style="text-align: center;">
+			You have<br />
+			<div id="points" style="font-size: 24px;">{{ init_points }}</div><br />
+			points.
+		</td>
+		<td width="150" style="text-align: center;">
+			Go to the<br />
+			<strong><a href="cowclicker.html" target="_Self" style="font-size: 24px; text-decoration: none;">PASTURE</a></strong>
+		</td>
+	<!--
+		<td width="150" style="text-align: center;">
+			Go to the<br />
+			<strong><a href="leaderboard.html" target="_Self" style="font-size: 24px; text-decoration: none;">LEADERBOARD</a></strong>
+		</td>
+	</tr>
+	--->
+</table>
     <body>
-	<div onload="loadGameState()">
-	    <div id="POINTz">You have <span id="points">{{ init_points }}</span> points.</div>
-	    <div id="COWz">The state of your cows is <span id="cows">{{ init_cows }}</span>.</div>
-	</div>
-        <div>
-        </div>
         <figure>
             <img src="static/cows/cuteCow.jpg" style="width:500px;height:500px;" onclick="buyThatCow(1);">
             <figcaption>Cute Cow (5,000 Points): Gives 175 points/click</figcaption>
