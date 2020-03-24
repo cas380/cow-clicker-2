@@ -1,14 +1,17 @@
 {% extends '_base.html' %}
 
-{% block header %}
-    WELCOME  to the Cow Store!!
-{% endblock %}
-
 {% block extra_head %}
 <script type="text/javascript" src="{{ url_for('static', filename='cowclicker_logic.js') }}"></script>
 {% endblock %}
 
 {% block content %}
+
+<!-- invisible node to pull data from -->
+<span id="cows" style="display: none;">{{ init_cows }}</span>
+
+<br />
+<br />
+
 <table style="margin: auto; font-size: 12px;">
 	<tr>
 		<td width="150" style="text-align: center;">
