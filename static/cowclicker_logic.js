@@ -218,3 +218,56 @@ function alertResult(httpRequest) {
         }*/ // No need to stratify by code yet...
     } 
 }
+
+function buyThatCow(cowID) {
+    saveCheck++;
+    document.getElementById("saveCheckDiv").innerHTML = "Saving...";
+    var inc = 0;
+    var buyattempt = 0;
+
+    // if the user has enough points to buy a cow when it is clicked on,
+    // and it has not been bought before, change that cow's array value to non-null,
+    // so it loads instead of tall grass the next time cowclicker.html is loaded
+    switch(cowID){
+        case 1:
+      //case "https://cow-clicker-2.appspot.com/static/cuteCow.jpg":
+            if(points >= 5000 && (cows & 2 != 2)){
+                cows = cows + 2;
+                points = points - 5000;
+            }
+            break;
+        
+        case 2:
+      //case "https://cow-clicker-2.appspot.com/static/sillyCow.jpg":
+            if(points >= 10000 && (cows & 4 != 4)){
+                cows = cows + 4;
+                points = points - 10000;
+            }
+            break;
+
+        case 3:
+      //case "https://cow-clicker-2.appspot.com/static/chonkCow.jpg":
+            if(points >= 50000 && (cows & 8 != 8)){
+                cows = cows + 8;
+                points = points - 50000;
+            }
+            break;
+
+        case 4:
+      //case "https://cow-clicker-2.appspot.com/static/minecraftCow.jpg":
+            if(points >= 100000 && (cows & 16 != 16)){
+                cows = cows + 16;
+                points = points - 100000;
+            }
+            break;
+            
+        default:
+            console.log("default case ran!!!!")
+            break;
+    }
+
+    document.getElementById('points').innerHTML = points;
+
+    // add a log
+
+}

@@ -12,7 +12,7 @@
 <br />
 <br />
 
-<body style="background-color:rgba(67, 197, 35, 0.87);">
+<body style="background-color:rgba(67, 197, 35, 0.788);">
 
 <table style="margin: auto; font-size: 12px; background-color:rgba(145, 79, 18, 0.87);" >
 	<tr>
@@ -46,25 +46,25 @@
 	<body>
 		<table style="margin: auto; font-size: 12px;">
 			<tr>
-				<td width="250" height="250" style="text-align: center;">
+				<td width="250" height="250" style="text-align: center; background-color:rgba(80, 80, 80, 0.788);">
 					<figure>
 						<img src="static/cows/cuteCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(1);">
 						<figcaption>Cute Cow (5,000 Points): Gives 175 points/click</figcaption>
 					</figure>
 				</td>
-				<td width="250" height="250" style="text-align: center;">
+				<td width="250" height="250" style="text-align: center; background-color:rgba(31, 42, 192, 0.788);">
 					<figure>
 						<img src="static/cows/sillyCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(2);">
 						<figcaption>Silly Cow (10,000 Points): Gives a random point/click value from -500 to +500</figcaption>
 					</figure>
 				</td>
-				<td width="250" height="250" style="text-align: center;">
+				<td width="250" height="250" style="text-align: center; background-color:rgba(152, 40, 196, 0.788);">
 					<figure>
 						<img src="static/cows/chonkCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(3);">
 						<figcaption>Chonk Cow (50,000 Points): Gives 300 points/click with a 20% chance to give 600 points instead</figcaption>
 					</figure>
 				</td>
-				<td width="250" height="250" style="text-align: center;">
+				<td width="250" height="250" style="text-align: center; background-color:rgba(202, 184, 18, 0.788);">
 					<figure>
 						<img src="/static/cows/minecraftCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(4);">
 						<figcaption>Minecraft Cow (100,000 Points): 10% chance to give a points/click of any power of 2 from 0 - 10</figcaption>
@@ -75,68 +75,4 @@
 	</body>
 </body>
 <strong><p id="saveCheckDiv"></p></strong>
-
-	<script>
-
-	var points, cows;
-
-	//function loadGameState() { // need to actually pass points to this page (xml?)
-		//points = Number(document.getElementById('points').innerHTML);
-		//cows = Number(document.getElementById('cows').innerHTML);
-		//console.log("Loaded " + points + " points. Thanks for returning!");
-		//console.log("Loaded " + cows + " as the state of your cows. Thanks for returning!");
-	//};
-	
-	isStart = true
-	function buyThatCow(cowID) {
-		if (isStart) {
-			loadGameState()
-			isStart = false
-		}
-		// attempt to buy a cow in the store
-		//var cowsDiv = document.getElementById('cows'); //Place holder until datastore works
-		//var pointsDiv = document.getElementById('points'); //Place holder until datastore works
-
-		// if the user has enough points to buy a cow when it is clicked on,
-		// and it has not been bought before, change that cow's array value to non-null,
-		// so it loads instead of tall grass the next time cowclicker.html is loaded
-		switch(cowID){
-			case 1:
-		  //case "https://cow-clicker-2.appspot.com/static/cuteCow.jpg":
-				if(points >= 5000 && (cows & 2 != 2)){
-					cows = cows + 2;
-					points = points - 5000;
-				}
-				break;
-			
-			case 2:
-		  //case "https://cow-clicker-2.appspot.com/static/sillyCow.jpg":
-				if(points >= 10000 && (cows & 4 != 4)){
-					cows = cows + 4;
-					points = points - 10000;
-				}
-				break;
-
-			case 3:
-		  //case "https://cow-clicker-2.appspot.com/static/chonkCow.jpg":
-				if(points >= 50000 && (cows & 8 != 8)){
-					cows = cows + 8;
-					points = points - 50000;
-				}
-				break;
-
-			case 4:
-		  //case "https://cow-clicker-2.appspot.com/static/minecraftCow.jpg":
-				if(points >= 100000 && (cows & 16 != 16)){
-					cows = cows + 16;
-					points = points - 100000;
-				}
-				break;
-				
-			default:
-				console.log("default case ran!!!!")
-				break;
-		}
-	}
-	</script>
 {% endblock %}
