@@ -223,41 +223,54 @@ function buyThatCow(cowID) {
     saveCheck++;
     document.getElementById("saveCheckDiv").innerHTML = "Saving...";
     var inc = 0;
-    var buyattempt = 0;
+    var alreadyown = 0;             // turns 1 if the user does not own the cow
+    var enoughpoints = 0;           // turns 1 if the user has enough points to buy the cow
 
     // if the user has enough points to buy a cow when it is clicked on,
     // and it has not been bought before, change that cow's array value to non-null,
     // so it loads instead of tall grass the next time cowclicker.html is loaded
     switch(cowID){
         case 1:
-      //case "https://cow-clicker-2.appspot.com/static/cuteCow.jpg":
-            if(points >= 5000 && (cows & 2 != 2)){
-                cows = cows + 2;
-                points = points - 5000;
+            if(points >= 5000){
+                enoughpoints = 1;               // the user has enough points to buy this cow
+                if(cows & 2 != 2){
+                    alreadyown = 1;             // the user does not already own this cow
+                    cows = cows + 2;
+                    points = points - 5000;
+                }
             }
             break;
         
         case 2:
-      //case "https://cow-clicker-2.appspot.com/static/sillyCow.jpg":
-            if(points >= 10000 && (cows & 4 != 4)){
-                cows = cows + 4;
-                points = points - 10000;
+            if(points >= 10000){
+                enoughpoints = 1;               // the user has enough points to buy this cow
+                if(cows & 4 != 4){
+                    alreadyown = 1;             // the user does not already own this cow
+                    cows = cows + 4;
+                    points = points - 10000;
+                }
             }
             break;
 
         case 3:
-      //case "https://cow-clicker-2.appspot.com/static/chonkCow.jpg":
-            if(points >= 50000 && (cows & 8 != 8)){
-                cows = cows + 8;
-                points = points - 50000;
+            if(points >= 50000){
+                enoughpoints = 1;               // the user has enough points to buy this cow
+                if(cows & 8 != 8)){
+                    alreadyown = 1;             // the user does not already own this cow
+                    cows = cows + 8;
+                    points = points - 50000;
+                }
             }
             break;
 
         case 4:
-      //case "https://cow-clicker-2.appspot.com/static/minecraftCow.jpg":
-            if(points >= 100000 && (cows & 16 != 16)){
-                cows = cows + 16;
-                points = points - 100000;
+            if(points >= 100000){
+                enoughpoints = 1;               // the user has enough points to buy this cow
+                if(cows & 16 != 16){
+                    alreadyown = 1;             // the user does not already own this cow
+                    cows = cows + 16;
+                    points = points - 100000;
+                }
             }
             break;
             
@@ -267,7 +280,79 @@ function buyThatCow(cowID) {
     }
 
     document.getElementById('points').innerHTML = points;
+    document.getElementById('cows').innerHTML = cows;
 
     // add a log
-
+    var node = document.createElement("p");
+    var case = 0;               //what color should the text display in
+    if(cowID == 1){
+        if(enoughpoints == 1){
+            if(alreadyown = 1){
+                var textnode = document.createTextNode("You have bought Cute Cow!");
+                case = 1;
+            }
+            else{
+                var textnode = document.createTextNode("You already own Cute Cow!");
+            }
+        }
+        else{
+            var textnode = document.createTextNode("You do not have enough points to buy Cute Cow!")
+        }
+    }
+    if(cowID == 2){
+        if(enoughpoints == 1){
+            if(alreadyown = 1){
+                var textnode = document.createTextNode("You have bought Silly Cow!");
+                case = 1;
+            }
+            else{
+                var textnode = document.createTextNode("You already own Silly Cow!");
+            }
+        }
+        else{
+            var textnode = document.createTextNode("You do not have enough points to buy Silly Cow!")
+        }
+    }
+    if(cowID == 3){
+        if(enoughpoints == 1){
+            if(alreadyown = 1){
+                var textnode = document.createTextNode("You have bought Chonk Cow!");
+                case = 1;
+            }
+            else{
+                var textnode = document.createTextNode("You already own Chonk Cow!");
+            }
+        }
+        else{
+            var textnode = document.createTextNode("You do not have enough points to buy Chonk Cow!")
+        }
+    }
+    if(cowID == 4){
+        if(enoughpoints == 1){
+            if(alreadyown = 1){
+                var textnode = document.createTextNode("You have bought Minecraft Cow!");
+                case = 1;
+            }
+            else{
+                var textnode = document.createTextNode("You already own Minecraft Cow!");
+            }
+        }
+        else{
+            var textnode = document.createTextNode("You do not have enough points to buy Minecraft Cow!")
+        }
+    }
+    node.appendChild(textnode);
+    node.classList.add("logItem");
+    if(case == 0){
+        node.classList.add("red");
+    }
+    else{
+        node.classList.add("green");
+    }
+    var logger = document.getElementById("logbox");
+    if (logger.childNodes.length > 100) {
+        logger.removeChild(logger.childNodes[0]);									// Remove the oldest node once the limit has been reached
+    }
+    logger.appendChild(node);														// Append <p> to the logger
+    logger.scrollTop = logger.scrollHeight;	
 }
