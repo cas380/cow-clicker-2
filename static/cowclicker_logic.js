@@ -355,4 +355,4 @@ function alertResult(httpRequest) {
     }
     logger.appendChild(node);														// Append <p> to the logger
     logger.scrollTop = logger.scrollHeight;	
-}
+}*/
