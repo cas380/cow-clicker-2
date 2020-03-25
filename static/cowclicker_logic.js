@@ -275,7 +275,7 @@ function buyThatCow(cowID) {
             break;
             
         default:
-            console.log("default case ran!!!!")
+            console.log("default case ran!!!!");
             break;
     }
 
@@ -296,7 +296,7 @@ function buyThatCow(cowID) {
             }
         }
         else{
-            var textnode = document.createTextNode("You do not have enough points to buy Cute Cow!")
+            var textnode = document.createTextNode("You do not have enough points to buy Cute Cow!");
         }
     }
     if(cowID == 2){
@@ -310,7 +310,7 @@ function buyThatCow(cowID) {
             }
         }
         else{
-            var textnode = document.createTextNode("You do not have enough points to buy Silly Cow!")
+            var textnode = document.createTextNode("You do not have enough points to buy Silly Cow!");
         }
     }
     if(cowID == 3){
@@ -324,7 +324,7 @@ function buyThatCow(cowID) {
             }
         }
         else{
-            var textnode = document.createTextNode("You do not have enough points to buy Chonk Cow!")
+            var textnode = document.createTextNode("You do not have enough points to buy Chonk Cow!");
         }
     }
     if(cowID == 4){
@@ -338,7 +338,7 @@ function buyThatCow(cowID) {
             }
         }
         else{
-            var textnode = document.createTextNode("You do not have enough points to buy Minecraft Cow!")
+            var textnode = document.createTextNode("You do not have enough points to buy Minecraft Cow!");
         }
     }
     node.appendChild(textnode);
