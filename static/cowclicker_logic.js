@@ -219,7 +219,7 @@ function alertResult(httpRequest) {
     } 
 }
 
-/*function buyThatCow(cowID) {
+function buyThatCow(cowID) {
     saveCheck++;
     document.getElementById("saveCheckDiv").innerHTML = "Saving...";
     var inc = 0;
@@ -281,7 +281,7 @@ function alertResult(httpRequest) {
 
     document.getElementById('points').innerHTML = points;
     document.getElementById('cows').innerHTML = cows;
-
+/*
     // add a log
     var node = document.createElement("p");
     var case = 0;               //what color should the text display in
@@ -354,5 +354,5 @@ function alertResult(httpRequest) {
         logger.removeChild(logger.childNodes[0]);									// Remove the oldest node once the limit has been reached
     }
     logger.appendChild(node);														// Append <p> to the logger
-    logger.scrollTop = logger.scrollHeight;	
-}*/
+    logger.scrollTop = logger.scrollHeight;	*/
+}
