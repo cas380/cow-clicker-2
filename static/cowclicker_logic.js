@@ -219,7 +219,7 @@ function alertResult(httpRequest) {
     } 
 }
 
-function buyThatCow(cowID) {
+/*function buyThatCow(cowID) {
     saveCheck++;
     document.getElementById("saveCheckDiv").innerHTML = "Saving...";
     var inc = 0;
