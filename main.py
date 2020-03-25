@@ -102,7 +102,7 @@ def loadState():
 @app.route('/store.html')
 def store():
 
-  return render_template('store.html', init_points=entity['points'], init_cows=entity['cows'])
+  return render_template('store.html')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
