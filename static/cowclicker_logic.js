@@ -279,7 +279,7 @@ function buyThatCow(cowID) {
             break;
 
         case 4:
-            alert(cows)
+            alert(cows);
             if(points >= 100000){
                 alert("user has enough points to buy cow 4");
                 alert(cows & 16);
