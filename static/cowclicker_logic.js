@@ -303,7 +303,7 @@ function buyThatCow(cowID) {
     document.getElementById('cows').innerHTML = cows;
     makePost();
 /*     Deal with this this weekend
-    // add a log
+    // dad a log
     var node = document.createElement("p");
     var case = 0;               //what color should the text display in
     if(cowID == 1){
