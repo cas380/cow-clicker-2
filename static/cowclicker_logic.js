@@ -301,6 +301,7 @@ function buyThatCow(cowID) {
     cows += incC;
     document.getElementById('points').innerHTML = points;
     document.getElementById('cows').innerHTML = cows;
+    makePost();
 /*     Deal with this this weekend
     // add a log
     var node = document.createElement("p");
