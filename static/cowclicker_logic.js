@@ -231,6 +231,8 @@ function buyThatCow(cowID) {
     // if the user has enough points to buy a cow when it is clicked on,
     // and it has not been bought before, change that cow's array value to non-null,
     // so it loads instead of tall grass the next time cowclicker.html is loaded
+
+    alert(cowID);
     switch(cowID){
         case 1:
             if(points >= 5000){
