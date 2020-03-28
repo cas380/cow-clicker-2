@@ -239,6 +239,7 @@ function buyThatCow(cowID) {
             alert(points);
             if(points >= 5000){
                 alert("user has enough points to buy cow 1");
+                alert(cows & 2);
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if(cows & 2 != 2){
                     alert("should be buying cow 1");
@@ -254,6 +255,7 @@ function buyThatCow(cowID) {
             alert(points);
             if(points >= 10000){
                 alert("user has enough points to buy cow 2");
+                alert(cows & 4);
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if(cows & 4 != 4){
                     alert("should be buying cow 2");
@@ -269,6 +271,7 @@ function buyThatCow(cowID) {
             alert(points);
             if(points >= 50000){
                 alert("user has enough points to buy cow 3");
+                alert(cows & 8);
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if(cows & 8 != 8){
                     alert("should be buying cow 3");
@@ -284,6 +287,7 @@ function buyThatCow(cowID) {
             alert(points);
             if(points >= 100000){
                 alert("user has enough points to buy cow 4");
+                alert(cows & 16);
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if(cows & 16 != 16){
                     alert("should be buying cow 4");
