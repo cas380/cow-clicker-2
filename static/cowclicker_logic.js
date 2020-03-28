@@ -234,6 +234,7 @@ function buyThatCow(cowID) {
     alert(cowID);
     switch(cowID){
         case 1:
+            alert("entered case 1");
             if(points >= 5000){
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if(cows & 2 != 2){
@@ -246,6 +247,7 @@ function buyThatCow(cowID) {
             break;
         
         case 2:
+            alert("entered case 1");
             if(points >= 10000){
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if(cows & 4 != 4){
@@ -258,6 +260,7 @@ function buyThatCow(cowID) {
             break;
 
         case 3:
+            alert("entered case 1");
             if(points >= 50000){
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if(cows & 8 != 8){
@@ -270,6 +273,7 @@ function buyThatCow(cowID) {
             break;
 
         case 4:
+            alert("entered case 1");
             if(points >= 100000){
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if(cows & 16 != 16){
