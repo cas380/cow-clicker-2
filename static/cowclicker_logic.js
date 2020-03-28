@@ -22,7 +22,7 @@ function clickThatCow(imageElement) {
     let cow = "Error";
 
     switch (imgName) {
-        case "standardCow.jpeg":
+        case "standardCow.png":
             inc = 100;
             cow = "Standard Cow";
             break;
@@ -45,6 +45,7 @@ function clickThatCow(imageElement) {
             cow = "Minecraft Cow";
             break;
         default:
+            alert(imgName);
             alert("Default case ran! Problem in clickThatCow switch. Perhaps you forgot to fully implement this cow?");
             inc = 0;
             break;
@@ -220,6 +221,7 @@ function alertResult(httpRequest) {
 }
 
 function buyThatCow(cowID) {
+    alert("Entered buyThatCow")
     saveCheck++;
     document.getElementById("saveCheckDiv").innerHTML = "Saving...";
     var inc = 0;
@@ -281,7 +283,7 @@ function buyThatCow(cowID) {
 
     document.getElementById('points').innerHTML = points;
     document.getElementById('cows').innerHTML = cows;
-/*
+/*      Deal with this this weekend
     // add a log
     var node = document.createElement("p");
     var case = 0;               //what color should the text display in
