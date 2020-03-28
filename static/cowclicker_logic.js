@@ -221,7 +221,7 @@ function alertResult(httpRequest) {
 }
 
 function buyThatCow(cowID) {
-    alert("Entered buyThatCow")
+    alert("Entered buyThatCow");
     saveCheck++;
     document.getElementById("saveCheckDiv").innerHTML = "Saving...";
     var inc = 0;
