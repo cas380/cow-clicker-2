@@ -45,6 +45,7 @@ function clickThatCow(imageElement) {
             cow = "Minecraft Cow";
             break;
         default:
+            alert(imgName);
             alert("Default case ran! Problem in clickThatCow switch. Perhaps you forgot to fully implement this cow?");
             inc = 0;
             break;
