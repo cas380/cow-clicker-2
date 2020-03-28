@@ -87,16 +87,16 @@ function loadUnlockedCows() {
     if ((cows & 1) == 1) {
         document.getElementById("cow0").style.display = "inline";
     }
-    if ((cows & 2) == 1) {
+    if ((cows & 2) == 2) {
         document.getElementById("cow1").style.display = "inline";
     }
-    if ((cows & 4) == 1) {
+    if ((cows & 4) == 4) {
         document.getElementById("cow2").style.display = "inline";
     }
-    if ((cows & 8) == 1) {
+    if ((cows & 8) == 8) {
         document.getElementById("cow3").style.display = "inline";
     }
-    if ((cows & 16) == 1) {
+    if ((cows & 16) == 16) {
         document.getElementById("cow4").style.display = "inline";
     }
 }
@@ -221,10 +221,10 @@ function alertResult(httpRequest) {
 }
 
 function buyThatCow(cowID) {
-    alert("Entered buyThatCow");
     saveCheck++;
     document.getElementById("saveCheckDiv").innerHTML = "Saving...";
-    var inc = 0;
+    var incP = 0;
+    var incC = 0;
     var alreadyown = 0;             // turns 1 if the user does not own the cow
     var enoughpoints = 0;           // turns 1 if the user has enough points to buy the cow
 
@@ -232,68 +232,63 @@ function buyThatCow(cowID) {
     // and it has not been bought before, change that cow's array value to non-null,
     // so it loads instead of tall grass the next time cowclicker.html is loaded
 
-    alert(cowID);
     switch(cowID){
         case 1:
-            alert("entered case 1");
             alert(cows);
             if(points >= 5000){
                 alert("user has enough points to buy cow 1");
                 alert(cows & 2);
                 enoughpoints = 1;               // the user has enough points to buy this cow
-                if(cows & 2 != 1){
+                if((cows & 2) != 2){
                     alert("should be buying cow 1");
                     alreadyown = 1;             // the user does not already own this cow
-                    cows = cows + 2;
-                    points = points - 5000;
+                    incC = 2;
+                    incP = 5000;
                 }
             }
             break;
         
         case 2:
-            alert("entered case 2");
             alert(cows);
             if(points >= 10000){
                 alert("user has enough points to buy cow 2");
                 alert(cows & 4);
                 enoughpoints = 1;               // the user has enough points to buy this cow
-                if(cows & 4 != 1){
+                if((cows & 4) != 4){
                     alert("should be buying cow 2");
                     alreadyown = 1;             // the user does not already own this cow
-                    cows = cows + 4;
-                    points = points - 10000;
+                    incC = 4;
+                    incP = 10000;
                 }
             }
             break;
 
         case 3:
-            alert("entered case 3");
             alert(cows);
             if(points >= 50000){
                 alert("user has enough points to buy cow 3");
                 alert(cows & 8);
                 enoughpoints = 1;               // the user has enough points to buy this cow
-                if(cows & 8 != 1){
+                if((cows & 8) != 8){
                     alert("should be buying cow 3");
                     alreadyown = 1;             // the user does not already own this cow
-                    cows = cows + 8;
-                    points = points - 50000;
+                    incC = 8;
+                    incP = 50000;
                 }
             }
             break;
 
         case 4:
-            alert("entered case 4");
             alert(cows)
             if(points >= 100000){
                 alert("user has enough points to buy cow 4");
                 alert(cows & 16);
                 enoughpoints = 1;               // the user has enough points to buy this cow
-                if(cows & 16 != 1){
+                if((cows & 16) != 16){
                     alert("should be buying cow 4");
                     alreadyown = 1;             // the user does not already own this cow
-                    cows = cows + 16;
-                    points = points - 100000;
+                    incC = 16;
+                    incP = 100000;
                 }
             }
             break;
@@ -302,10 +297,11 @@ function buyThatCow(cowID) {
             console.log("default case ran!!!!");
             break;
     }
-
+    points -= incP;
+    cows += incC;
     document.getElementById('points').innerHTML = points;
     document.getElementById('cows').innerHTML = cows;
-/*      Deal with this this weekend
+/*     Deal with this this weekend
     // add a log
     var node = document.createElement("p");
     var case = 0;               //what color should the text display in
