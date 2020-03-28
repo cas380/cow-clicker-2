@@ -236,7 +236,7 @@ function buyThatCow(cowID) {
     switch(cowID){
         case 1:
             alert("entered case 1");
-            alert(points);
+            alert(cows);
             if(points >= 5000){
                 alert("user has enough points to buy cow 1");
                 alert(cows & 2);
@@ -252,7 +252,7 @@ function buyThatCow(cowID) {
         
         case 2:
             alert("entered case 2");
-            alert(points);
+            alert(cows);
             if(points >= 10000){
                 alert("user has enough points to buy cow 2");
                 alert(cows & 4);
@@ -268,7 +268,7 @@ function buyThatCow(cowID) {
 
         case 3:
             alert("entered case 3");
-            alert(points);
+            alert(cows);
             if(points >= 50000){
                 alert("user has enough points to buy cow 3");
                 alert(cows & 8);
@@ -284,7 +284,7 @@ function buyThatCow(cowID) {
 
         case 4:
             alert("entered case 4");
-            alert(points);
+            alert(cows)
             if(points >= 100000){
                 alert("user has enough points to buy cow 4");
                 alert(cows & 16);
