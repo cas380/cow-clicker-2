@@ -241,7 +241,7 @@ function buyThatCow(cowID) {
                 alert("user has enough points to buy cow 1");
                 alert(cows & 2);
                 enoughpoints = 1;               // the user has enough points to buy this cow
-                if(cows & 2 != 2){
+                if(cows & 2 != 1){
                     alert("should be buying cow 1");
                     alreadyown = 1;             // the user does not already own this cow
                     cows = cows + 2;
@@ -257,7 +257,7 @@ function buyThatCow(cowID) {
                 alert("user has enough points to buy cow 2");
                 alert(cows & 4);
                 enoughpoints = 1;               // the user has enough points to buy this cow
-                if(cows & 4 != 4){
+                if(cows & 4 != 1){
                     alert("should be buying cow 2");
                     alreadyown = 1;             // the user does not already own this cow
                     cows = cows + 4;
@@ -273,7 +273,7 @@ function buyThatCow(cowID) {
                 alert("user has enough points to buy cow 3");
                 alert(cows & 8);
                 enoughpoints = 1;               // the user has enough points to buy this cow
-                if(cows & 8 != 8){
+                if(cows & 8 != 1){
                     alert("should be buying cow 3");
                     alreadyown = 1;             // the user does not already own this cow
                     cows = cows + 8;
@@ -289,7 +289,7 @@ function buyThatCow(cowID) {
                 alert("user has enough points to buy cow 4");
                 alert(cows & 16);
                 enoughpoints = 1;               // the user has enough points to buy this cow
-                if(cows & 16 != 16){
+                if(cows & 16 != 1){
                     alert("should be buying cow 4");
                     alreadyown = 1;             // the user does not already own this cow
                     cows = cows + 16;
