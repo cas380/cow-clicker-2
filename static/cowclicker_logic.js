@@ -259,7 +259,7 @@ function buyThatCow(cowID) {
         case 3:
             if(points >= 50000){
                 enoughpoints = 1;               // the user has enough points to buy this cow
-                if(cows & 8 != 8)){
+                if(cows & 8 != 8){
                     alreadyown = 1;             // the user does not already own this cow
                     cows = cows + 8;
                     points = points - 50000;
