@@ -87,16 +87,16 @@ function loadUnlockedCows() {
     if ((cows & 1) == 1) {
         document.getElementById("cow0").style.display = "inline";
     }
-    if ((cows & 2) == 2) {
+    if ((cows & 2) == 1) {
         document.getElementById("cow1").style.display = "inline";
     }
-    if ((cows & 4) == 4) {
+    if ((cows & 4) == 1) {
         document.getElementById("cow2").style.display = "inline";
     }
-    if ((cows & 8) == 8) {
+    if ((cows & 8) == 1) {
         document.getElementById("cow3").style.display = "inline";
     }
-    if ((cows & 16) == 16) {
+    if ((cows & 16) == 1) {
         document.getElementById("cow4").style.display = "inline";
     }
 }
