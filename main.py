@@ -113,11 +113,9 @@ def store():
   entity = test_grab(user) # user's data for sure (needed to start game)
   #points = request.form["points"] #json get points from js
   if entity: # shouldn't ever be empty??????
-    return render_template('cowclicker.html', init_points=entity['points'], init_cows=entity['cows'])
+    return render_template('store.html', init_points=entity['points'], init_cows=entity['cows'])
   else:
-    return render_template('cowclicker.html', init_points=0, init_cows=1)
-
-  return render_template('store.html')
+    return render_template('store.html', init_points=0, init_cows=1)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
