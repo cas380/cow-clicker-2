@@ -99,8 +99,23 @@ def save_to_datastore():
 def loadState():
 	return json.dumps()
 
-@app.route('/store.html')
+@app.route('/store.html', methods=['GET', 'POST'])
 def store():
+  if "userDict" in session:
+    username = session["userDict"]["username"]
+    password = session["userDict"]["password"]
+    user = User(username, password, False)
+  else: # check to make sure someone didn't type out this URL
+    return redirect(url_for("login"))
+
+  print(type(user)) # is a User
+  print(user) # is a User
+  entity = test_grab(user) # user's data for sure (needed to start game)
+  #points = request.form["points"] #json get points from js
+  if entity: # shouldn't ever be empty??????
+    return render_template('cowclicker.html', init_points=entity['points'], init_cows=entity['cows'])
+  else:
+    return render_template('cowclicker.html', init_points=0, init_cows=1)
 
   return render_template('store.html')
 

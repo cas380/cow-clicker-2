@@ -26,7 +26,7 @@ function clickThatCow(imageElement) {
             inc = 100;
             cow = "Standard Cow";
             break;
-        case "cuteCartoonCow.jfif":
+        case "cuteCartoonCow.png":
             inc = 175;
             cow = "Cute Cow";
             break;
@@ -236,6 +236,7 @@ function buyThatCow(cowID) {
     switch(cowID){
         case 1:
             alert("entered case 1");
+            alert(points);
             if(points >= 5000){
                 alert("user has enough points to buy cow 1");
                 enoughpoints = 1;               // the user has enough points to buy this cow
@@ -250,6 +251,7 @@ function buyThatCow(cowID) {
         
         case 2:
             alert("entered case 2");
+            alert(points);
             if(points >= 10000){
                 alert("user has enough points to buy cow 2");
                 enoughpoints = 1;               // the user has enough points to buy this cow
@@ -264,6 +266,7 @@ function buyThatCow(cowID) {
 
         case 3:
             alert("entered case 3");
+            alert(points);
             if(points >= 50000){
                 alert("user has enough points to buy cow 3");
                 enoughpoints = 1;               // the user has enough points to buy this cow
@@ -278,6 +281,7 @@ function buyThatCow(cowID) {
 
         case 4:
             alert("entered case 4");
+            alert(points);
             if(points >= 100000){
                 alert("user has enough points to buy cow 4");
                 enoughpoints = 1;               // the user has enough points to buy this cow
