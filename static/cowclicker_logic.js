@@ -45,7 +45,6 @@ function clickThatCow(imageElement) {
             cow = "Minecraft Cow";
             break;
         default:
-            alert(imgName);
             alert("Default case ran! Problem in clickThatCow switch. Perhaps you forgot to fully implement this cow?");
             inc = 0;
             break;
@@ -238,6 +237,7 @@ function buyThatCow(cowID) {
             if(points >= 5000){
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if(cows & 2 != 2){
+                    alert("should be buying cow 1");
                     alreadyown = 1;             // the user does not already own this cow
                     cows = cows + 2;
                     points = points - 5000;
@@ -249,6 +249,7 @@ function buyThatCow(cowID) {
             if(points >= 10000){
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if(cows & 4 != 4){
+                    alert("should be buying cow 2");
                     alreadyown = 1;             // the user does not already own this cow
                     cows = cows + 4;
                     points = points - 10000;
@@ -260,6 +261,7 @@ function buyThatCow(cowID) {
             if(points >= 50000){
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if(cows & 8 != 8){
+                    alert("should be buying cow 3");
                     alreadyown = 1;             // the user does not already own this cow
                     cows = cows + 8;
                     points = points - 50000;
@@ -271,6 +273,7 @@ function buyThatCow(cowID) {
             if(points >= 100000){
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if(cows & 16 != 16){
+                    alert("should be buying cow 4");
                     alreadyown = 1;             // the user does not already own this cow
                     cows = cows + 16;
                     points = points - 100000;
