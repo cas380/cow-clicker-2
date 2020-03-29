@@ -302,8 +302,7 @@ function buyThatCow(cowID) {
     document.getElementById('points').innerHTML = points;
     document.getElementById('cows').innerHTML = cows;
     makePost();
-/*     Deal with this this weekend
-    // dad a log
+
     var node = document.createElement("p");
     var case = 0;               //what color should the text display in
     if(cowID == 1){
@@ -375,5 +374,5 @@ function buyThatCow(cowID) {
         logger.removeChild(logger.childNodes[0]);									// Remove the oldest node once the limit has been reached
     }
     logger.appendChild(node);														// Append <p> to the logger
-    logger.scrollTop = logger.scrollHeight;	*/
+    logger.scrollTop = logger.scrollHeight;
 }
