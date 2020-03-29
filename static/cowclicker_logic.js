@@ -289,63 +289,64 @@ function buyThatCow(cowID) {
 
     var node = document.createElement("p");
     var Case = 0;               //what color should the text display in
+    var textnode = document.createTextNode("");
     if(cowID == 1){
         if(enoughpoints == 1){
             if(alreadyown = 1){
-                var textnode = document.createTextNode("You have bought Cute Cow!");
+                textnode = document.createTextNode("You have bought Cute Cow!");
                 Case = 1;
             }
             else{
-                var textnode = document.createTextNode("You already own Cute Cow!");
+                textnode = document.createTextNode("You already own Cute Cow!");
             }
         }
         else{
-            var textnode = document.createTextNode("You do not have enough points to buy Cute Cow!");
+            textnode = document.createTextNode("You do not have enough points to buy Cute Cow!");
         }
     }
     if(cowID == 2){
         if(enoughpoints == 1){
             if(alreadyown = 1){
-                var textnode = document.createTextNode("You have bought Silly Cow!");
+                textnode = document.createTextNode("You have bought Silly Cow!");
                 Case = 1;
             }
             else{
-                var textnode = document.createTextNode("You already own Silly Cow!");
+                textnode = document.createTextNode("You already own Silly Cow!");
             }
         }
         else{
-            var textnode = document.createTextNode("You do not have enough points to buy Silly Cow!");
+            textnode = document.createTextNode("You do not have enough points to buy Silly Cow!");
         }
     }
     if(cowID == 3){
         if(enoughpoints == 1){
             if(alreadyown = 1){
-                var textnode = document.createTextNode("You have bought Chonk Cow!");
+                textnode = document.createTextNode("You have bought Chonk Cow!");
                 Case = 1;
             }
             else{
-                var textnode = document.createTextNode("You already own Chonk Cow!");
+                textnode = document.createTextNode("You already own Chonk Cow!");
             }
         }
         else{
-            var textnode = document.createTextNode("You do not have enough points to buy Chonk Cow!");
+            textnode = document.createTextNode("You do not have enough points to buy Chonk Cow!");
         }
     }
     if(cowID == 4){
         if(enoughpoints == 1){
             if(alreadyown = 1){
-                var textnode = document.createTextNode("You have bought Minecraft Cow!");
+                textnode = document.createTextNode("You have bought Minecraft Cow!");
                 Case = 1;
             }
             else{
-                var textnode = document.createTextNode("You already own Minecraft Cow!");
+                textnode = document.createTextNode("You already own Minecraft Cow!");
             }
         }
         else{
-            var textnode = document.createTextNode("You do not have enough points to buy Minecraft Cow!");
+            textnode = document.createTextNode("You do not have enough points to buy Minecraft Cow!");
         }
     }
-    
+     
     node.appendChild(textnode);
     node.classList.add("logItem");
     if(Case == 0){
