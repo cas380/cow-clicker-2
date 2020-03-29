@@ -296,12 +296,12 @@ function buyThatCow(cowID) {
     makePost();
 
     var node = document.createElement("p");
-    var case = 0;               //what color should the text display in
+    var Case = 0;               //what color should the text display in
     if(cowID == 1){
         if(enoughpoints == 1){
             if(alreadyown = 1){
                 var textnode = document.createTextNode("You have bought Cute Cow!");
-                case = 1;
+                Case = 1;
             }
             else{
                 var textnode = document.createTextNode("You already own Cute Cow!");
@@ -315,7 +315,7 @@ function buyThatCow(cowID) {
         if(enoughpoints == 1){
             if(alreadyown = 1){
                 var textnode = document.createTextNode("You have bought Silly Cow!");
-                case = 1;
+                Case = 1;
             }
             else{
                 var textnode = document.createTextNode("You already own Silly Cow!");
@@ -329,7 +329,7 @@ function buyThatCow(cowID) {
         if(enoughpoints == 1){
             if(alreadyown = 1){
                 var textnode = document.createTextNode("You have bought Chonk Cow!");
-                case = 1;
+                Case = 1;
             }
             else{
                 var textnode = document.createTextNode("You already own Chonk Cow!");
@@ -343,7 +343,7 @@ function buyThatCow(cowID) {
         if(enoughpoints == 1){
             if(alreadyown = 1){
                 var textnode = document.createTextNode("You have bought Minecraft Cow!");
-                case = 1;
+                Case = 1;
             }
             else{
                 var textnode = document.createTextNode("You already own Minecraft Cow!");
