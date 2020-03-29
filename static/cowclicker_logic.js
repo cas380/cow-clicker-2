@@ -236,11 +236,9 @@ function buyThatCow(cowID) {
         case 1:
             alert(cows);
             if(points >= 5000){
-                alert("user has enough points to buy cow 1");
                 alert(cows & 2);
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if((cows & 2) != 2){
-                    alert("should be buying cow 1");
                     alreadyown = 1;             // the user does not already own this cow
                     incC = 2;
                     incP = 5000;
@@ -251,11 +249,9 @@ function buyThatCow(cowID) {
         case 2:
             alert(cows);
             if(points >= 10000){
-                alert("user has enough points to buy cow 2");
                 alert(cows & 4);
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if((cows & 4) != 4){
-                    alert("should be buying cow 2");
                     alreadyown = 1;             // the user does not already own this cow
                     incC = 4;
                     incP = 10000;
@@ -266,11 +262,9 @@ function buyThatCow(cowID) {
         case 3:
             alert(cows);
             if(points >= 50000){
-                alert("user has enough points to buy cow 3");
                 alert(cows & 8);
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if((cows & 8) != 8){
-                    alert("should be buying cow 3");
                     alreadyown = 1;             // the user does not already own this cow
                     incC = 8;
                     incP = 50000;
@@ -281,11 +275,9 @@ function buyThatCow(cowID) {
         case 4:
             alert(cows);
             if(points >= 100000){
-                alert("user has enough points to buy cow 4");
                 alert(cows & 16);
                 enoughpoints = 1;               // the user has enough points to buy this cow
                 if((cows & 16) != 16){
-                    alert("should be buying cow 4");
                     alreadyown = 1;             // the user does not already own this cow
                     incC = 16;
                     incP = 100000;
@@ -361,6 +353,7 @@ function buyThatCow(cowID) {
             var textnode = document.createTextNode("You do not have enough points to buy Minecraft Cow!");
         }
     }
+    /* 
     node.appendChild(textnode);
     node.classList.add("logItem");
     if(case == 0){
@@ -374,5 +367,5 @@ function buyThatCow(cowID) {
         logger.removeChild(logger.childNodes[0]);									// Remove the oldest node once the limit has been reached
     }
     logger.appendChild(node);														// Append <p> to the logger
-    logger.scrollTop = logger.scrollHeight;
+    logger.scrollTop = logger.scrollHeight;*/
 }
