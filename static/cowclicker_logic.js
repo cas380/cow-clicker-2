@@ -302,7 +302,7 @@ function buyThatCow(cowID) {
             
         case 5:
             if(points >= 5000){
-                if((cows & 32) != 2){
+                if((cows & 32) != 32){
                     incC = 32;
                     incP = 5000;
                 }
@@ -311,7 +311,7 @@ function buyThatCow(cowID) {
         
         case 6:
             if(points >= 10000){
-                if((cows & 64) != 4){
+                if((cows & 64) != 64){
                     incC = 64;
                     incP = 10000;
                 }
@@ -320,7 +320,7 @@ function buyThatCow(cowID) {
 
         case 7:
             if(points >= 50000){
-                if((cows & 128) != 8){
+                if((cows & 128) != 128){
                     incC = 128;
                     incP = 50000;
                 }
@@ -329,7 +329,7 @@ function buyThatCow(cowID) {
     
         case 8:
             if(points >= 100000){
-                if((cows & 256) != 16){
+                if((cows & 256) != 256){
                     incC = 256;
                     incP = 100000;
                 }
