@@ -355,7 +355,7 @@ function buyThatCow(cowID) {
     else{
         node.classList.add("green");
     }
-    var logger = document.getElementById("logbox");
+    var logger = document.getElementById("logBox");
     if (logger.childNodes.length > 100) {
         logger.removeChild(logger.childNodes[0]);									// Remove the oldest node once the limit has been reached
     }
