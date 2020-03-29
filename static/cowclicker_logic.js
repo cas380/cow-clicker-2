@@ -350,7 +350,7 @@ function buyThatCow(cowID) {
                 textnode = document.createTextNode("You do not have enough points to buy Cute Cow!");
             }
         }
-        else{}
+        else{
             textnode = document.createTextNode("You already own Cute Cow!");
         }
     }
