@@ -44,7 +44,7 @@ function clickThatCow(imageElement) {
             inc = Math.pow(2, temp);
             cow = "Minecraft Cow";
             break;
-        case "babyCow.jpeg":
+        case "babyCow.png":
             inc = 175;
             cow = "Baby Cow";
             break;
@@ -53,7 +53,7 @@ function clickThatCow(imageElement) {
             inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
             cow = "Miltank Cow";
             break;
-        case "cheeseCow.jpg":
+        case "cheeseCow.png":
             inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
             cow = "Cheese Cow";
             break;
@@ -341,115 +341,115 @@ function buyThatCow(cowID) {
     }
 
     if(cowID == 1){
-        if(points >= 5000){
-            if((cows & 2) != 2){
+        if((cows & 2) != 2){
+            if(points < 5000){
                 textnode = document.createTextNode("You have bought Cute Cow!");
                 Case = 1;
             }
             else{
-                textnode = document.createTextNode("You already own Cute Cow!");
+                textnode = document.createTextNode("You do not have enough points to buy Cute Cow!");
             }
         }
-        else{
-            textnode = document.createTextNode("You do not have enough points to buy Cute Cow!");
+        else{}
+            textnode = document.createTextNode("You already own Cute Cow!");
         }
     }
     if(cowID == 2){
-        if(points >= 10000){
-            if((cows & 4) != 4){
+        if((cows & 4) != 4){
+            if(points >= 10000){
                 textnode = document.createTextNode("You have bought Silly Cow!");
                 Case = 1;
             }
             else{
-                textnode = document.createTextNode("You already own Silly Cow!");
+                textnode = document.createTextNode("You do not have enough points to buy Silly Cow!");
             }
         }
         else{
-            textnode = document.createTextNode("You do not have enough points to buy Silly Cow!");
+            textnode = document.createTextNode("You already own Silly Cow!");
         }
     }
     if(cowID == 3){
-        if(points >= 50000){
-            if((cows & 8) != 8){
+        if((cows & 8) != 8){
+            if(points >= 50000){
                 textnode = document.createTextNode("You have bought Chonk Cow!");
                 Case = 1;
             }
             else{
-                textnode = document.createTextNode("You already own Chonk Cow!");
+                textnode = document.createTextNode("You do not have enough points to buy Chonk Cow!");
             }
         }
         else{
-            textnode = document.createTextNode("You do not have enough points to buy Chonk Cow!");
+            textnode = document.createTextNode("You already own Chonk Cow!");
         }
     }
     if(cowID == 4){
-        if(points >= 100000){
-            if((cows & 16) != 16){
+        if((cows & 16) != 16){
+            if(points >= 100000){
                 textnode = document.createTextNode("You have bought Minecraft Cow!");
                 Case = 1;
             }
             else{
-                textnode = document.createTextNode("You already own Minecraft Cow!");
+                textnode = document.createTextNode("You do not have enough points to buy Minecraft Cow!");
             }
         }
         else{
-            textnode = document.createTextNode("You do not have enough points to buy Minecraft Cow!");
+            textnode = document.createTextNode("You already own Minecraft Cow!");
         }
     }
     if(cowID == 5){
-        if(points >= 5000){
-            if((cows & 32) != 32){
+        if((cows & 32) != 32){
+            if(points >= 5000){
                 textnode = document.createTextNode("You have bought Baby Cow!");
                 Case = 1;
             }
             else{
-                textnode = document.createTextNode("You already own Baby Cow!");
+                textnode = document.createTextNode("You do not have enough points to buy Baby Cow!");
             }
         }
         else{
-            textnode = document.createTextNode("You do not have enough points to buy Baby Cow!");
+            textnode = document.createTextNode("You already own Baby Cow!");
         }
     }
     if(cowID == 6){
-        if(points >= 10000){
-            if((cows & 64) != 64){
+        if((cows & 64) != 64){
+            if(points >= 10000){
                 textnode = document.createTextNode("You have bought Miltank Cow!");
                 Case = 1;
             }
             else{
-                textnode = document.createTextNode("You already own Miltank Cow!");
+                textnode = document.createTextNode("You do not have enough points to buy Miltank Cow!");
             }
         }
         else{
-            textnode = document.createTextNode("You do not have enough points to buy Miltank Cow!");
+            textnode = document.createTextNode("You already own Miltank Cow!");
         }
     }
     if(cowID == 7){
-        if(points >= 50000){
-            if((cows & 128) != 128){
+        if((cows & 128) != 128){
+            if(points >= 50000){
                 textnode = document.createTextNode("You have bought Cheese Cow!");
                 Case = 1;
             }
             else{
-                textnode = document.createTextNode("You already own Cheese Cow!");
+                textnode = document.createTextNode("You do not have enough points to buy Cheese Cow!");
             }
         }
         else{
-            textnode = document.createTextNode("You do not have enough points to buy Cheese Cow!");
+            textnode = document.createTextNode("You already own Cheese Cow!");
         }
     }
     if(cowID == 8){
-        if(points >= 100000){
-            if((cows & 256) != 256){
+        if((cows & 256) != 256){
+            if(points >= 100000){
                 textnode = document.createTextNode("You have bought Secret Cow!");
                 Case = 1;
             }
             else{
-                textnode = document.createTextNode("You already own Secret Cow!");
+                textnode = document.createTextNode("You do not have enough points to buy Secret Cow!");
             }
         }
         else{
-            textnode = document.createTextNode("You do not have enough points to buy Secret Cow!");
+            textnode = document.createTextNode("You already own Secret Cow!");
         }
     }
      
