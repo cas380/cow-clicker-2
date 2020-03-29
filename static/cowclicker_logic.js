@@ -225,6 +225,9 @@ function buyThatCow(cowID) {
     document.getElementById("saveCheckDiv").innerHTML = "Saving...";
     var incP = 0;
     var incC = 0;
+    var node = document.createElement("p");
+    var Case = 0;               //what color should the text display in
+    var textnode = document.createTextNode("");
 
     // if the user has enough points to buy a cow when it is clicked on,
     // and it has not been bought before, change that cow's array value to non-null,
@@ -271,15 +274,7 @@ function buyThatCow(cowID) {
             console.log("default case ran!!!!");
             break;
     }
-    points -= incP;
-    cows += incC;
-    document.getElementById('points').innerHTML = points;
-    document.getElementById('cows').innerHTML = cows;
-    makePost();
 
-    var node = document.createElement("p");
-    var Case = 0;               //what color should the text display in
-    var textnode = document.createTextNode("");
     if(cowID == 1){
         if(points >= 5000){
             if((cows & 2) != 2){
@@ -351,4 +346,10 @@ function buyThatCow(cowID) {
     }
     logger.appendChild(node);														// Append <p> to the logger
     logger.scrollTop = logger.scrollHeight;
+
+    points -= incP;
+    cows += incC;
+    document.getElementById('points').innerHTML = points;
+    document.getElementById('cows').innerHTML = cows;
+    makePost();
 }
