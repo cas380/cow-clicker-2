@@ -396,6 +396,62 @@ function buyThatCow(cowID) {
             textnode = document.createTextNode("You do not have enough points to buy Minecraft Cow!");
         }
     }
+    if(cowID == 5){
+        if(points >= 5000){
+            if((cows & 2) != 2){
+                textnode = document.createTextNode("You have bought Baby Cow!");
+                Case = 1;
+            }
+            else{
+                textnode = document.createTextNode("You already own Baby Cow!");
+            }
+        }
+        else{
+            textnode = document.createTextNode("You do not have enough points to buy Baby Cow!");
+        }
+    }
+    if(cowID == 6){
+        if(points >= 10000){
+            if((cows & 4) != 4){
+                textnode = document.createTextNode("You have bought Miltank Cow!");
+                Case = 1;
+            }
+            else{
+                textnode = document.createTextNode("You already own Miltank Cow!");
+            }
+        }
+        else{
+            textnode = document.createTextNode("You do not have enough points to buy Miltank Cow!");
+        }
+    }
+    if(cowID == 7){
+        if(points >= 50000){
+            if((cows & 8) != 8){
+                textnode = document.createTextNode("You have bought Cheese Cow!");
+                Case = 1;
+            }
+            else{
+                textnode = document.createTextNode("You already own Cheese Cow!");
+            }
+        }
+        else{
+            textnode = document.createTextNode("You do not have enough points to buy Cheese Cow!");
+        }
+    }
+    if(cowID == 8){
+        if(points >= 100000){
+            if((cows & 16) != 16){
+                textnode = document.createTextNode("You have bought Secret Cow!");
+                Case = 1;
+            }
+            else{
+                textnode = document.createTextNode("You already own Secret Cow!");
+            }
+        }
+        else{
+            textnode = document.createTextNode("You do not have enough points to buy Secret Cow!");
+        }
+    }
      
     node.appendChild(textnode);
     node.classList.add("logItem");
