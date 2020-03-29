@@ -398,7 +398,7 @@ function buyThatCow(cowID) {
     }
     if(cowID == 5){
         if(points >= 5000){
-            if((cows & 2) != 2){
+            if((cows & 32) != 32){
                 textnode = document.createTextNode("You have bought Baby Cow!");
                 Case = 1;
             }
@@ -412,7 +412,7 @@ function buyThatCow(cowID) {
     }
     if(cowID == 6){
         if(points >= 10000){
-            if((cows & 4) != 4){
+            if((cows & 64) != 64){
                 textnode = document.createTextNode("You have bought Miltank Cow!");
                 Case = 1;
             }
@@ -426,7 +426,7 @@ function buyThatCow(cowID) {
     }
     if(cowID == 7){
         if(points >= 50000){
-            if((cows & 8) != 8){
+            if((cows & 128) != 128){
                 textnode = document.createTextNode("You have bought Cheese Cow!");
                 Case = 1;
             }
@@ -440,7 +440,7 @@ function buyThatCow(cowID) {
     }
     if(cowID == 8){
         if(points >= 100000){
-            if((cows & 16) != 16){
+            if((cows & 256) != 256){
                 textnode = document.createTextNode("You have bought Secret Cow!");
                 Case = 1;
             }
