@@ -45,22 +45,56 @@ function clickThatCow(imageElement) {
             cow = "Minecraft Cow";
             break;
         case "babyCow.png":
-            inc = 175;
+            inc = cows;
             cow = "Baby Cow";
             break;
         case "miltankCow.png":
-            inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
-            inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
+            inc = 400;
             cow = "Miltank Cow";
             break;
         case "cheeseCow.png":
-            inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
+            inc = 200;
             cow = "Cheese Cow";
             break;
         case "secretCow.png":
-            temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
-            inc = Math.pow(2, temp);
-            cow = "Secret Cow";
+            var secret = Math.floor(Math.random()*8) + 1;
+            switch (secret) {
+                case "1":
+                    inc = 100;
+                    cow = "Secret Standard Cow";
+                    break;
+                case "2":
+                    inc = 175;
+                    cow = "Secret Cute Cow";
+                    break;
+                case "3":
+                    inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
+                    inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
+                    cow = "Secret Silly Cow";
+                    break;
+                case "4":
+                    inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
+                    cow = "Secret Chonk Cow";
+                    break;
+                case "5":
+                    temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
+                    inc = Math.pow(2, temp);
+                    cow = "Secret Minecraft Cow";
+                    break;
+                case "6":
+                    inc = cows;
+                    cow = "Secret Baby Cow";
+                    break;
+                case "7":
+                    inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
+                    inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
+                    cow = "Secret Miltank Cow";
+                    break;
+                case "8":
+                    inc = 200;
+                    cow = "Secret Cheese Cow";
+                    break;
+            }
             break;
         default:
             alert(imgName);
@@ -301,37 +335,37 @@ function buyThatCow(cowID) {
             break;
             
         case 5:
-            if(points >= 5000){
+            if(points >= 7500){
                 if((cows & 32) != 32){
                     incC = 32;
-                    incP = 5000;
+                    incP = 7500;
                 }
             }
             break;
         
         case 6:
-            if(points >= 10000){
+            if(points >= 80000){
                 if((cows & 64) != 64){
                     incC = 64;
-                    incP = 10000;
+                    incP = 80000;
                 }
             }
             break;
 
         case 7:
-            if(points >= 50000){
+            if(points >= 15000){
                 if((cows & 128) != 128){
                     incC = 128;
-                    incP = 50000;
+                    incP = 15000;
                 }
             }
             break;
     
         case 8:
-            if(points >= 100000){
+            if(points >= 75000){
                 if((cows & 256) != 256){
                     incC = 256;
-                    incP = 100000;
+                    incP = 75000;
                 }
             }
             break;
@@ -398,7 +432,7 @@ function buyThatCow(cowID) {
     }
     if(cowID == 5){
         if((cows & 32) != 32){
-            if(points >= 5000){
+            if(points >= 7500){
                 textnode = document.createTextNode("You have bought Baby Cow!");
                 Case = 1;
             }
@@ -412,7 +446,7 @@ function buyThatCow(cowID) {
     }
     if(cowID == 6){
         if((cows & 64) != 64){
-            if(points >= 10000){
+            if(points >= 80000){
                 textnode = document.createTextNode("You have bought Miltank Cow!");
                 Case = 1;
             }
@@ -426,7 +460,7 @@ function buyThatCow(cowID) {
     }
     if(cowID == 7){
         if((cows & 128) != 128){
-            if(points >= 50000){
+            if(points >= 15000){
                 textnode = document.createTextNode("You have bought Cheese Cow!");
                 Case = 1;
             }
@@ -440,7 +474,7 @@ function buyThatCow(cowID) {
     }
     if(cowID == 8){
         if((cows & 256) != 256){
-            if(points >= 100000){
+            if(points >= 75000){
                 textnode = document.createTextNode("You have bought Secret Cow!");
                 Case = 1;
             }
