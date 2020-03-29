@@ -59,38 +59,38 @@ function clickThatCow(imageElement) {
         case "secretCow.png":
             var secret = Math.floor(Math.random()*8) + 1;
             switch (secret) {
-                case "1":
+                case 1:
                     inc = 100;
                     cow = "Secret Standard Cow";
                     break;
-                case "2":
+                case 2:
                     inc = 175;
                     cow = "Secret Cute Cow";
                     break;
-                case "3":
+                case 3:
                     inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
                     inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
                     cow = "Secret Silly Cow";
                     break;
-                case "4":
+                case 4:
                     inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
                     cow = "Secret Chonk Cow";
                     break;
-                case "5":
+                case 5:
                     temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
                     inc = Math.pow(2, temp);
                     cow = "Secret Minecraft Cow";
                     break;
-                case "6":
+                case 6:
                     inc = cows;
                     cow = "Secret Baby Cow";
                     break;
-                case "7":
+                case 7:
                     inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
                     inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
                     cow = "Secret Miltank Cow";
                     break;
-                case "8":
+                case 8:
                     inc = 200;
                     cow = "Secret Cheese Cow";
                     break;
