@@ -44,6 +44,24 @@ function clickThatCow(imageElement) {
             inc = Math.pow(2, temp);
             cow = "Minecraft Cow";
             break;
+        case "babyCow.jpeg":
+            inc = 175;
+            cow = "Baby Cow";
+            break;
+        case "miltankCow.png":
+            inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
+            inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
+            cow = "Miltank Cow";
+            break;
+        case "cheeseCow.jpg":
+            inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
+            cow = "Cheese Cow";
+            break;
+        case "secretCow.png":
+            temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
+            inc = Math.pow(2, temp);
+            cow = "Secret Cow";
+            break;
         default:
             alert(imgName);
             alert("Default case ran! Problem in clickThatCow switch. Perhaps you forgot to fully implement this cow?");
@@ -98,6 +116,18 @@ function loadUnlockedCows() {
     }
     if ((cows & 16) == 16) {
         document.getElementById("cow4").style.display = "inline";
+    }
+    if ((cows & 32) == 32) {
+        document.getElementById("cow5").style.display = "inline";
+    }
+    if ((cows & 64) == 64) {
+        document.getElementById("cow6").style.display = "inline";
+    }
+    if ((cows & 128) == 128) {
+        document.getElementById("cow7").style.display = "inline";
+    }
+    if ((cows & 256) == 256) {
+        document.getElementById("cow8").style.display = "inline";
     }
 }
 
@@ -270,6 +300,41 @@ function buyThatCow(cowID) {
             }
             break;
             
+        case 5:
+            if(points >= 5000){
+                if((cows & 32) != 2){
+                    incC = 32;
+                    incP = 5000;
+                }
+            }
+            break;
+        
+        case 6:
+            if(points >= 10000){
+                if((cows & 64) != 4){
+                    incC = 64;
+                    incP = 10000;
+                }
+            }
+            break;
+
+        case 7:
+            if(points >= 50000){
+                if((cows & 128) != 8){
+                    incC = 128;
+                    incP = 50000;
+                }
+            }
+            break;
+    
+        case 8:
+            if(points >= 100000){
+                if((cows & 256) != 16){
+                    incC = 256;
+                    incP = 100000;
+                }
+            }
+            break;
         default:
             console.log("default case ran!!!!");
             break;
