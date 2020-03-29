@@ -225,8 +225,6 @@ function buyThatCow(cowID) {
     document.getElementById("saveCheckDiv").innerHTML = "Saving...";
     var incP = 0;
     var incC = 0;
-    var alreadyown = 0;             // turns 1 if the user does not own the cow
-    var enoughpoints = 0;           // turns 1 if the user has enough points to buy the cow
 
     // if the user has enough points to buy a cow when it is clicked on,
     // and it has not been bought before, change that cow's array value to non-null,
@@ -235,9 +233,7 @@ function buyThatCow(cowID) {
     switch(cowID){
         case 1:
             if(points >= 5000){
-                enoughpoints = 1;               // the user has enough points to buy this cow
                 if((cows & 2) != 2){
-                    alreadyown = 1;             // the user does not already own this cow
                     incC = 2;
                     incP = 5000;
                 }
@@ -246,9 +242,7 @@ function buyThatCow(cowID) {
         
         case 2:
             if(points >= 10000){
-                enoughpoints = 1;               // the user has enough points to buy this cow
                 if((cows & 4) != 4){
-                    alreadyown = 1;             // the user does not already own this cow
                     incC = 4;
                     incP = 10000;
                 }
@@ -257,9 +251,7 @@ function buyThatCow(cowID) {
 
         case 3:
             if(points >= 50000){
-                enoughpoints = 1;               // the user has enough points to buy this cow
                 if((cows & 8) != 8){
-                    alreadyown = 1;             // the user does not already own this cow
                     incC = 8;
                     incP = 50000;
                 }
@@ -268,9 +260,7 @@ function buyThatCow(cowID) {
 
         case 4:
             if(points >= 100000){
-                enoughpoints = 1;               // the user has enough points to buy this cow
                 if((cows & 16) != 16){
-                    alreadyown = 1;             // the user does not already own this cow
                     incC = 16;
                     incP = 100000;
                 }
@@ -291,8 +281,8 @@ function buyThatCow(cowID) {
     var Case = 0;               //what color should the text display in
     var textnode = document.createTextNode("");
     if(cowID == 1){
-        if(enoughpoints == 1){
-            if(alreadyown = 1){
+        if(points >= 5000){
+            if((cows & 2) != 2){
                 textnode = document.createTextNode("You have bought Cute Cow!");
                 Case = 1;
             }
@@ -305,8 +295,8 @@ function buyThatCow(cowID) {
         }
     }
     if(cowID == 2){
-        if(enoughpoints == 1){
-            if(alreadyown = 1){
+        if(points >= 10000){
+            if((cows & 4) != 4){
                 textnode = document.createTextNode("You have bought Silly Cow!");
                 Case = 1;
             }
@@ -319,8 +309,8 @@ function buyThatCow(cowID) {
         }
     }
     if(cowID == 3){
-        if(enoughpoints == 1){
-            if(alreadyown = 1){
+        if(points >= 50000){
+            if((cows & 8) != 8){
                 textnode = document.createTextNode("You have bought Chonk Cow!");
                 Case = 1;
             }
@@ -333,8 +323,8 @@ function buyThatCow(cowID) {
         }
     }
     if(cowID == 4){
-        if(enoughpoints == 1){
-            if(alreadyown = 1){
+        if(points >= 100000){
+            if((cows & 16) != 16){
                 textnode = document.createTextNode("You have bought Minecraft Cow!");
                 Case = 1;
             }
