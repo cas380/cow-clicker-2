@@ -5,16 +5,13 @@ from flask import redirect, url_for # Redirects
   # request.args.get("argument1")
 from flask import request, session # Sessions
 from flask import jsonify # ...
-from flask import flash #for error messages
+from flask import flash # for error messages
 import json
-
-# RuntimeError: The session is unavailable because no secret key was set.
-# Set the secret_key on the application to something unique and secret.
 
 from DataStore import test_put, test_grab
 from User import User
 
-app = Flask(__name__)
+app = Flask(__name__) # definitely secret and not on the GitHub repo
 app.secret_key = b'0`[x;g.s|+ddi~9^mc@z?'
 
 # Main page of site; the login
@@ -23,7 +20,7 @@ app.secret_key = b'0`[x;g.s|+ddi~9^mc@z?'
 def login():
   return render_template('login.html')
 
-#Register page
+# Register page
 @app.route('/register.html')
 def registerPage():
   return render_template('register.html')
@@ -43,7 +40,6 @@ def register():
     flash("User already exists")
     return render_template('register.html')
   
-
 # Midpage to put user data in a session, routing to the game
 @app.route('/to-cow-game', methods=['POST'])
 def signin():
@@ -72,7 +68,7 @@ def game():
   print(type(user)) # is a User
   print(user) # is a User
   entity = test_grab(user) # user's data for sure (needed to start game)
-  #points = request.form["points"] #json get points from js
+
   if entity: # shouldn't ever be empty??????
     return render_template('cowclicker.html', init_points=entity['points'], init_cows=entity['cows'])
   else:
@@ -111,7 +107,7 @@ def store():
   print(type(user)) # is a User
   print(user) # is a User
   entity = test_grab(user) # user's data for sure (needed to start game)
-  #points = request.form["points"] #json get points from js
+
   if entity: # shouldn't ever be empty??????
     return render_template('store.html', init_points=entity['points'], init_cows=entity['cows'])
   else:

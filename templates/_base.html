@@ -1,27 +1,23 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Cow Clicker 2</title>
-    <link rel="stylesheet" href="static/style.css" />
-    <style>
-    body {
-      font-family: Helvetica, sans-serif;
-      font-size: 12px;
-    }
-    </style> <!-- Not working in external??????? -->
-    {% block extra_head %}{% endblock %}
-  </head>
+	<head>
+		<title>Cow Clicker 2</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+		<!--<style>
+			body {
+				font-family: Helvetica, sans-serif;
+				font-size: 12px;
+			}
+		</style>-->
+		{% block scripts %}{% endblock %}
+	</head>
+	{% block bodytype %}{% endblock %}
+		<!--
+		{% if error_message %}
+		<div class="Error">{{error_message}}</div>
+		{% endif %}
+		-->
 
-  <body>
-    {% if error_message %}
-      <div class="Error">{{error_message}}</div>
-    {% endif %}
-    
-    {% block nav %}{% endblock %}
-
-    <header>
-      {% block header %}{% endblock %}
-    </header>
-    {% block content %}{% endblock %}
-  </body>
-
+		{% block content %}{% endblock %}
+	</body>
 </html>

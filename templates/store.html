@@ -1,108 +1,101 @@
 {% extends '_base.html' %}
 
-{% block extra_head %}
-<script type="text/javascript" src="{{ url_for('static', filename='cowclicker_logic.js') }}"></script>
+{% block scripts %} <!-- Linking a script through the header -->
+	<script type="text/javascript" src="{{ url_for('static', filename='cowclicker_logic.js') }}"></script>
 {% endblock %}
 
-{% block content %}
+{% block bodytype %} <!-- The tag we will use for the <body> -->
+	<body style="background-color:rgba(67, 197, 35, 0.788);">
+{% endblock %}
 
-<!-- invisible node to pull data from -->
-<span id="cows" style="display: none;">{{ init_cows }}</span>
+{% block content %} <!-- All of this gets ut inside the <body> -->
+	<br />
+	<br />
+	<!-- invisible node to pull data from -->
+	<span id="cows" style="display: none;">{{ init_cows }}</span>
 
-<br />
-<br />
+	<table style="margin: auto; font-size: 12px; background-color:rgba(145, 79, 18, 0.87);" >
+		<tr>
+			<td width="150" style="text-align: center;">
+				You have<br />
+				<div id="points" style="font-size: 24px;">{{ init_points }}</div><br />
+				points.
+			</td>
+			<!--- this is supposed to be for saying
+			"You successfully bought this cow",
+			"You do not have enough points to buy this cow", or
+			"You already own this cow"-->
+			<td>
+				<div id="logBox">
+					<p id="init_msg">Welcome to the Cow Store!</p>
+				</div>
+			</td>
+			<td width="150" style="text-align: center;">
+				Go to the<br />
+				<strong><a href="cowclicker.html" target="_Self" style="font-size: 24px; text-decoration: none;">PASTURE</a></strong>
+			</td>
+		</tr>
+	</table>
 
-<body style="background-color:rgba(67, 197, 35, 0.788);">
+	<table style="margin: auto; font-size: 12px;"> <!-- the <span> containing the point value is critical for the JS! -->
+		<tr>
+			<td width="250" height="250" style="text-align: center; background-color:rgba(80, 80, 80, 0.788);">
+				<figure>
+					<img src="static/cows/cuteCartoonCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
+					<figcaption>Cute Cow (<span>5000</span> Points): Gives 175 points/click</figcaption>
+				</figure>
+			</td>
+			<td width="250" height="250" style="text-align: center; background-color:rgba(80, 80, 80, 0.788);">
+				<figure>
+					<img src="static/cows/babyCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
+					<figcaption>Baby Cow (<span>7500</span> Points): Gives a points/click equal to the state of your cows</figcaption>
+				</figure>
+			</td>
+		</tr>
+		<tr>
+			<td width="250" height="250" style="text-align: center; background-color:rgba(31, 42, 192, 0.788);">
+				<figure>
+					<img src="static/cows/sillyCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(this);">
+					<figcaption>Silly Cow (<span>10000</span> Points): Gives a random point/click value from -500 to +500</figcaption>
+				</figure>
+			</td>
+			<td width="250" height="250" style="text-align: center; background-color:rgba(31, 42, 192, 0.788);">
+				<figure>
+					<img src="static/cows/cheeseCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
+					<figcaption>Cheese Cow (<span>15000</span> Points): Gives 200 points/click</figcaption>
+				</figure>
+			</td>
+		</tr>
+		<tr>
+			<td width="250" height="250" style="text-align: center; background-color:rgba(152, 40, 196, 0.788);">
+				<figure>
+					<img src="static/cows/chonkCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(this);">
+					<figcaption>Chonk Cow (<span>50000</span> Points): Gives 300 points/click with a 20% chance to give 600 points instead</figcaption>
+				</figure>
+			</td>
+			<td width="250" height="250" style="text-align: center; background-color:rgba(152, 40, 196, 0.788);">
+				<figure>
+					<img src="/static/cows/secretCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
+					<figcaption>Secret Cow (<span>75000</span> Points): Uses a random different cow's ability</figcaption>
+				</figure>
+			</td>
+		</tr>
+		<tr>
+			<td width="250" height="250" style="text-align: center; background-color:rgba(202, 184, 18, 0.788);">
+				<figure>
+					<img src="/static/cows/minecraftCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(this);">
+					<figcaption>Minecraft Cow (<span>100000</span> Points): 10% chance to give a points/click of any power of 2 from 0 - 10</figcaption>
+				</figure>
+			</td>
+			<td width="250" height="250" style="text-align: center; background-color:rgba(202, 184, 18, 0.788);">
+				<figure>
+					<img src="static/cows/miltankCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
+					<figcaption>Miltank Cow (<span>80000</span> Points): Gives 350 points/click</figcaption>
+				</figure>
+			</td>
+		</tr>
+	</table>
 
-<table style="margin: auto; font-size: 12px; background-color:rgba(145, 79, 18, 0.87);" >
-	<tr>
-		<td width="150" style="text-align: center;">
-			You have<br />
-			<div id="points" style="font-size: 24px;">{{ init_points }}</div><br />
-			points.
-		</td>
-		<!--- this is supposed to be for saying
-		"You successfully bought this cow",
-		"You do not have enough points to buy this cow", or
-		"You already own this cow"-->
-		<td>
-			<div id="logBox">
-				<p id="init_msg">Welcome to the Cow Store!</p>
-			</div>
-		</td>
-		<td width="150" style="text-align: center;">
-			Go to the<br />
-			<strong><a href="cowclicker.html" target="_Self" style="font-size: 24px; text-decoration: none;">PASTURE</a></strong>
-		</td>
-	<!-- leaderboard page
-		<td width="150" style="text-align: center;">
-			Go to the<br />
-			<strong><a href="leaderboard.html" target="_Self" style="font-size: 24px; text-decoration: none;">LEADERBOARD</a></strong>
-		</td>
-	</tr>
-	--->
-</table>
-
-	<body>
-		<table style="margin: auto; font-size: 12px;">
-			<tr>
-				<td width="250" height="250" style="text-align: center; background-color:rgba(80, 80, 80, 0.788);">
-					<figure>
-						<img src="static/cows/cuteCartoonCow.png" style="width:200px;height:200px;" onclick="buyThatCow(1);">
-						<figcaption>Cute Cow (5,000 Points): Gives 175 points/click</figcaption>
-					</figure>
-				</td>
-				<td width="250" height="250" style="text-align: center; background-color:rgba(80, 80, 80, 0.788);">
-					<figure>
-						<img src="static/cows/babyCow.png" style="width:200px;height:200px;" onclick="buyThatCow(5);">
-						<figcaption>Baby Cow (7,500 Points): Gives a points/click equal to the state of your cows</figcaption>
-					</figure>
-				</td>
-			</tr>
-			<tr>
-				<td width="250" height="250" style="text-align: center; background-color:rgba(31, 42, 192, 0.788);">
-					<figure>
-						<img src="static/cows/sillyCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(2);">
-						<figcaption>Silly Cow (10,000 Points): Gives a random point/click value from -500 to +500</figcaption>
-					</figure>
-				</td>
-				<td width="250" height="250" style="text-align: center; background-color:rgba(31, 42, 192, 0.788);">
-					<figure>
-						<img src="static/cows/cheeseCow.png" style="width:200px;height:200px;" onclick="buyThatCow(7);">
-						<figcaption>Cheese Cow (15,000 Points): Gives 200 points/click</figcaption>
-					</figure>
-				</td>
-			</tr>
-			<tr>
-				<td width="250" height="250" style="text-align: center; background-color:rgba(152, 40, 196, 0.788);">
-					<figure>
-						<img src="static/cows/chonkCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(3);">
-						<figcaption>Chonk Cow (50,000 Points): Gives 300 points/click with a 20% chance to give 600 points instead</figcaption>
-					</figure>
-				</td>
-				<td width="250" height="250" style="text-align: center; background-color:rgba(152, 40, 196, 0.788);">
-					<figure>
-						<img src="/static/cows/secretCow.png" style="width:200px;height:200px;" onclick="buyThatCow(8);">
-						<figcaption>Secret Cow (75,000 Points): Uses a random different cow's ability</figcaption>
-					</figure>
-				</td>
-			</tr>
-			<tr>
-				<td width="250" height="250" style="text-align: center; background-color:rgba(202, 184, 18, 0.788);">
-					<figure>
-						<img src="/static/cows/minecraftCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(4);">
-						<figcaption>Minecraft Cow (100,000 Points): 10% chance to give a points/click of any power of 2 from 0 - 10</figcaption>
-					</figure>
-				</td>
-				<td width="250" height="250" style="text-align: center; background-color:rgba(202, 184, 18, 0.788);">
-					<figure>
-						<img src="static/cows/miltankCow.png" style="width:200px;height:200px;" onclick="buyThatCow(6);">
-						<figcaption>Miltank Cow (80,000 Points): Gives 350 points/click</figcaption>
-					</figure>
-				</td>
-			</tr>
-		</table>
-	</body>
-</body>
-<strong><p id="saveCheckDiv"></p></strong>
+	<strong><p id="saveCheckDiv"></p></strong>
+	<br />
 {% endblock %}

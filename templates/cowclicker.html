@@ -1,67 +1,68 @@
 {% extends '_base.html' %}
 
-{% block extra_head %}
-<script type="text/javascript" src="{{ url_for('static', filename='cowclicker_logic.js') }}"></script>
+{% block scripts %} <!-- Linking a script through the header -->
+	<script type="text/javascript" src="{{ url_for('static', filename='cowclicker_logic.js') }}"></script>
 {% endblock %}
 
-{% block content %}
+{% block bodytype %} <!-- The tag we will use for the <body> -->
+	<body style="background-color: rgba(67, 197, 35, 0.788);">
+{% endblock %}
 
-<!-- invisible node to pull data from -->
-<span id="cows" style="display: none;">{{ init_cows }}</span>
+{% block content %} <!-- All of this gets ut inside the <body> -->
+	<br />
+	<br />
+	<!-- invisible node to pull data from -->
+	<span id="cows" style="display: none;">{{ init_cows }}</span>
 
-<br />
-<br />
+	<table style="margin: auto; font-size: 12px; background-color:rgba(145, 79, 18, 0.87);">
+		<tr>
+			<td width="150" style="text-align: center;">
+				You have<br />
+				<div id="points" style="font-size: 24px;">{{ init_points }}</div><br />
+				points.
+			</td>
+			<td>
+				<div id="logBox">
+					<p id="init_msg">Loading...</p>
+				</div>
+			</td>
+			<td width="150" style="text-align: center;">
+				Go to the<br />
+				<strong><a href="store.html" target="_Self" style="font-size: 24px; text-decoration: none;">COW STORE</a></strong>
+			</td>
+		</tr>
+	</table>
+	<br />
+	<div id="largerPasture">
+		<div id="topFence"><img src="static/media/northFence.png" style="display: none;" /><!-- Serve static image --></div>
+		<div id="rightFence"><img src="static/media/eastFence.png" style="display: none;" /><!-- Serve static image --></div>
+		<div id="leftFence"><img src="static/media/westFence.png" style="display: none;" /><!-- Serve static image --></div>
+		<div id="thePasture"><img src="static/media/grassTexture.jpg" style="display: none;" />
 
-<body style="background-color:rgba(67, 197, 35, 0.788);">
-	
-<table style="margin: auto; font-size: 12px; background-color:rgba(145, 79, 18, 0.87);">
-	<tr>
-		<td width="150" style="text-align: center;">
-			You have<br />
-			<div id="points" style="font-size: 24px;">{{ init_points }}</div><br />
-			points.
-		</td>
-		<td>
-			<div id="logBox">
-				<p id="init_msg">Loading...</p>
-			</div>
-		</td>
-		<td width="150" style="text-align: center;">
-			Go to the<br />
-			<strong><a href="store.html" target="_Self" style="font-size: 24px; text-decoration: none;">COW STORE</a></strong>
-		</td>
-	</tr>
-</table>
-<br />
-<div id="largerPasture">
-	<div id="topFence"><img src="static/media/northFence.png" style="display: none;" /><!-- Serve static image --></div>
-	<div id="rightFence"><img src="static/media/eastFence.png" style="display: none;" /><!-- Serve static image --></div>
-	<div id="leftFence"><img src="static/media/westFence.png" style="display: none;" /><!-- Serve static image --></div>
-	<div id="thePasture"><img src="static/media/grassTexture.jpg" style="display: none;" />
-
-		<img class="clickableCow" id="cow0" src="static/cows/standardCow.png" onclick="clickThatCow(this);" />
+			<img class="clickableCow" id="cow0" src="static/cows/standardCow.png" onclick="clickThatCow(this);" />
 		
-		<img class="clickableCow" id="cow1" src="static/cows/cuteCartoonCow.png" onclick="clickThatCow(this);" />
-		<img class="clickableCow" id="cow2" src="static/cows/sillyCow.jpg" onclick="clickThatCow(this);" />
-		<img class="clickableCow" id="cow3" src="static/cows/chonkCow.jpg" onclick="clickThatCow(this);" />
-		<img class="clickableCow" id="cow4" src="static/cows/minecraftCow.jpg" onclick="clickThatCow(this);" />
+			<img class="clickableCow" id="cow1" src="static/cows/cuteCartoonCow.png" onclick="clickThatCow(this);" />
+			<img class="clickableCow" id="cow2" src="static/cows/sillyCow.jpg" onclick="clickThatCow(this);" />
+			<img class="clickableCow" id="cow3" src="static/cows/chonkCow.jpg" onclick="clickThatCow(this);" />
+			<img class="clickableCow" id="cow4" src="static/cows/minecraftCow.jpg" onclick="clickThatCow(this);" />
 
-		<img class="clickableCow" id="cow5" src="static/cows/babyCow.png" onclick="clickThatCow(this);" />
-		<img class="clickableCow" id="cow6" src="static/cows/miltankCow.png" onclick="clickThatCow(this);" />
-		<img class="clickableCow" id="cow7" src="static/cows/cheeseCow.png" onclick="clickThatCow(this);" />
-		<img class="clickableCow" id="cow8" src="static/cows/secretCow.png" onclick="clickThatCow(this);" />
+			<img class="clickableCow" id="cow5" src="static/cows/babyCow.png" onclick="clickThatCow(this);" />
+			<img class="clickableCow" id="cow6" src="static/cows/miltankCow.png" onclick="clickThatCow(this);" />
+			<img class="clickableCow" id="cow7" src="static/cows/cheeseCow.png" onclick="clickThatCow(this);" />
+			<img class="clickableCow" id="cow8" src="static/cows/secretCow.png" onclick="clickThatCow(this);" />
 
-		<!--
-		<img class="clickableCow" id="cow9" src="static/cows/strawberryCow.png" onclick="clickThatCow(this);" />
-		<img class="clickableCow" id="cow10" src="static/cows/progenitorCow.jpeg" onclick="clickThatCow(this);" />
-		<img class="clickableCow" id="cow11" src="static/cows/webkinzCow.png" onclick="clickThatCow(this);" />
-		<img class="clickableCow" id="cow12" src="static/cows/dumbCow.png" onclick="clickThatCow(this);" />
-		-->
+			<!--
+			<img class="clickableCow" id="cow9" src="static/cows/strawberryCow.png" onclick="clickThatCow(this);" />
+			<img class="clickableCow" id="cow10" src="static/cows/progenitorCow.jpeg" onclick="clickThatCow(this);" />
+			<img class="clickableCow" id="cow11" src="static/cows/webkinzCow.png" onclick="clickThatCow(this);" />
+			<img class="clickableCow" id="cow12" src="static/cows/dumbCow.png" onclick="clickThatCow(this);" />
+			-->
+		</div>
+		<div id="bottomFence"><img src="static/media/southFence.png" style="display: none;" /><!-- Serve static image --></div>
 	</div>
-	<div id="bottomFence"><img src="static/media/southFence.png" style="display: none;" /><!-- Serve static image --></div>
-</div>
-</body>
-<br />
-<strong><p id="saveCheckDiv" style="color: brown;"></p></strong>
-
+	</body>
+	<br />
+	<strong><p id="saveCheckDiv" style="color: brown;"></p></strong>
+	<br />
+	<br />
 {% endblock %}

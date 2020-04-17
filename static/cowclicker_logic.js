@@ -1,3 +1,30 @@
+// Define the bitwise representations
+// the rightmost number is the cow's ID!
+let STANDARD_ENUM = Math.pow(2, 0);
+let CUTE_ENUM = Math.pow(2, 1);
+let SILLY_ENUM = Math.pow(2, 2);
+let CHONK_ENUM = Math.pow(2, 3);
+let MINECRAFT_ENUM = Math.pow(2, 4);
+let BABY_ENUM = Math.pow(2, 5);
+let MILTANK_ENUM = Math.pow(2, 6);
+let CHEESE_ENUM = Math.pow(2, 7);
+let SECRET_ENUM = Math.pow(2, 8);
+
+// Define the cow image addresses...
+let STANDARD_COW = "standardCow.png";
+let CUTE_COW = "cuteCartoonCow.png";
+let SILLY_COW = "sillyCow.jpg";
+let CHONK_COW = "chonkCow.jpg";
+let MINECRAFT_COW = "minecraftCow.jpg";
+let BABY_COW = "babyCow.png";
+let MILTANK_COW = "miltankCow.png";
+let CHEESE_COW = "cheeseCow.png";
+let SECRET_COW = "secretCow.png";
+
+// total number of cows, don't forget to adjust!
+let COW_TOTAL = 9; // (Used to loop through and animate cows)
+
+// global variable for requests
 var saveCheck;
 
 // load the game
@@ -9,54 +36,59 @@ window.addEventListener('load', function() {
     setup(); // asign listeners to cows for datastore
 }, true);
 
+// takes the DOM Element of a cow and returns its name
+function parseCowName(imageElement) {
+	var str = imageElement.src;
+	var precedingCow = "static/cows/"; // Whatever comes before the cow image name
+	var n = str.indexOf(precedingCow);
+	return str.substring(n+precedingCow.length);
+}
+
 // runs when a cow is clicked
 function clickThatCow(imageElement) {
 	saveCheck++;
 	document.getElementById("saveCheckDiv").innerHTML = "Saving...";
     var inc = 0;
 
-    var str = imageElement.src;
-	var precedingCow = "static/cows/"; // Whatever comes before the cow image name
-    var n = str.indexOf(precedingCow);
-    var imgName = str.substring(n+precedingCow.length);
+    var imgName = parseCowName(imageElement);
     let cow = "Error";
 
     switch (imgName) {
-        case "standardCow.png":
+        case STANDARD_COW:
             inc = 100;
             cow = "Standard Cow";
             break;
-        case "cuteCartoonCow.png":
+        case CUTE_COW:
             inc = 175;
             cow = "Cute Cow";
             break;
-        case "sillyCow.jpg":
+        case SILLY_COW:
             inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
             inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
             cow = "Silly Cow";
             break;
-        case "chonkCow.jpg":
+        case CHONK_COW:
             inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
             cow = "Chonk Cow";
             break;
-        case "minecraftCow.jpg":
+        case MINECRAFT_COW:
             temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
             inc = Math.pow(2, temp);
             cow = "Minecraft Cow";
             break;
-        case "babyCow.png":
+        case BABY_COW:
             inc = cows;
             cow = "Baby Cow";
             break;
-        case "miltankCow.png":
+        case MILTANK_COW:
             inc = 400;
             cow = "Miltank Cow";
             break;
-        case "cheeseCow.png":
+        case CHEESE_COW:
             inc = 200;
             cow = "Cheese Cow";
             break;
-        case "secretCow.png":
+        case SECRET_COW:
             var secret = Math.floor(Math.random()*8) + 1;
             switch (secret) {
                 case 1:
@@ -106,22 +138,27 @@ function clickThatCow(imageElement) {
     points += inc;
     document.getElementById('points').innerHTML = points;
 
-    // Add a log (manipulate the DOM)
-    var node = document.createElement("p");											// Create a <p> node
-    var textnode = document.createTextNode(cow + " gave you " + inc + " points!");	// Create the text for it
-    node.appendChild(textnode);														// Append the text to <p>
-    node.classList.add("logItem");													// Treat this like a log item...
-    if (inc > 0) {
-        node.classList.add("green");												// Make the text green for positive point values...
-    } else if (inc < 0) {															// red for negative point values...
-        node.classList.add("red");													// black (default) otherwise
+    // Add a log for this action!
+	createLog(cow + " gave you " + inc + " points!", inc)
+}
+
+// manipulates the DOM to add a log
+function createLog(textNodeMsg, color) {
+    var node = document.createElement("p");						// Create a <p> node
+    var textnode = document.createTextNode(textNodeMsg);		// Create the text for it
+    node.appendChild(textnode);									// Append the text to <p>
+    node.classList.add("logItem");								// Treat this like a log item...
+    if (color > 0) {
+        node.classList.add("green");							// Make the text green for positive point values...
+    } else if (color < 0) {										// red for negative point values...
+        node.classList.add("red");								// black (default) otherwise
     }
     var logger = document.getElementById("logBox");
     if (logger.childNodes.length > 100) {
-        logger.removeChild(logger.childNodes[0]);									// Remove the oldest node once the limit has been reached
+        logger.removeChild(logger.childNodes[0]);				// Remove the oldest node once the limit has been reached
     }
-    logger.appendChild(node);														// Append <p> to the logger
-    logger.scrollTop = logger.scrollHeight;											// scroll down in the logger
+    logger.appendChild(node);									// Append <p> to the logger
+    logger.scrollTop = logger.scrollHeight;						// scroll down in the logger
 }
 
 function loadGameState() {
@@ -131,38 +168,14 @@ function loadGameState() {
 }
 
 function loadUnlockedCows() {
-    // If the user's "cows" data says they own a certain cow, then set the
-    // images src to the correct cow image source. If the user does not own 
-    // a certain cow then that image's source will be set to Tall Grass
+    // If the user's "cows" data says they own a certain cow, make it appear
     console.log("Cow state is apparently " + cows);
     
-    if ((cows & 1) == 1) {
-        document.getElementById("cow0").style.display = "inline";
-    }
-    if ((cows & 2) == 2) {
-        document.getElementById("cow1").style.display = "inline";
-    }
-    if ((cows & 4) == 4) {
-        document.getElementById("cow2").style.display = "inline";
-    }
-    if ((cows & 8) == 8) {
-        document.getElementById("cow3").style.display = "inline";
-    }
-    if ((cows & 16) == 16) {
-        document.getElementById("cow4").style.display = "inline";
-    }
-    if ((cows & 32) == 32) {
-        document.getElementById("cow5").style.display = "inline";
-    }
-    if ((cows & 64) == 64) {
-        document.getElementById("cow6").style.display = "inline";
-    }
-    if ((cows & 128) == 128) {
-        document.getElementById("cow7").style.display = "inline";
-    }
-    if ((cows & 256) == 256) {
-        document.getElementById("cow8").style.display = "inline";
-    }
+	for (var i = 1, j = 0; i <= Math.pow(2, COW_TOTAL); j += 1, i = Math.pow(2, j)) {
+		if ((cows & i) == i) {
+			document.getElementById("cow"+j).style.display = "inline";
+		} // otherwise, the style will be hidden
+	}
 }
 
 // Give each cow its own copy of variables
@@ -245,7 +258,7 @@ function animateCows() {
 
 function setup() {
     let pasture = document.getElementById("thePasture");
-    
+    // Used for cowclicker.html, store.html calls makePost() on click manually so it can store the correct values
     for (var children = 0; children < pasture.childNodes.length; children++) {
         if (pasture.childNodes[children] instanceof HTMLImageElement) {
             pasture.childNodes[children].addEventListener("click", makePost, true);
@@ -284,227 +297,86 @@ function alertResult(httpRequest) {
     } 
 }
 
-function buyThatCow(cowID) {
-    saveCheck++;
-    document.getElementById("saveCheckDiv").innerHTML = "Saving...";
-    var incP = 0;
-    var incC = 0;
-    var node = document.createElement("p");
-    var Case = 0;               //what color should the text display in
-    var textnode = document.createTextNode("");
+// returns true if player owns this cow
+function hasCow(cowEnum) {
+	return (cows & cowEnum) == cowEnum;
+}
 
-    // if the user has enough points to buy a cow when it is clicked on,
-    // and it has not been bought before, change that cow's array value to non-null,
-    // so it loads instead of tall grass the next time cowclicker.html is loaded
+// tries to purchase a cow, returns success code
+function attemptCowPurchase(imageElement, cowEnum, cowName) {
+	try {
+		// get the point cost for that cow (will not fail unless the HTML is messed up)
+		var cost = Number(imageElement.parentNode.childNodes[3].childNodes[1].innerHTML); 
+	} catch {
+		createLog("CRITICAL ERROR: DOM structure changed!", 0);
+	}
+	if (!hasCow(cowEnum)) { // if you can buy the cow and don't already own it
+		if (points >= cost) {
+			points -= cost;
+			cows += cowEnum;
+			document.getElementById('points').innerHTML = points;
+			document.getElementById('cows').innerHTML = cows;
+			createLog("You bought "+cowName+"!", 1);
+			return "GOOD";
+		}
+		else {
+			return "POOR";
+		}
+	} else {
+		return "OWNS";
+	}
+}
 
-    switch(cowID){
-        case 1:
-            if(points >= 5000){
-                if((cows & 2) != 2){
-                    incC = 2;
-                    incP = 5000;
-                }
-            }
-            break;
-        
-        case 2:
-            if(points >= 10000){
-                if((cows & 4) != 4){
-                    incC = 4;
-                    incP = 10000;
-                }
-            }
-            break;
+function buyThatCow(imageElement) {
+	saveCheck++;
+	document.getElementById("saveCheckDiv").innerHTML = "Saving...";
 
-        case 3:
-            if(points >= 50000){
-                if((cows & 8) != 8){
-                    incC = 8;
-                    incP = 50000;
-                }
-            }
-            break;
+	var imgName = parseCowName(imageElement);
+	var success = null;
 
-        case 4:
-            if(points >= 100000){
-                if((cows & 16) != 16){
-                    incC = 16;
-                    incP = 100000;
-                }
-            }
-            break;
-            
-        case 5:
-            if(points >= 7500){
-                if((cows & 32) != 32){
-                    incC = 32;
-                    incP = 7500;
-                }
-            }
-            break;
-        
-        case 6:
-            if(points >= 80000){
-                if((cows & 64) != 64){
-                    incC = 64;
-                    incP = 80000;
-                }
-            }
-            break;
+	switch (imgName) {
+        case CUTE_COW:
+			success = attemptCowPurchase(imageElement, CUTE_ENUM, "Cute Cow");
+			break;
+        case SILLY_COW:
+			success = attemptCowPurchase(imageElement, SILLY_ENUM, "Silly Cow");
+			break;
+        case CHONK_COW:
+			success = attemptCowPurchase(imageElement, CHONK_ENUM, "Chonk Cow");
+			break;
+        case MINECRAFT_COW:
+			success = attemptCowPurchase(imageElement, MINECRAFT_ENUM, "Minecraft Cow");
+			break;
+        case BABY_COW:
+			success = attemptCowPurchase(imageElement, BABY_ENUM, "Baby Cow");
+			break;
+        case MILTANK_COW:
+			success = attemptCowPurchase(imageElement, MILTANK_ENUM, "Miltank Cow");
+			break;
+        case CHEESE_COW:
+			success = attemptCowPurchase(imageElement, CHEESE_ENUM, "Cheese Cow");
+			break;
+        case SECRET_COW:
+			success = attemptCowPurchase(imageElement, SECRET_ENUM, "Secret Cow");
+			break;
+		default:
+			console.log("buyThatCow switch default case ran.");
+			createLog("ERROR: buyThatCow switch default case ran.", 0);
+			break;
+	}
+	
+	switch (success) {
+		case "OWNS":
+			createLog("You already own this cow!", -1);
+			break;
+		case "POOR":
+			createLog("You don't have enough points to buy that!", -1);
+			break;
+		default:
+			// No errors!
+			break;
+	}
 
-        case 7:
-            if(points >= 15000){
-                if((cows & 128) != 128){
-                    incC = 128;
-                    incP = 15000;
-                }
-            }
-            break;
-    
-        case 8:
-            if(points >= 75000){
-                if((cows & 256) != 256){
-                    incC = 256;
-                    incP = 75000;
-                }
-            }
-            break;
-        default:
-            console.log("default case ran!!!!");
-            break;
-    }
-
-    if(cowID == 1){
-        if((cows & 2) != 2){
-            if(points < 5000){
-                textnode = document.createTextNode("You have bought Cute Cow!");
-                Case = 1;
-            }
-            else{
-                textnode = document.createTextNode("You do not have enough points to buy Cute Cow!");
-            }
-        }
-        else{
-            textnode = document.createTextNode("You already own Cute Cow!");
-        }
-    }
-    if(cowID == 2){
-        if((cows & 4) != 4){
-            if(points >= 10000){
-                textnode = document.createTextNode("You have bought Silly Cow!");
-                Case = 1;
-            }
-            else{
-                textnode = document.createTextNode("You do not have enough points to buy Silly Cow!");
-            }
-        }
-        else{
-            textnode = document.createTextNode("You already own Silly Cow!");
-        }
-    }
-    if(cowID == 3){
-        if((cows & 8) != 8){
-            if(points >= 50000){
-                textnode = document.createTextNode("You have bought Chonk Cow!");
-                Case = 1;
-            }
-            else{
-                textnode = document.createTextNode("You do not have enough points to buy Chonk Cow!");
-            }
-        }
-        else{
-            textnode = document.createTextNode("You already own Chonk Cow!");
-        }
-    }
-    if(cowID == 4){
-        if((cows & 16) != 16){
-            if(points >= 100000){
-                textnode = document.createTextNode("You have bought Minecraft Cow!");
-                Case = 1;
-            }
-            else{
-                textnode = document.createTextNode("You do not have enough points to buy Minecraft Cow!");
-            }
-        }
-        else{
-            textnode = document.createTextNode("You already own Minecraft Cow!");
-        }
-    }
-    if(cowID == 5){
-        if((cows & 32) != 32){
-            if(points >= 7500){
-                textnode = document.createTextNode("You have bought Baby Cow!");
-                Case = 1;
-            }
-            else{
-                textnode = document.createTextNode("You do not have enough points to buy Baby Cow!");
-            }
-        }
-        else{
-            textnode = document.createTextNode("You already own Baby Cow!");
-        }
-    }
-    if(cowID == 6){
-        if((cows & 64) != 64){
-            if(points >= 80000){
-                textnode = document.createTextNode("You have bought Miltank Cow!");
-                Case = 1;
-            }
-            else{
-                textnode = document.createTextNode("You do not have enough points to buy Miltank Cow!");
-            }
-        }
-        else{
-            textnode = document.createTextNode("You already own Miltank Cow!");
-        }
-    }
-    if(cowID == 7){
-        if((cows & 128) != 128){
-            if(points >= 15000){
-                textnode = document.createTextNode("You have bought Cheese Cow!");
-                Case = 1;
-            }
-            else{
-                textnode = document.createTextNode("You do not have enough points to buy Cheese Cow!");
-            }
-        }
-        else{
-            textnode = document.createTextNode("You already own Cheese Cow!");
-        }
-    }
-    if(cowID == 8){
-        if((cows & 256) != 256){
-            if(points >= 75000){
-                textnode = document.createTextNode("You have bought Secret Cow!");
-                Case = 1;
-            }
-            else{
-                textnode = document.createTextNode("You do not have enough points to buy Secret Cow!");
-            }
-        }
-        else{
-            textnode = document.createTextNode("You already own Secret Cow!");
-        }
-    }
-     
-    node.appendChild(textnode);
-    node.classList.add("logItem");
-    if(Case == 0){
-        node.classList.add("red");
-    }
-    else{
-        node.classList.add("green");
-    }
-    var logger = document.getElementById("logBox");
-    if (logger.childNodes.length > 100) {
-        logger.removeChild(logger.childNodes[0]);									// Remove the oldest node once the limit has been reached
-    }
-    logger.appendChild(node);														// Append <p> to the logger
-    logger.scrollTop = logger.scrollHeight;
-
-    points -= incP;
-    cows += incC;
-    document.getElementById('points').innerHTML = points;
-    document.getElementById('cows').innerHTML = cows;
-    makePost();
+	// Save it!
+	makePost();
 }
