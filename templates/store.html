@@ -24,7 +24,7 @@
 			<!--- this is supposed to be for saying
 			"You successfully bought this cow",
 			"You do not have enough points to buy this cow", or
-			"You already own this cow"-->
+			"You already own this cow"... same logbox as pasture -->
 			<td>
 				<div id="logBox">
 					<p id="init_msg">Welcome to the Cow Store!</p>
@@ -39,86 +39,102 @@
 
 	<table style="margin: auto; font-size: 12px;"> <!-- the <span> containing the point value is critical for the JS! -->
 		<tr>
-			<td width="250" height="250" style="text-align: center; background-color:rgba(80, 80, 80, 0.788);">
+			<td class="storeItem tier1">
 				<figure>
-					<img src="static/cows/cuteCartoonCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
-					<figcaption>Cute Cow (<span>5000</span> Points): Gives 175 points/click</figcaption>
+					<img src="static/cows/dumbCow.png" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Dumb Cow (<span>2500</span> Points): Gives -175 points per click</figcaption>
 				</figure>
 			</td>
-			<td width="250" height="250" style="text-align: center; background-color:rgba(80, 80, 80, 0.788);">
+			<td class="storeItem tier1">
 				<figure>
-					<img src="static/cows/babyCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
-					<figcaption>Baby Cow (<span>7500</span> Points): Gives a points/click equal to the state of your cows</figcaption>
+					<img src="static/cows/sillyCow.jpg" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Silly Cow (<span>10000</span> Points): Gives a random points value from -500 to 500 per click</figcaption>
 				</figure>
 			</td>
-		</tr>
-		<tr>
-			<td width="250" height="250" style="text-align: center; background-color:rgba(31, 42, 192, 0.788);">
+			<td class="storeItem tier1">
 				<figure>
-					<img src="static/cows/sillyCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(this);">
-					<figcaption>Silly Cow (<span>10000</span> Points): Gives a random point/click value from -500 to +500</figcaption>
-				</figure>
-			</td>
-			<td width="250" height="250" style="text-align: center; background-color:rgba(31, 42, 192, 0.788);">
-				<figure>
-					<img src="static/cows/cheeseCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
-					<figcaption>Cheese Cow (<span>15000</span> Points): Gives 200 points/click</figcaption>
+					<img src="static/cows/cuteCartoonCow.png" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Cute Cow (<span>5000</span> Points): Gives 175 points per click</figcaption>
 				</figure>
 			</td>
 		</tr>
 		<tr>
-			<td width="250" height="250" style="text-align: center; background-color:rgba(152, 40, 196, 0.788);">
+			<td class="storeItem tier2">
 				<figure>
-					<img src="static/cows/chonkCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(this);">
-					<figcaption>Chonk Cow (<span>50000</span> Points): Gives 300 points/click with a 20% chance to give 600 points instead</figcaption>
+					<img src="static/cows/chonkCow.jpg" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Chonk Cow (<span>50000</span> Points): Gives 300 points per click with a 20% chance to give 600 points instead</figcaption>
 				</figure>
 			</td>
-			<td width="250" height="250" style="text-align: center; background-color:rgba(152, 40, 196, 0.788);">
+			<td class="storeItem tier2">
 				<figure>
-					<img src="/static/cows/secretCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
-					<figcaption>Secret Cow (<span>75000</span> Points): Uses a random different cow's ability</figcaption>
+					<img src="/static/cows/strawberryCow.png" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Strawberry Cow (<span>80000</span> Points): Gives 400 points per click</figcaption>
 				</figure>
 			</td>
-		</tr>
-		<tr>
-			<td width="250" height="250" style="text-align: center; background-color:rgba(202, 184, 18, 0.788);">
+			<td class="storeItem tier2">
 				<figure>
-					<img src="/static/cows/minecraftCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(this);">
-					<figcaption>Minecraft Cow (<span>100000</span> Points): 10% chance to give a points/click of any power of 2 from 0 - 10</figcaption>
-				</figure>
-			</td>
-			<td width="250" height="250" style="text-align: center; background-color:rgba(202, 184, 18, 0.788);">
-				<figure>
-					<img src="/static/cows/strawberryCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
-					<figcaption>Strawberry Cow (<span>80000</span> Points): Gives 400 points/click</figcaption>
+					<img src="/static/cows/minecraftCow.jpg" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Minecraft Cow (<span>100000</span> Points): Gives powers of 2 up to 2^10 on click</figcaption>
 				</figure>
 			</td>
 		</tr>
 		<tr>
-			<td width="250" height="250" style="text-align: center; background-color:rgba(202, 184, 18, 0.788);">
+			<td class="storeItem tier3">
 				<figure>
-					<img src="static/cows/miltankCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
+					<img src="static/cows/cheeseCow.png" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Cheese Cow (<span>150000</span> Points): Gives the previous point value earned on click</figcaption>
+				</figure>
+			</td>
+			<td class="storeItem tier3">
+				<figure>
+					<img src="static/cows/miltankCow.png" class="storeImg" onclick="buyThatCow(this);">
 					<figcaption>Miltank Cow (<span>300000</span> Points): Gives more points for clicks in rapid succession</figcaption>
 				</figure>
 			</td>
-			<td width="250" height="250" style="text-align: center; background-color:rgba(202, 184, 18, 0.788);">
+			<td class="storeItem tier3">
 				<figure>
-					<img src="static/cows/webkinzCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
-					<figcaption>Webkinz Cow (<span>500000</span> Points): Gives 350 points/click</figcaption>
+					<img src="static/cows/babyCow.png" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Baby Cow (<span>750000</span> Points): Gives points per click equal to the state of your cows</figcaption>
 				</figure>
 			</td>
 		</tr>
 		<tr>
-			<td width="250" height="250" style="text-align: center; background-color:rgba(202, 184, 18, 0.788);">
+			<td class="storeItem tier4">
 				<figure>
-					<img src="static/cows/dumbCow.png" style="width:200px;height:200px;" onclick="buyThatCow(this);">
-					<figcaption>Dumb Cow (<span>2500</span> Points): Gives more points for clicks in rapid succession</figcaption>
+					<img src="static/cows/animalCrossingCow.png" onclick="buyThatCow(this);">
+					<figcaption>Animal Crossing Cow (<span>500000</span> Points): Gives points based on the time, stronger earlier in the day</figcaption>
 				</figure>
 			</td>
-			<td width="250" height="250" style="text-align: center; background-color:rgba(202, 184, 18, 0.788);">
+			<td class="storeItem tier4">
 				<figure>
-					<img src="static/cows/brokenCow.jpg" style="width:200px;height:200px;" onclick="buyThatCow(this);">
-					<figcaption>Broken Cow (<span>700000</span> Points): Gives 350 points/click</figcaption>
+					<img src="static/cows/webkinzCow.png" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Webkinz Cow (<span>500000</span> Points): Gives points based on the time, stronger later in the day</figcaption>
+				</figure>
+			</td>
+			<td class="storeItem tier4">
+				<figure>
+					<img src="static/cows/brokenCow.jpg" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Broken Cow (<span>700000</span> Points): Uses the last 10 bits of your total points to calculate earning on click, 20% chance for any bit to flip</figcaption>
+				</figure>
+			</td>
+		</tr>
+		<tr>
+			<td class="storeItem tier5">
+				<figure>
+					<img src="/static/cows/spookyCow.jpg" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Spooky Cow (<span>1000000</span> Points): interprets 10 bits of a random number's one's complement as an unsigned int</figcaption>
+				</figure>
+			</td>
+			<td class="storeItem tier5">
+				<figure>
+					<img src="/static/cows/marioCow.png" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Mario Kart Cow (<span>8000000</span> Points): Gives some multiple of the previous points awarded on click</figcaption>
+				</figure>
+			</td>
+			<td class="storeItem tier5">
+				<figure>
+					<img src="/static/cows/secretCow.png" class="storeImg" onclick="buyThatCow(this);">
+					<figcaption>Secret Cow (<span>15000000</span> Points): Uses a random cow's ability to award points (even ones you don't own!)</figcaption>
 				</figure>
 			</td>
 		</tr>

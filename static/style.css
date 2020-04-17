@@ -129,3 +129,26 @@ form {
 .red {
 	color: lightcoral;
 }
+
+.storeItem {
+	width: 250px;
+	height: 250px;
+	text-align: center;
+}
+.storeImg {
+	width: 200px;
+	height: 200px;
+}
+
+.tier1 {
+	background-color: rgba(80, 80, 80, 0.788);
+}
+.tier2 {
+	background-color: rgba(31, 42, 192, 0.788);
+}
+.tier3 {
+	background-color: rgba(152, 40, 196, 0.788);
+}
+.tier4 {
+	background-color: rgba(202, 184, 18, 0.788);
+}

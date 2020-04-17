@@ -10,7 +10,7 @@
 */
 
 // total number of cows (in existence, not of the user), used in loops
-let COW_TOTAL = 13;
+let COW_TOTAL = 16;
 
 // Define the bitwise representations
 // the rightmost number is the cow's ID!
@@ -26,7 +26,10 @@ const SECRET_ENUM = Math.pow(2, 8);
 const STRAWBERRY_ENUM = Math.pow(2, 9);
 const WEBKINZ_ENUM = Math.pow(2, 10);
 const DUMB_ENUM = Math.pow(2, 11);
-const BROKEN_ENUM = Math.pow(2, 12);
+const AC_ENUM = Math.pow(2, 12)
+const BROKEN_ENUM = Math.pow(2, 13);
+const SPOOKY_ENUM = Math.pow(2, 14);
+const MARIO_ENUM = Math.pow(2, 15);
 
 // Define the cow image addresses...
 const STANDARD_COW = "standardCow.png";
@@ -41,10 +44,13 @@ const SECRET_COW = "secretCow.png";
 const STRAWBERRY_COW = "strawberryCow.png";
 const WEBKINZ_COW = "webkinzCow.png";
 const DUMB_COW = "dumbCow.png";
+const AC_COW = "animalCrossingCow.png";
 const BROKEN_COW = "brokenCow.jpg";
+const SPOOKY_COW = "spookyCow.jpg";
+const MARIO_COW = "marioCow.png";
 const cowAddressSpace = [STANDARD_COW, CUTE_COW, SILLY_COW, CHONK_COW, MINECRAFT_COW, 
 BABY_COW, MILTANK_COW, CHEESE_COW, SECRET_COW, STRAWBERRY_COW, WEBKINZ_COW, DUMB_COW, 
-BROKEN_COW];
+AC_COW, BROKEN_COW, SPOOKY_COW, MARIO_COW];
 
 // global variable for requests
 var saveCheck;
@@ -66,10 +72,10 @@ function parseCowName(imageElement) {
 	return str.substring(n+precedingCow.length);
 }
 
-// var rollout
-// AC cow opposite of kinz
 // global used for Miltank
 var rollout = 0;
+// global used for Cheese cow
+var prevClick = 0;
 function cowClickSwitch(imgName) {
 	switch (imgName) {
 		case STANDARD_COW:
@@ -93,7 +99,7 @@ function cowClickSwitch(imgName) {
 			setTimeout(function(){ rollout--; }, 500);
 			return [200*rollout, "Miltank Cow"];
 		case CHEESE_COW:
-			return [200, "Cheese Cow"];
+			return [prevClick, "Cheese Cow"];
 		case SECRET_COW: // recursive with random cow
 			var retArr = cowClickSwitch(cowAddressSpace[Math.floor(Math.random()*COW_TOTAL)]); // if it chooses Secret Cow, recurses again
 			retArr[1] = "Secret " + retArr[1]; // will add as many "Secret" as there are recursions
@@ -107,6 +113,11 @@ function cowClickSwitch(imgName) {
 			return [inc, "Webkinz Cow"];
 		case DUMB_COW: // gives you negative points
 			return [-175, "Dumb Cow"];
+		case AC_COW:
+			// yields bells depending on the time 
+			var d = new Date(); // gets weaker later in the day
+			var inc = 2359 - Math.floor(Number(d.getHours() + "" + d.getMinutes()));
+			return [inc, "Animal Crossing Cow"];
 		case BROKEN_COW: 
 			// Broken Cow uses the lowest 10 bits of your points to calculate the score
 			var glitch = 0;
@@ -115,6 +126,14 @@ function cowClickSwitch(imgName) {
 				glitch += (Math.random() < .8 ? points & i : ((points & i) == i ? 0 : i));
 			} // max of (unlikely) 1023 points
 			return [glitch, "Broken Cow"];
+		case SPOOKY_COW: 
+			// generates a random numer and interprets 10 bits of its one's complement as an unsigned int
+			var inc = (~Math.floor(Math.random()*10000)) & 2047;
+			return [inc, "Spooky Cow"];
+		case MARIO_COW:
+			// uses some multiple of the previous points
+			var inc = Math.ceil(((Math.random()*10)/2)*prevClick);
+			return [inc, "Mario Kart Cow"];
 		default:
 			alert("Default case ran!\n Problem in cowClickSwitch()\n\n Image name: "+imgName);
 			return null;
@@ -132,6 +151,7 @@ function clickThatCow(imageElement) {
     var cowAttributes = cowClickSwitch(imgName);
 
 	// adjust points
+	prevClick = cowAttributes[0];
     points += cowAttributes[0];
     document.getElementById('points').innerHTML = points;
 
@@ -368,6 +388,12 @@ function buyThatCow(imageElement) {
 			break;
 		case BROKEN_COW:
 			success = attemptCowPurchase(imageElement, BROKEN_ENUM, "Broken Cow");
+			break;
+		case SPOOKY_COW:
+			success = attemptCowPurchase(imageElement, SPOOKY_ENUM, "Spooky Cow");
+			break;
+		case MARIO_COW:
+			success = attemptCowPurchase(imageElement, MARIO_ENUM, "Mario Kart Cow");
 			break;
 		default:
 			console.log("buyThatCow switch default case ran.");
