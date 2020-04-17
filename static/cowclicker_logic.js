@@ -386,6 +386,9 @@ function buyThatCow(imageElement) {
 		case DUMB_COW:
 			success = attemptCowPurchase(imageElement, DUMB_ENUM, "Dumb Cow");
 			break;
+		case AC_COW:
+			success = attemptCowPurchase(imageElement, AC_ENUM, "Animal Crossing Cow");
+			break;
 		case BROKEN_COW:
 			success = attemptCowPurchase(imageElement, BROKEN_ENUM, "Broken Cow");
 			break;
