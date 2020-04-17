@@ -72,9 +72,9 @@ function parseCowName(imageElement) {
 	return str.substring(n+precedingCow.length);
 }
 
-// global used for Miltank
+// global used for Miltank Cow
 var rollout = 0;
-// global used for Cheese cow
+// global used for Cheese Cow and Mario Kart Cow
 var prevClick = 0;
 function cowClickSwitch(imgName) {
 	switch (imgName) {
