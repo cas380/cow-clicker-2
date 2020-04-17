@@ -1,28 +1,50 @@
+/* When implementing a cow...
+	1.) add it to largerPasture in cowclicker.html
+	2.) increase COW_TOTAL
+	3.) add its _ENUM
+	4.) add its _COW
+	5.) append it to cowAddressSpace
+	6.) add its case to cowClickSwitch()
+	7.) add it to the shop in store.html
+	8.) add its case to buyThatCow()
+*/
+
+// total number of cows (in existence, not of the user), used in loops
+let COW_TOTAL = 13;
+
 // Define the bitwise representations
 // the rightmost number is the cow's ID!
-let STANDARD_ENUM = Math.pow(2, 0);
-let CUTE_ENUM = Math.pow(2, 1);
-let SILLY_ENUM = Math.pow(2, 2);
-let CHONK_ENUM = Math.pow(2, 3);
-let MINECRAFT_ENUM = Math.pow(2, 4);
-let BABY_ENUM = Math.pow(2, 5);
-let MILTANK_ENUM = Math.pow(2, 6);
-let CHEESE_ENUM = Math.pow(2, 7);
-let SECRET_ENUM = Math.pow(2, 8);
+const STANDARD_ENUM = Math.pow(2, 0);
+const CUTE_ENUM = Math.pow(2, 1);
+const SILLY_ENUM = Math.pow(2, 2);
+const CHONK_ENUM = Math.pow(2, 3);
+const MINECRAFT_ENUM = Math.pow(2, 4);
+const BABY_ENUM = Math.pow(2, 5);
+const MILTANK_ENUM = Math.pow(2, 6);
+const CHEESE_ENUM = Math.pow(2, 7);
+const SECRET_ENUM = Math.pow(2, 8);
+const STRAWBERRY_ENUM = Math.pow(2, 9);
+const WEBKINZ_ENUM = Math.pow(2, 10);
+const DUMB_ENUM = Math.pow(2, 11);
+const BROKEN_ENUM = Math.pow(2, 12);
 
 // Define the cow image addresses...
-let STANDARD_COW = "standardCow.png";
-let CUTE_COW = "cuteCartoonCow.png";
-let SILLY_COW = "sillyCow.jpg";
-let CHONK_COW = "chonkCow.jpg";
-let MINECRAFT_COW = "minecraftCow.jpg";
-let BABY_COW = "babyCow.png";
-let MILTANK_COW = "miltankCow.png";
-let CHEESE_COW = "cheeseCow.png";
-let SECRET_COW = "secretCow.png";
-
-// total number of cows, don't forget to adjust!
-let COW_TOTAL = 9; // (Used to loop through and animate cows)
+const STANDARD_COW = "standardCow.png";
+const CUTE_COW = "cuteCartoonCow.png";
+const SILLY_COW = "sillyCow.jpg";
+const CHONK_COW = "chonkCow.jpg";
+const MINECRAFT_COW = "minecraftCow.jpg";
+const BABY_COW = "babyCow.png";
+const MILTANK_COW = "miltankCow.png";
+const CHEESE_COW = "cheeseCow.png";
+const SECRET_COW = "secretCow.png";
+const STRAWBERRY_COW = "strawberryCow.png";
+const WEBKINZ_COW = "webkinzCow.png";
+const DUMB_COW = "dumbCow.png";
+const BROKEN_COW = "brokenCow.jpg";
+const cowAddressSpace = [STANDARD_COW, CUTE_COW, SILLY_COW, CHONK_COW, MINECRAFT_COW, 
+BABY_COW, MILTANK_COW, CHEESE_COW, SECRET_COW, STRAWBERRY_COW, WEBKINZ_COW, DUMB_COW, 
+BROKEN_COW];
 
 // global variable for requests
 var saveCheck;
@@ -44,102 +66,77 @@ function parseCowName(imageElement) {
 	return str.substring(n+precedingCow.length);
 }
 
+// var rollout
+// AC cow opposite of kinz
+// global used for Miltank
+var rollout = 0;
+function cowClickSwitch(imgName) {
+	switch (imgName) {
+		case STANDARD_COW:
+			return [100, "Standard Cow"];
+		case CUTE_COW:
+			return [175, "Cute Cow"];
+		case SILLY_COW:
+			var inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
+			inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
+			return [inc, "Silly Cow"];
+		case CHONK_COW:
+			var inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
+			return [inc, "Chonk Cow"];
+		case MINECRAFT_COW:
+			var inc = Math.pow(2, Math.floor(Math.random()*10) + 1); // 10% chance of any power of 2 from 0 - 10
+			return [inc, "Minecraft Cow"];
+		case BABY_COW:
+			return [cows, "Baby Cow"];
+		case MILTANK_COW:
+			rollout++; // more effective on consecutive clicks
+			setTimeout(function(){ rollout--; }, 500);
+			return [200*rollout, "Miltank Cow"];
+		case CHEESE_COW:
+			return [200, "Cheese Cow"];
+		case SECRET_COW: // recursive with random cow
+			var retArr = cowClickSwitch(cowAddressSpace[Math.floor(Math.random()*COW_TOTAL)]); // if it chooses Secret Cow, recurses again
+			retArr[1] = "Secret " + retArr[1]; // will add as many "Secret" as there are recursions
+			return retArr;
+		case STRAWBERRY_COW:
+			return [400, "Strawberry Cow"];
+		case WEBKINZ_COW:
+			// yields kinzcash depending on the time 
+			var d = new Date(); // gets stronger later in the day
+			var inc = Math.floor(Number(d.getHours() + "" + d.getMinutes()));
+			return [inc, "Webkinz Cow"];
+		case DUMB_COW: // gives you negative points
+			return [-175, "Dumb Cow"];
+		case BROKEN_COW: 
+			// Broken Cow uses the lowest 10 bits of your points to calculate the score
+			var glitch = 0;
+			for (var i = 0, j = 0; i <= Math.pow(2, 9); j += 1, i = Math.pow(2, j)) {
+				// has a 20% chance of flipping any given bit
+				glitch += (Math.random() < .8 ? points & i : ((points & i) == i ? 0 : i));
+			} // max of (unlikely) 1023 points
+			return [glitch, "Broken Cow"];
+		default:
+			alert("Default case ran!\n Problem in cowClickSwitch()\n\n Image name: "+imgName);
+			return null;
+	}
+}
+
 // runs when a cow is clicked
 function clickThatCow(imageElement) {
 	saveCheck++;
 	document.getElementById("saveCheckDiv").innerHTML = "Saving...";
-    var inc = 0;
 
+	// get the image name
     var imgName = parseCowName(imageElement);
-    let cow = "Error";
+	// run through the cow switch
+    var cowAttributes = cowClickSwitch(imgName);
 
-    switch (imgName) {
-        case STANDARD_COW:
-            inc = 100;
-            cow = "Standard Cow";
-            break;
-        case CUTE_COW:
-            inc = 175;
-            cow = "Cute Cow";
-            break;
-        case SILLY_COW:
-            inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
-            inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
-            cow = "Silly Cow";
-            break;
-        case CHONK_COW:
-            inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
-            cow = "Chonk Cow";
-            break;
-        case MINECRAFT_COW:
-            temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
-            inc = Math.pow(2, temp);
-            cow = "Minecraft Cow";
-            break;
-        case BABY_COW:
-            inc = cows;
-            cow = "Baby Cow";
-            break;
-        case MILTANK_COW:
-            inc = 400;
-            cow = "Miltank Cow";
-            break;
-        case CHEESE_COW:
-            inc = 200;
-            cow = "Cheese Cow";
-            break;
-        case SECRET_COW:
-            var secret = Math.floor(Math.random()*8) + 1;
-            switch (secret) {
-                case 1:
-                    inc = 100;
-                    cow = "Secret Standard Cow";
-                    break;
-                case 2:
-                    inc = 175;
-                    cow = "Secret Cute Cow";
-                    break;
-                case 3:
-                    inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
-                    inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
-                    cow = "Secret Silly Cow";
-                    break;
-                case 4:
-                    inc = Math.floor(Math.random()*5) == 2 ? 600 : 300; // 20% chance of inc = 600, 80% chance inc = 300
-                    cow = "Secret Chonk Cow";
-                    break;
-                case 5:
-                    temp = Math.floor(Math.random()*10) + 1; // 10% chance of any power of 2 from 0 - 10
-                    inc = Math.pow(2, temp);
-                    cow = "Secret Minecraft Cow";
-                    break;
-                case 6:
-                    inc = cows;
-                    cow = "Secret Baby Cow";
-                    break;
-                case 7:
-                    inc = Math.floor(Math.random()*500) + 1; // this will get a number between 1 and 500;
-                    inc *= Math.floor(Math.random()*2) == 1 ? 1 : -1; // this will add minus sign in 50% of cases
-                    cow = "Secret Miltank Cow";
-                    break;
-                case 8:
-                    inc = 200;
-                    cow = "Secret Cheese Cow";
-                    break;
-            }
-            break;
-        default:
-            alert(imgName);
-            alert("Default case ran! Problem in clickThatCow switch. Perhaps you forgot to fully implement this cow?");
-            inc = 0;
-            break;
-    }
-
-    points += inc;
+	// adjust points
+    points += cowAttributes[0];
     document.getElementById('points').innerHTML = points;
 
     // Add a log for this action!
-	createLog(cow + " gave you " + inc + " points!", inc)
+	createLog(cowAttributes[1] + " gave you " + cowAttributes[0] + " points!", cowAttributes[0])
 }
 
 // manipulates the DOM to add a log
@@ -266,6 +263,7 @@ function setup() {
     }
 }
 
+
 function makePost() {
     var httpRequest = new XMLHttpRequest();
 
@@ -358,6 +356,18 @@ function buyThatCow(imageElement) {
 			break;
         case SECRET_COW:
 			success = attemptCowPurchase(imageElement, SECRET_ENUM, "Secret Cow");
+			break;
+		case STRAWBERRY_COW:
+			success = attemptCowPurchase(imageElement, STRAWBERRY_ENUM, "Strawberry Cow");
+			break;
+		case WEBKINZ_COW:
+			success = attemptCowPurchase(imageElement, WEBKINZ_ENUM, "Webkinz Cow");
+			break;
+		case DUMB_COW:
+			success = attemptCowPurchase(imageElement, DUMB_ENUM, "Dumb Cow");
+			break;
+		case BROKEN_COW:
+			success = attemptCowPurchase(imageElement, BROKEN_ENUM, "Broken Cow");
 			break;
 		default:
 			console.log("buyThatCow switch default case ran.");
