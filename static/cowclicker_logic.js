@@ -7,7 +7,7 @@
 	6.) add its case to cowClickSwitch()
 	7.) add it to the shop in store.html
 	8.) add its case to buyThatCow()
-*/
+Make sure you get the file extensions right! */
 
 // total number of cows (in existence, not of the user), used in loops
 let COW_TOTAL = 16;
@@ -132,7 +132,7 @@ function cowClickSwitch(imgName) {
 			return [inc, "Spooky Cow"];
 		case MARIO_COW:
 			// uses some multiple of the previous points
-			var inc = Math.ceil(((Math.random()*10)/2)*prevClick);
+			var inc = Math.ceil(((Math.random()*10)/5)*prevClick);
 			return [inc, "Mario Kart Cow"];
 		default:
 			alert("Default case ran!\n Problem in cowClickSwitch()\n\n Image name: "+imgName);
