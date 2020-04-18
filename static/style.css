@@ -123,6 +123,7 @@ form {
 	padding-top: 12px;
 }
 
+
 .green {
 	color: #1cc326;
 }
@@ -138,6 +139,23 @@ form {
 .storeImg {
 	width: 200px;
 	height: 200px;
+}
+
+.descript{
+    text-align:initial;
+    display: block;
+}
+
+#dName{
+    float:left;
+    font-weight: bold;
+    text-align:left;
+}
+#dPoint{
+    text-align:right;
+}
+#cowDescript{
+	
 }
 
 .tier1 {

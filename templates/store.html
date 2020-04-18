@@ -42,19 +42,37 @@
 			<td class="storeItem tier1">
 				<figure>
 					<img src="static/cows/dumbCow.png" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Dumb Cow (<span>2500</span> Points): Gives -175 points per click</figcaption>
+					<figcaption>
+                        <div id ='descript'>
+                            <div id = 'dName'>Dumb Cow </div>
+                            <div id = 'dPoint'><span>2500</span> Points </div>
+                        </div>
+                        Gives -175 points per click
+                    </figcaption>
 				</figure>
 			</td>
 			<td class="storeItem tier1">
 				<figure>
 					<img src="static/cows/sillyCow.jpg" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Silly Cow (<span>10000</span> Points): Gives a random points value from -500 to 500 per click</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Silly Cow </div> 
+                            <div id = 'dPoint'><span>10000</span> Points</div>
+                        </div>
+                        Gives a random points value from -500 to 500 per click
+                    </figcaption>
 				</figure>
 			</td>
 			<td class="storeItem tier1">
 				<figure>
 					<img src="static/cows/cuteCartoonCow.png" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Cute Cow (<span>5000</span> Points): Gives 175 points per click</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Cute Cow </div>
+                            <div id = 'dPoint'><span>5000</span> Points</div>
+                        </div>
+                            Gives 175 points per click
+                    </figcaption>
 				</figure>
 			</td>
 		</tr>
@@ -62,19 +80,36 @@
 			<td class="storeItem tier2">
 				<figure>
 					<img src="static/cows/chonkCow.jpg" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Chonk Cow (<span>50000</span> Points): Gives 300 points per click with a 20% chance to give 600 points instead</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Chonk Cow </div>
+                            <div id = 'dPoint'><span>50000</span> Points</div>
+                        </div>
+                            Gives 300 points per click with a 20% chance to give 600 points instead
+                    </figcaption>
 				</figure>
 			</td>
 			<td class="storeItem tier2">
 				<figure>
 					<img src="/static/cows/strawberryCow.png" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Strawberry Cow (<span>80000</span> Points): Gives 400 points per click</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Strawberry Cow </div>
+                            <div id = 'dPoint'><span>80000</span> Points </div>
+                        </div> 
+                            Gives 400 points per click
+                    </figcaption>
 				</figure>
 			</td>
 			<td class="storeItem tier2">
 				<figure>
 					<img src="/static/cows/minecraftCow.jpg" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Minecraft Cow (<span>100000</span> Points): Gives powers of 2 up to 2^10 on click</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Minecraft Cow </div>
+                            <div id = 'dPoint'><span>100000</span> Points</div>
+                        </div>
+                        Gives powers of 2 up to 2^10 on click</figcaption>
 				</figure>
 			</td>
 		</tr>
@@ -82,19 +117,34 @@
 			<td class="storeItem tier3">
 				<figure>
 					<img src="static/cows/cheeseCow.png" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Cheese Cow (<span>150000</span> Points): Gives the previous point value earned on click</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Cheese Cow </div>
+                            <div id = 'dPoint'><span>150000</span> Points</div>
+                        </div>
+                        Gives the previous point value earned on click</figcaption>
 				</figure>
 			</td>
 			<td class="storeItem tier3">
 				<figure>
 					<img src="static/cows/miltankCow.png" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Miltank Cow (<span>300000</span> Points): Gives more points for clicks in rapid succession</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Miltank Cow</div>
+                            <div id = 'dPoint'><span>300000</span> Points</div>
+                        </div>
+                        Gives more points for clicks in rapid succession</figcaption>
 				</figure>
 			</td>
 			<td class="storeItem tier3">
 				<figure>
 					<img src="static/cows/babyCow.png" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Baby Cow (<span>750000</span> Points): Gives points per click equal to the state of your cows</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Baby Cow</div>
+                            <div id = 'dPoint'><span>750000</span> points</div>
+                        </div>
+                        Gives points per click equal to the state of your cows</figcaption>
 				</figure>
 			</td>
 		</tr>
@@ -102,19 +152,34 @@
 			<td class="storeItem tier4">
 				<figure>
 					<img src="static/cows/animalCrossingCow.png" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Animal Crossing Cow (<span>500000</span> Points): Gives points based on the time, stronger earlier in the day</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Animal Crossing Cow</div>
+                            <div id = 'dPoint'><span>500000</span> Points</div>
+                        </div>
+                        Gives points based on the time, stronger earlier in the day</figcaption>
 				</figure>
 			</td>
 			<td class="storeItem tier4">
 				<figure>
 					<img src="static/cows/webkinzCow.png" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Webkinz Cow (<span>500000</span> Points): Gives points based on the time, stronger later in the day</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Webkinz Cow</div>
+                            <div id = 'dPoint'><span>500000</span> Points</div>
+                        </div>
+                        Gives points based on the time, stronger later in the day</figcaption>
 				</figure>
 			</td>
 			<td class="storeItem tier4">
 				<figure>
 					<img src="static/cows/brokenCow.jpg" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Broken Cow (<span>700000</span> Points): Uses the last 10 bits of your total points to calculate earning on click, 20% chance for any bit to flip</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Broken Cow</div>
+                            <div id = 'dPoint'><span>700000</span> Points</div>
+                        </div>
+                        Uses the last 10 bits of your total points to calculate earning on click, 20% chance for any bit to flip</figcaption>
 				</figure>
 			</td>
 		</tr>
@@ -122,19 +187,34 @@
 			<td class="storeItem tier5">
 				<figure>
 					<img src="/static/cows/spookyCow.jpg" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Spooky Cow (<span>1000000</span> Points): interprets 10 bits of a random number's one's complement as an unsigned int</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Spooky Cow</div>
+                            <div id = 'dPoint'><span>1000000</span> Points</div>
+                        </div>
+                        interprets 10 bits of a random number's one's complement as an unsigned int</figcaption>
 				</figure>
 			</td>
 			<td class="storeItem tier5">
 				<figure>
 					<img src="/static/cows/secretCow.png" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Secret Cow (<span>5000000</span> Points): Uses a random cow's ability to award points (even ones you don't own!)</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Secret Cow </div>
+                            <div id = 'dPoint'><span>5000000</span> Points</div>
+                        </div>
+                        Uses a random cow's ability to award points (even ones you don't own!)</figcaption>
 				</figure>
 			</td>
 			<td class="storeItem tier5">
 				<figure>
 					<img src="/static/cows/marioCow.png" class="storeImg" onclick="buyThatCow(this);">
-					<figcaption>Mario Kart Cow (<span>20000000</span> Points): Gives some multiple of the previous points awarded on click</figcaption>
+					<figcaption>
+                        <div class ='descript'>
+                            <div id = 'dName'>Mario Kart Cow</div>
+                            <div id = 'dPoint'><span>20000000</span> Points</div>
+                        </div>
+                        Gives some multiple of the previous points awarded on click</figcaption>
 				</figure>
 			</td>
 		</tr>
