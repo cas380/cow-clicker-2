@@ -441,7 +441,7 @@ function setColor(){
   function pad(n){
 	return (n.length<2) ? "0"+n : n;
   }
-  
+
   r.addEventListener('change', function() {
 	setColor();
 	r_out.value = r.value;
