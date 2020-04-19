@@ -109,7 +109,7 @@ def store():
   entity = test_grab(user) # user's data for sure (needed to start game)
 
   if entity: # shouldn't ever be empty??????
-    return render_template('store.html', init_points=entity['points'], init_cows=entity['cows'], username)
+    return render_template('store.html', init_points=entity['points'], init_cows=entity['cows'], init_username=entity['username'])
   else:
     return render_template('store.html', init_points=0, init_cows=1)
 
