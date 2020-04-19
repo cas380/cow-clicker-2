@@ -61,7 +61,8 @@ window.addEventListener('load', function() {
     loadGameState();
     loadUnlockedCows();
     animateCows();
-    setup(); // asign listeners to cows for datastore
+	setup(); // asign listeners to cows for datastore
+	changeColor();
 }, true);
 
 // takes the DOM Element of a cow and returns its name
@@ -259,8 +260,6 @@ function animateThisCow(cowCount) { // Math.floor(Math.random()*500) + 1; // thi
             }
         }
 	}, 200);
-	
-	changeColor();
 }
 
 // Animate the cows!!!
