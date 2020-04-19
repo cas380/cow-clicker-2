@@ -123,6 +123,7 @@ form {
 	padding-top: 12px;
 }
 
+
 .green {
 	color: #1cc326;
 }
@@ -140,6 +141,21 @@ form {
 	height: 200px;
 	cursor: pointer;
 }
+
+.descript{
+    text-align:initial;
+    display: block;
+}
+
+#dName{
+    float:left;
+    font-weight: bold;
+    text-align:left;
+}
+#dPoint{
+    text-align:right;
+}
+
 
 .tier1 {
 	background-color: rgba(80, 80, 80, 0.788);
