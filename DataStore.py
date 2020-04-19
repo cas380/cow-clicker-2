@@ -17,6 +17,7 @@ def test_put(user, pointsSave, cowSave):
     # Fill the empty entity
     task['points'] = pointsSave 
     task['cows'] = cowSave
+    task['username'] = user
 
     client.put(task) # Put!!!
 
