@@ -258,7 +258,9 @@ function animateThisCow(cowCount) { // Math.floor(Math.random()*500) + 1; // thi
                 }
             }
         }
-    }, 200);
+	}, 200);
+	
+	changeColor();
 }
 
 // Animate the cows!!!
