@@ -438,10 +438,11 @@ function setColor(){
 	hex_out.value = hex;
   }
   
-  function pad(n){
+function pad(n){
 	return (n.length<2) ? "0"+n : n;
-  }
+}
 
+function changeColor(){
   document.getElementById("r").addEventListener('change', function() {
 	setColor();
 	r_out.value = r.value;
@@ -471,3 +472,4 @@ function setColor(){
 	setColor();
 	b_out.value = b.value;
   }, false);
+}
