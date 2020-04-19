@@ -5,25 +5,6 @@
 {% endblock %}
 
 {% block bodytype %} <!-- The tag we will use for the <body> -->
-	<fieldset>
-		<label for="r">R</label>
-		<input type="range" min="0" max="255" id="r" step="1" value="0">
-		<output for="r" id="r_out">0</output>
-	  </fieldset>  
-	  
-	  <fieldset>
-		<label for="g">G</label>
-		<input type="range" min="0" max="255" id="g" step="1" value="0">
-		<output for="g" id="g_out">0</output>
-	  </fieldset>
-	  
-	  <fieldset>
-		<label for="b">B</label>
-		<input type="range" min="0" max="255" id="b" step="1" value="0">
-		<output for="b" id="b_out">0</output>
-	  </fieldset>  
-	  
-	  <output id="hex">#000000</output>
 	<!--<body style="background-color: rgba(67, 197, 35, 0.788);"> -->
 {% endblock %}
 
@@ -85,6 +66,26 @@
 		<div id="bottomFence"><img src="static/media/southFence.png" style="display: none;" /><!-- Serve static image --></div>
 	</div>
 	</body>
+
+	<fieldset>
+		<label for="r">R</label>
+		<input type="range" min="0" max="255" id="r" step="1" value="0">
+		<output for="r" id="r_out">0</output>
+	  </fieldset>  
+	  
+	  <fieldset>
+		<label for="g">G</label>
+		<input type="range" min="0" max="255" id="g" step="1" value="0">
+		<output for="g" id="g_out">0</output>
+	  </fieldset>
+	  
+	  <fieldset>
+		<label for="b">B</label>
+		<input type="range" min="0" max="255" id="b" step="1" value="0">
+		<output for="b" id="b_out">0</output>
+	  </fieldset>  
+	  
+	  <output id="hex">#000000</output>
 	<br />
 	<strong><p id="saveCheckDiv" style="color: brown;"></p></strong>
 	<br />

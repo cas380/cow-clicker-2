@@ -421,13 +421,13 @@ function buyThatCow(imageElement) {
 }
 
 var body = document.body, 
-    r = document.querySelector('#r'),
-    g = document.querySelector('#g'),
-    b = document.querySelector('#b'),
-    r_out = document.querySelector('#r_out'),
-    g_out = document.querySelector('#g_out'),
-    b_out = document.querySelector('#b_out'),
-    hex_out = document.querySelector('#hex');
+    r = document.getElementByID("r"),
+    g = document.getElementById("g"),
+    b = document.getElementById("b"),
+    r_out = document.getElementById("r_out"),
+    g_out = document.getElementById("g_out"),
+    b_out = document.getElementById("b_out"),
+    hex_out = document.getElementById("hex");
 
 function setColor(){
 	var r_hex = parseInt(r.value, 10).toString(16),
