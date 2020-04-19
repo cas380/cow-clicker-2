@@ -8,7 +8,7 @@
 	<!--<body style="background-color: rgba(67, 197, 35, 0.788);"> -->
 {% endblock %}
 
-{% block content %} <!-- All of this gets ut inside the <body> -->
+{% block content %} <!-- All of this gets put inside the <body> -->
 	<!-- invisible node to pull data from -->
 	<span id="cows" style="display: none;">{{ init_cows }}</span>
 
@@ -65,7 +65,6 @@
 		</div>
 		<div id="bottomFence"><img src="static/media/southFence.png" style="display: none;" /><!-- Serve static image --></div>
 	</div>
-	</body>
 
 	<fieldset>
 		<label for="r">R</label>
@@ -83,11 +82,12 @@
 		<label for="b">B</label>
 		<input type="range" min="0" max="255" id="b" step="1" value="0">
 		<output for="b" id="b_out">0</output>
-	  </fieldset>  
+	  </fieldset>
 	  
 	  <output id="hex">#000000</output>
 	<br />
 	<strong><p id="saveCheckDiv" style="color: brown;"></p></strong>
 	<br />
 	<br />
+	</body>
 {% endblock %}
