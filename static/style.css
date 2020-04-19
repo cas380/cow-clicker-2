@@ -207,6 +207,6 @@ label[for=b], output[for=b]{
 }
 #hex{
   min-width: 4.5em;
-  font-size: 3em;
+  font-size: 1.1em;
   background: rgba(255,255,255,.3);
 }
