@@ -138,6 +138,7 @@ form {
 .storeImg {
 	width: 200px;
 	height: 200px;
+	cursor: pointer;
 }
 
 .tier1 {
@@ -150,8 +151,11 @@ form {
 	background-color: rgba(152, 40, 196, 0.788);
 }
 .tier4 {
-	background-color: rgba(202, 184, 18, 0.788);
+	background-color: rgba(35, 213, 219, 0.932);
 }
 .tier5 {
 	background-color: rgba(230, 64, 50, 0.788);
+}
+.progenitor {
+	background-color: rgba(247, 189, 30, 0.952);
 }
