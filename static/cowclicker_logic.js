@@ -55,16 +55,6 @@ AC_COW, BROKEN_COW, SPOOKY_COW, MARIO_COW];
 // global variable for requests
 var saveCheck;
 
-// variables for the color sliders
-var body = document.body,
-r = document.querySelector('#r'),
-g = document.querySelector('#g'),
-b = document.querySelector('#b'),
-r_out = document.querySelector('#r_out'),
-g_out = document.querySelector('#g_out'),
-b_out = document.querySelector('#b_out'),
-hex_out = document.querySelector('#hex');
-
 // load the game
 window.addEventListener('load', function() {
 	saveCheck = 0;
@@ -429,6 +419,15 @@ function buyThatCow(imageElement) {
 	// Save it!
 	makePost();
 }
+
+var body = document.body, 
+    r = document.querySelector('#r'),
+    g = document.querySelector('#g'),
+    b = document.querySelector('#b'),
+    r_out = document.querySelector('#r_out'),
+    g_out = document.querySelector('#g_out'),
+    b_out = document.querySelector('#b_out'),
+    hex_out = document.querySelector('#hex');
 
 function setColor(){
 	var r_hex = parseInt(r.value, 10).toString(16),
