@@ -421,7 +421,7 @@ function buyThatCow(imageElement) {
 }
 
 var body = document.body, 
-    r = document.getElementByID("r"),
+    r = document.getElementById("r"),
     g = document.getElementById("g"),
     b = document.getElementById("b"),
     r_out = document.getElementById("r_out"),
