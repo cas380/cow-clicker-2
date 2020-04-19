@@ -442,32 +442,32 @@ function setColor(){
 	return (n.length<2) ? "0"+n : n;
   }
 
-  r.addEventListener('change', function() {
+  document.getElementById("r").addEventListener('change', function() {
 	setColor();
 	r_out.value = r.value;
   }, false);
   
-  r.addEventListener('input', function() {
+  document.getElementById("r").addEventListener('input', function() {
 	setColor();
 	r_out.value = r.value;
   }, false);
   
-  g.addEventListener('change', function() {
+  document.getElementById("g").addEventListener('change', function() {
 	setColor();
 	g_out.value = g.value;
   }, false);
   
-  g.addEventListener('input', function() {
+  document.getElementById("g").addEventListener('input', function() {
 	setColor();
 	g_out.value = g.value;
   }, false);
   
-  b.addEventListener('change', function() {
+  document.getElementById("b").addEventListener('change', function() {
 	setColor();
 	b_out.value = b.value;
   }, false);
   
-  b.addEventListener('input', function() {
+  document.getElementById("b").addEventListener('input', function() {
 	setColor();
 	b_out.value = b.value;
   }, false);
