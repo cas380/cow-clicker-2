@@ -89,10 +89,10 @@ def game():
 	entity = test_grab(user) # user's data for sure (needed to start game)
 
 	if entity: # shouldn't ever be empty??????
-		return render_template('cowclicker.html', init_points=entity['points'], init_cows=entity['cows'], r=r, b=b, g=g, hex=hexCode)
+		return render_template('cowclicker.html', pageHeader="Game", init_points=entity['points'], init_cows=entity['cows'], r=r, b=b, g=g, hex=hexCode)
 		# init_username=entity['username'])
 	else:
-		return render_template('cowclicker.html', init_points=0, init_cows=1, r=r, b=b, g=g, hex=hexCode)
+		return render_template('cowclicker.html', pageHeader="Game", init_points=0, init_cows=1, r=r, b=b, g=g, hex=hexCode)
 
 # Fired from within cowclicker whenever a cow is clicked
 @app.route('/update-user', methods=['POST'])
@@ -155,10 +155,10 @@ def store():
 	entity = test_grab(user) # user's data for sure (needed to start game)
 
 	if entity: # shouldn't ever be empty??????
-		return render_template('store.html', init_points=entity['points'], init_cows=entity['cows'], r=r, b=b, g=g, hex=hexCode)
+		return render_template('store.html', pageHeader="Shop", init_points=entity['points'], init_cows=entity['cows'], r=r, b=b, g=g, hex=hexCode)
 		#, init_username=entity['username'])
 	else:
-		return render_template('store.html', init_points=0, init_cows=1, r=r, b=b, g=g, hex=hexCode)
+		return render_template('store.html', pageHeader="Shop", init_points=0, init_cows=1, r=r, b=b, g=g, hex=hexCode)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)

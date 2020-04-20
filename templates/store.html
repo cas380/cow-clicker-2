@@ -13,34 +13,9 @@
 {% endblock %}
 
 {% block content %} <!-- All of this gets ut inside the <body> -->
-	<br />
-	<br />
+
 	<!-- invisible node to pull data from -->
 	<span id="cows" style="display: none;">{{ init_cows }}</span>
-
-	<table class="headBox">
-		<tr>
-			<td width="150px" style="text-align: center;">
-				You have<br />
-				<div id="points" style="font-size: 24px;">{{ init_points }}</div><br />
-				points.
-			</td>
-			<!--- this is supposed to be for saying
-			"You successfully bought this cow",
-			"You do not have enough points to buy this cow", or
-			"You already own this cow"... same logbox as pasture -->
-			<td>
-				<div id="logBox">
-					<p id="init_msg">Welcome to the Cow Store!</p>
-				</div>
-			</td>
-			<td width="150px" style="text-align: center;">
-				<strong><a href="cowclicker.html" target="_Self" style="font-size: 24px; text-decoration: none;">PASTURE</a></strong>
-				<br /><br />
-				<strong><a href="login.html" target="_Self" style="font-size: 24px; text-decoration: none;">LOGOUT</a></strong>
-			</td>
-		</tr>
-	</table>
 
 	<table style="margin: auto; font-size: 12px;"> <!-- the <span> containing the point value is critical for the JS! -->
 		<tr>
