@@ -83,16 +83,16 @@
 			<input type="range" min="0" max="255" id="g" step="1" value="{{ g }}" />
 			<output for="g" id="g_out">{{ g }}</output>
 		{% else %}
-			<input type="range" min="0" max="255" id="r" step="1" value="208" />
-			<output for="r" id="r_out">208</output>
+			<input type="range" min="0" max="255" id="g" step="1" value="208" />
+			<output for="g" id="g_out">208</output>
 		{% endif %}
 	</fieldset>
 	  
 	<fieldset>
 		<label for="b">B</label>
 		{% if b %}
-			<input type="range" min="0" max="255" id="r" step="1" value="{{ b }}" />
-			<output for="r" id="r_out">{{ b }}</output>
+			<input type="range" min="0" max="255" id="b" step="1" value="{{ b }}" />
+			<output for="b" id="b_out">{{ b }}</output>
 		{% else %}
 			<input type="range" min="0" max="255" id="b" step="1" value="80" />
 			<output for="b" id="b_out">80</output>
