@@ -40,10 +40,19 @@
 	}
 
 	#saveCheckDiv {
+		position: absolute;
+		top: 300px;
+		left: 100px;
+		padding: 10px;
+
 		text-align: center;
-		color: rgb(226, 56, 232);
 		font-size: 18px;
 		opacity: 0.8;
+
+		color: brown;
+		display: none;
+		background-color: rgba(255, 255, 255, 0.3);
+		border-radius: 50px;
 	}
 
 	/* ================== The Pasture ================== */

@@ -53,7 +53,7 @@ BABY_COW, MILTANK_COW, CHEESE_COW, SECRET_COW, STRAWBERRY_COW, WEBKINZ_COW, DUMB
 AC_COW, BROKEN_COW, SPOOKY_COW, MARIO_COW];
 
 // global DOM variables for ease of color change
-var body, r, g, b, r_out, g_out, b_out, hex_out;
+var body, r, g, b, r_out, g_out, b_out, hex_out, saver;
 
 // global variable for requests
 var saveCheck;
@@ -69,6 +69,7 @@ window.addEventListener('load', function() {
 	g_out = document.getElementById("g_out");
 	b_out = document.getElementById("b_out");
 	hex_out = document.getElementById("hex");
+	saver = document.getElementById("saveCheckDiv");
 
 	// initialize to 0 unfinished requests
 	saveCheck = 0;
@@ -156,10 +157,18 @@ function cowClickSwitch(imgName) {
 	}
 }
 
+// innerHTML is now always "Saving..."
+function setSaving() {
+	saveCheck++;
+	saver.style.display = "inline";
+}
+function resetSaving() { // only run when saveCheck == 0
+	saver.style.display = "hidden";
+}
+
 // runs when a cow is clicked
 function clickThatCow(imageElement) {
-	saveCheck++;
-	document.getElementById("saveCheckDiv").innerHTML = "Saving...";
+	setSaving();
 
 	// get the image name
     var imgName = parseCowName(imageElement);
@@ -331,7 +340,7 @@ function alertResult(httpRequest) {
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
 		saveCheck--;
 		if (saveCheck == 0) {
-			document.getElementById("saveCheckDiv").innerHTML = "";
+			resetSaving();
 		}
 		/*
 		alert(httpRequest.responseText);
@@ -376,8 +385,7 @@ function attemptCowPurchase(imageElement, cowEnum, cowName) {
 }
 
 function buyThatCow(imageElement) {
-	saveCheck++;
-	document.getElementById("saveCheckDiv").innerHTML = "Saving...";
+	setSaving();
 
 	var imgName = parseCowName(imageElement);
 	var success = null;
