@@ -194,7 +194,6 @@ form {
     text-align:right;
 }
 
-
 .tier1 {
 	background-color: rgba(78, 78, 78, 0.788);
 }
@@ -212,4 +211,24 @@ form {
 }
 .progenitor {
 	background-color: rgba(247, 189, 30, 0.952);
+}
+
+/* unvisited link */
+a:link {
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: #333;
+}
+
+/* selected link */
+a:active {
+  color: #222;
 }

@@ -5,7 +5,11 @@
 {% endblock %}
 
 {% block bodytype %} <!-- The tag we will use for the <body> -->
-	<!--<body style="background-color: rgba(67, 197, 35, 0.788);"> -->
+	{% if hex %}
+		<body style="background-color: {{ hex }};">
+	{% else %}
+		<body style="background-color: #5bd050;">
+	{% endif %}
 {% endblock %}
 
 {% block content %} <!-- All of this gets put inside the <body> -->
@@ -100,7 +104,7 @@
 	</fieldset>
 
 	{% if hex %}
-		<output id="hex">#{{ hex }}</output>
+		<output id="hex">{{ hex }}</output>
 	{% else %}
 		<output id="hex">#5bd050</output>
 	{% endif %}

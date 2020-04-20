@@ -306,7 +306,7 @@ function saveGame() {
 
 // Cow-click specific request (saving data!)
 function saveColor() {
-	alert("Saving: " + "r=" + r.value + "&g=" + g.value + "&b=" + b.value + "&hex=" + hex_out.value);
+	// alert("Saving: " + "r=" + r.value + "&g=" + g.value + "&b=" + b.value + "&hex=" + hex_out.value);
 	makePost("/paint-change", "r=" + r.value + "&g=" + g.value + "&b=" + b.value + "&hex=" + hex_out.value);
 }
 
@@ -333,12 +333,15 @@ function alertResult(httpRequest) {
 		if (saveCheck == 0) {
 			document.getElementById("saveCheckDiv").innerHTML = "";
 		}
+		/*
 		alert(httpRequest.responseText);
+
         if (httpRequest.status === 200) {
             alert("Value successfully sent!");
         } else {
             alert("Unsuccessful request!");
-		}// No need to stratify by code yet...
+		}
+		*/
     } 
 }
 
@@ -467,30 +470,14 @@ function changeColor() {
 		setColor();
 		r_out.value = r.value;
 	}, false);
-	/*
-	document.getElementById("r").addEventListener('input', function() {
-		setColor();
-		r_out.value = r.value;
-	}, false);
-	*/
+
 	document.getElementById("g").addEventListener('change', function() {
 		setColor();
 		g_out.value = g.value;
 	}, false);
-	/*
-	document.getElementById("g").addEventListener('input', function() {
-		setColor();
-		g_out.value = g.value;
-	}, false);
-	*/
+
 	document.getElementById("b").addEventListener('change', function() {
 		setColor();
 		b_out.value = b.value;
 	}, false);
-	/*
-	document.getElementById("b").addEventListener('input', function() {
-		setColor();
-		b_out.value = b.value;
-	}, false);
-	*/
 }
