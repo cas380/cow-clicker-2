@@ -332,9 +332,9 @@ function alertResult(httpRequest) {
 		if (saveCheck == 0) {
 			document.getElementById("saveCheckDiv").innerHTML = "";
 		}
-        /*if (httpRequest.status === 200) {
-            alert("ALERTING!  Value sent to server!");
-        }*/ // No need to stratify by code yet...
+        if (httpRequest.status === 200) {
+            alert("Value successfully sent!");
+        } // No need to stratify by code yet...
     } 
 }
 
@@ -450,6 +450,7 @@ function setColor() {
 		hex = "#" + pad(r_hex) + pad(g_hex) + pad(b_hex);
 	body.style.backgroundColor = hex; 
 	hex_out.value = hex;
+	saveCheck++;
 	saveColor(); // request to Python
 }
   
