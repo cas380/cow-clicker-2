@@ -157,6 +157,12 @@
 			background: rgba(255,255,255,.3);
 		}
 
+		#RGBsliders {
+			padding: 4px;
+			background-color: rgba(25,25,25,.2);
+			border-radius: 5px;
+		}
+
 
 /* ================== Store Stuff ================== */
 

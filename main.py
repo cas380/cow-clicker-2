@@ -134,22 +134,31 @@ def loadState():
 
 @app.route('/store.html', methods=['GET', 'POST'])
 def store():
-  if "userDict" in session:
-    username = session["userDict"]["username"]
-    password = session["userDict"]["password"]
-    user = User(username, password, False)
-  else: # check to make sure someone didn't type out this URL
-    return redirect(url_for("login"))
+	if "userDict" in session:
+		username = session["userDict"]["username"]
+		password = session["userDict"]["password"]
+		user = User(username, password, False)
+	else: # check to make sure someone didn't type out this URL
+		return redirect(url_for("login"))
 
-  print(type(user)) # is a User
-  print(user) # is a User
-  entity = test_grab(user) # user's data for sure (needed to start game)
+	if "hex" in session:
+		r = session["r"]
+		g = session["g"]
+		b = session["b"]
+		hexCode = session["hex"]
+	else:
+		r = 91
+		g = 208
+		b = 80
+		hexCode = "5bd050"
+	
+	entity = test_grab(user) # user's data for sure (needed to start game)
 
-  if entity: # shouldn't ever be empty??????
-    return render_template('store.html', init_points=entity['points'], init_cows=entity['cows'])
-    #, init_username=entity['username'])
-  else:
-    return render_template('store.html', init_points=0, init_cows=1)
+	if entity: # shouldn't ever be empty??????
+		return render_template('store.html', init_points=entity['points'], init_cows=entity['cows'], r=r, b=b, g=g, hex=hexCode)
+		#, init_username=entity['username'])
+	else:
+		return render_template('store.html', init_points=0, init_cows=1, r=r, b=b, g=g, hex=hexCode)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
