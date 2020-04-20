@@ -363,8 +363,9 @@ function hasCow(cowEnum) {
 function attemptCowPurchase(imageElement, cowEnum, cowName) {
 	try {
 		// get the point cost for that cow (will not fail unless the HTML is messed up)
-		var cost = Number(imageElement.parentNode.childNodes[3].childNodes[1].innerHTML); 
+		var cost = Number(imageElement.parentNode.childNodes[3].childNodes[1].childNodes[3].childNodes[0].innerHTML); 
 	} catch {
+		// not guaranteed to run
 		createLog("CRITICAL ERROR: DOM structure changed!", 0);
 	}
 	if (!hasCow(cowEnum)) { // if you can buy the cow and don't already own it
