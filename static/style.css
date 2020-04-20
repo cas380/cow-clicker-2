@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:700);
 body{
-  background-color: rgb(109, 167, 104);
+  background-color: rgba(57, 199, 44, 0.829);
   text-align: center;
   padding: 40px 0 0 0; 
 }
@@ -170,6 +170,9 @@ form {
 	width: 250px;
 	height: 250px;
 	text-align: center;
+	padding: 5px;
+	border: rgba(247, 189, 30, 0.952);
+	border-radius: 5px;
 }
 .storeImg {
 	width: 200px;
@@ -193,19 +196,19 @@ form {
 
 
 .tier1 {
-	background-color: rgba(80, 80, 80, 0.788);
+	background-color: rgba(78, 78, 78, 0.788);
 }
 .tier2 {
-	background-color: rgba(31, 42, 192, 0.788);
+	background-color: rgba(27, 37, 172, 0.788);
 }
 .tier3 {
-	background-color: rgba(152, 40, 196, 0.788);
+	background-color: rgba(128, 34, 165, 0.753);
 }
 .tier4 {
-	background-color: rgba(35, 213, 219, 0.932);
+	background-color: rgba(47, 213, 219, 0.801);
 }
 .tier5 {
-	background-color: rgba(230, 64, 50, 0.788);
+	background-color: rgba(197, 32, 17, 0.788);
 }
 .progenitor {
 	background-color: rgba(247, 189, 30, 0.952);
