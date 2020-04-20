@@ -117,7 +117,7 @@ def color_session():
 	session["b"] = request.form["b"]
 	session["hex"] = request.form["hex"]
 
-	return "OK!"
+	return "Received r = " + session["r"] + ", g = " + session["g"] + ", b = " + session["b"] + ", hex = " + session["hex"]
 
 @app.route('/to-store')
 def loadState():

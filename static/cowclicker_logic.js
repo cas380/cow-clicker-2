@@ -333,7 +333,7 @@ function alertResult(httpRequest) {
 		if (saveCheck == 0) {
 			document.getElementById("saveCheckDiv").innerHTML = "";
 		}
-		alert(httpRequest);
+		alert(httpRequest.responseText);
         if (httpRequest.status === 200) {
             alert("Value successfully sent!");
         } else {
