@@ -43,22 +43,28 @@ def register():
 # Midpage to put user data in a session, routing to the game
 @app.route('/to-cow-game', methods=['POST'])
 def signin():
-  username = request.form.get('username')
-  password = request.form.get('password')
-  user = User(username, password, True)
+	username = request.form.get('username')
+	password = request.form.get('password')
+	user = User(username, password, True)
 
-  entity = test_grab(user) # user's data
-  if not entity:
-    flash("User does not exist")
-    return render_template('login.html')
-  else:
-    entity = test_grab(user) # user's data for sure (needed to start game)
-    session["userDict"] = user.to_dict()
-	r = session["r"]
-	g = session["g"]
-	b = session["b"]
-	hexCode = session["hex"]
-    return redirect(url_for("game", r=r, g=g, b=b, hex=hexCode))
+	entity = test_grab(user) # user's data
+	if not entity:
+		flash("User does not exist")
+		return render_template('login.html')
+	else:
+		entity = test_grab(user) # user's data for sure (needed to start game)
+		session["userDict"] = user.to_dict()
+		if "r" in session:
+			r = session["r"]
+			g = session["g"]
+			b = session["b"]
+			hexCode = session["hex"]
+		else:
+			r = 91
+			g = 208
+			b = 80
+			hexCode = "5bd050"
+		return redirect(url_for("game", r=r, g=g, b=b, hex=hexCode))
 
 @app.route('/cowclicker.html', methods=['GET', 'POST']) # accept re-routing from form
 def game():
