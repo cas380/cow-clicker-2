@@ -6,30 +6,31 @@
 		{% block scripts %}{% endblock %}
 	</head>
 	{% block bodytype %}{% endblock %}
-		<table class="headBox">
-			<tr>
-				<td width="150" style="text-align: center;">
-					You have<br />
-					<div id="points" style="font-size: 24px;">{{ init_points }}</div><br />
-					points.
-				</td>
-				<td>
-					<div id="logBox">
-						<p id="init_msg">Loading...</p>
-					</div>
-				</td>
-				<td width="150" style="text-align: center;">
-					{% if pageHeader == "Game" %}
-						<strong><a href="store.html" target="_Self" style="font-size: 24px; text-decoration: none;">COW STORE</a></strong>
-					{% elif pageHeader == "Shop" %}
-						<strong><a href="cowclicker.html" target="_Self" style="font-size: 24px; text-decoration: none;">PASTURE</a></strong>
-					{% endif %}
-					<br /><br />
-					<strong><a href="login.html" target="_Self" style="font-size: 24px; text-decoration: none;">LOGOUT</a></strong>
-				</td>
-			</tr>
-		</table>
-
+		{% if pageHeader %}
+			<table class="headBox">
+				<tr>
+					<td width="150" style="text-align: center;">
+						You have<br />
+						<div id="points" style="font-size: 24px;">{{ init_points }}</div><br />
+						points.
+					</td>
+					<td>
+						<div id="logBox">
+							<p id="init_msg">Loading...</p>
+						</div>
+					</td>
+					<td width="150" style="text-align: center;">
+						{% if pageHeader == "Game" %}
+							<strong><a href="store.html" target="_Self" style="font-size: 24px; text-decoration: none;">COW STORE</a></strong>
+						{% elif pageHeader == "Shop" %}
+							<strong><a href="cowclicker.html" target="_Self" style="font-size: 24px; text-decoration: none;">PASTURE</a></strong>
+						{% endif %}
+						<br /><br />
+						<strong><a href="login.html" target="_Self" style="font-size: 24px; text-decoration: none;">LOGOUT</a></strong>
+					</td>
+				</tr>
+			</table>
+		{% endif %}
 		<br />
 		<br />
 		{% block content %}{% endblock %}
