@@ -467,29 +467,30 @@ function changeColor() {
 		setColor();
 		r_out.value = r.value;
 	}, false);
-	
+	/*
 	document.getElementById("r").addEventListener('input', function() {
 		setColor();
 		r_out.value = r.value;
 	}, false);
-	
+	*/
 	document.getElementById("g").addEventListener('change', function() {
 		setColor();
 		g_out.value = g.value;
 	}, false);
-	
+	/*
 	document.getElementById("g").addEventListener('input', function() {
 		setColor();
 		g_out.value = g.value;
 	}, false);
-	
+	*/
 	document.getElementById("b").addEventListener('change', function() {
 		setColor();
 		b_out.value = b.value;
 	}, false);
-
+	/*
 	document.getElementById("b").addEventListener('input', function() {
 		setColor();
 		b_out.value = b.value;
 	}, false);
+	*/
 }
