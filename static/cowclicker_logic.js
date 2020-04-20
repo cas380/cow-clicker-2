@@ -163,7 +163,7 @@ function setSaving() {
 	saver.style.display = "inline";
 }
 function resetSaving() { // only run when saveCheck == 0
-	saver.style.display = "hidden";
+	saver.style.display = "none";
 }
 
 // runs when a cow is clicked
