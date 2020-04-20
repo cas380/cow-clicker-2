@@ -306,6 +306,7 @@ function saveGame() {
 
 // Cow-click specific request (saving data!)
 function saveColor() {
+	alert("Saving: " + "r=" + r.value + "&g=" + g.value + "&b=" + b.value + "&hex=" + hex_out.value);
 	makePost("/paint-change", "r=" + r.value + "&g=" + g.value + "&b=" + b.value + "&hex=" + hex_out.value);
 }
 
@@ -334,7 +335,9 @@ function alertResult(httpRequest) {
 		}
         if (httpRequest.status === 200) {
             alert("Value successfully sent!");
-        } // No need to stratify by code yet...
+        } else {
+            alert("Unsuccessful request!");
+		}// No need to stratify by code yet...
     } 
 }
 

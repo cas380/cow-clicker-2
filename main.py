@@ -52,9 +52,9 @@ def signin():
 		flash("User does not exist")
 		return render_template('login.html')
 	else:
-		entity = test_grab(user) # user's data for sure (needed to start game)
+		# entity = test_grab(user) # user's data for sure (needed to start game)
 		session["userDict"] = user.to_dict()
-		if "r" in session:
+		if "hex" in session:
 			r = session["r"]
 			g = session["g"]
 			b = session["b"]
