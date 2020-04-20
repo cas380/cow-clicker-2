@@ -18,12 +18,12 @@ app.secret_key = b'0`[x;g.s|+ddi~9^mc@z?'
 @app.route('/')
 @app.route('/login.html')
 def login():
-  return render_template('login.html')
+	return render_template('login.html')
 
 # Register page
 @app.route('/register.html')
 def registerPage():
-  return render_template('register.html')
+	return render_template('register.html')
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -54,7 +54,11 @@ def signin():
   else:
     entity = test_grab(user) # user's data for sure (needed to start game)
     session["userDict"] = user.to_dict()
-    return redirect(url_for("game"))
+	r = session["r"]
+	g = session["g"]
+	b = session["b"]
+	hexCode = session["hex"]
+    return redirect(url_for("game", r=r, g=g, b=b, hex=hexCode))
 
 @app.route('/cowclicker.html', methods=['GET', 'POST']) # accept re-routing from form
 def game():
@@ -78,19 +82,36 @@ def game():
 # Fired from within cowclicker whenever a cow is clicked
 @app.route('/update-user', methods=['POST'])
 def save_to_datastore():
-  if "userDict" in session:
-    username = session["userDict"]["username"]
-    password = session["userDict"]["password"]
-    user = User(username, password, False)
-  else: # check to make sure someone didn't type out this URL
-    return redirect(url_for("login"))
+	if "userDict" in session:
+		username = session["userDict"]["username"]
+		password = session["userDict"]["password"]
+		user = User(username, password, False)
+	else: # check to make sure someone didn't type out this URL
+		return redirect(url_for("login"))
 
-  points = request.form["points"]
-  cows = request.form["cows"]
-  user = User(username, password, False)
+	points = request.form["points"]
+	cows = request.form["cows"]
+	user = User(username, password, False)
   
-  test_put(user, points, cows)
-  return "OK!"
+	test_put(user, points, cows)
+	return "OK!"
+
+# Fired from within cowclicker whenever the BG color is changed
+@app.route('/paint-change', methods=['POST'])
+def color_session():
+	if "userDict" in session:
+		username = session["userDict"]["username"]
+		password = session["userDict"]["password"]
+		user = User(username, password, False)
+	else: # check to make sure someone didn't type out this URL
+		return redirect(url_for("login"))
+	
+	session["r"] = request.form["r"]
+	session["g"] = request.form["g"]
+	session["b"] = request.form["b"]
+	session["hex"] = request.form["hex"]
+
+	return "OK!"
 
 @app.route('/to-store')
 def loadState():

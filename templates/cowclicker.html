@@ -68,23 +68,42 @@
 
 	<fieldset>
 		<label for="r">R</label>
-		<input type="range" min="0" max="255" id="r" step="1" value="0">
-		<output for="r" id="r_out">0</output>
-	  </fieldset>  
-	  
-	  <fieldset>
+		{% if r %}
+			<input type="range" min="0" max="255" id="r" step="1" value="{{ r }}" />
+			<output for="r" id="r_out">{{ r }}</output>
+		{% else %}
+			<input type="range" min="0" max="255" id="r" step="1" value="91" />
+			<output for="r" id="r_out">91</output>
+		{% endif %}
+	</fieldset>  
+	
+	<fieldset>
 		<label for="g">G</label>
-		<input type="range" min="0" max="255" id="g" step="1" value="0">
-		<output for="g" id="g_out">0</output>
-	  </fieldset>
+		{% if g %}
+			<input type="range" min="0" max="255" id="g" step="1" value="{{ g }}" />
+			<output for="g" id="g_out">{{ g }}</output>
+		{% else %}
+			<input type="range" min="0" max="255" id="r" step="1" value="208" />
+			<output for="r" id="r_out">208</output>
+		{% endif %}
+	</fieldset>
 	  
-	  <fieldset>
+	<fieldset>
 		<label for="b">B</label>
-		<input type="range" min="0" max="255" id="b" step="1" value="0">
-		<output for="b" id="b_out">0</output>
-	  </fieldset>
-	  
-	  <output id="hex">#000000</output>
+		{% if b %}
+			<input type="range" min="0" max="255" id="r" step="1" value="{{ b }}" />
+			<output for="r" id="r_out">{{ b }}</output>
+		{% else %}
+			<input type="range" min="0" max="255" id="b" step="1" value="80" />
+			<output for="b" id="b_out">80</output>
+		{% endif %}
+	</fieldset>
+
+	{% if hex %}
+		<output id="hex">#{{ hex }}</output>
+	{% else %}
+		<output id="hex">#5bd050</output>
+	{% endif %}
 	<br />
 	<strong><p id="saveCheckDiv" style="color: brown;"></p></strong>
 	<br />

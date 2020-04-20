@@ -52,13 +52,15 @@ const cowAddressSpace = [STANDARD_COW, CUTE_COW, SILLY_COW, CHONK_COW, MINECRAFT
 BABY_COW, MILTANK_COW, CHEESE_COW, SECRET_COW, STRAWBERRY_COW, WEBKINZ_COW, DUMB_COW, 
 AC_COW, BROKEN_COW, SPOOKY_COW, MARIO_COW];
 
+// global DOM variables for ease of color change
+var body, r, g, b, r_out, g_out, b_out, hex_out;
+
 // global variable for requests
 var saveCheck;
-var body, r, g, b, r_out, g_out, b_out, hex_out;
 
 // load the game
 window.addEventListener('load', function() {
-	// DOM variables for color changing
+	// initialize DOM variables
 	body = document.body;
 	r = document.getElementById("r");
 	g = document.getElementById("g");
@@ -68,7 +70,7 @@ window.addEventListener('load', function() {
 	b_out = document.getElementById("b_out");
 	hex_out = document.getElementById("hex");
 
-	// variable for requests (saving data)
+	// initialize to 0 unfinished requests
 	saveCheck = 0;
 
     loadGameState();
@@ -289,16 +291,26 @@ function animateCows() {
 
 function setup() {
     let pasture = document.getElementById("thePasture");
-    // Used for cowclicker.html, store.html calls makePost() on click manually so it can store the correct values
+    // Used for cowclicker.html, store.html calls saveGame() on click manually so it can store the correct values
     for (var children = 0; children < pasture.childNodes.length; children++) {
         if (pasture.childNodes[children] instanceof HTMLImageElement) {
-            pasture.childNodes[children].addEventListener("click", makePost, true);
+            pasture.childNodes[children].addEventListener("click", saveGame, true);
         }
     }
 }
 
+// Cow-click specific request (saving data!)
+function saveGame() {
+	makePost("/update-user", "points=" + document.getElementById("points").innerHTML + "&cows=" + document.getElementById("cows").innerHTML);
+}
 
-function makePost() {
+// Cow-click specific request (saving data!)
+function saveColor() {
+	makePost("/paint-change", "r=" + r.value + "&g=" + g.value + "&b=" + b.value + "&hex=" + hex_out.value);
+}
+
+// Sends a request to active the python on the server
+function makePost(URL, data) {
     var httpRequest = new XMLHttpRequest();
 
     if (!httpRequest) {
@@ -308,12 +320,9 @@ function makePost() {
             
     httpRequest.onreadystatechange = function() { alertResult(httpRequest) };
     
-    httpRequest.open("POST", "/update-user");
+    httpRequest.open("POST", URL);
     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    var data;
-    data = "points=" + document.getElementById("points").innerHTML + "&cows=" + document.getElementById("cows").innerHTML;
-    
     httpRequest.send(data);
 }
 
@@ -431,7 +440,7 @@ function buyThatCow(imageElement) {
 	}
 
 	// Save it!
-	makePost();
+	saveGame();
 }
 
 function setColor() {
@@ -441,6 +450,7 @@ function setColor() {
 		hex = "#" + pad(r_hex) + pad(g_hex) + pad(b_hex);
 	body.style.backgroundColor = hex; 
 	hex_out.value = hex;
+	saveColor(); // request to Python
 }
   
 function pad(n) {
