@@ -5,37 +5,6 @@
 {% endblock %}
 
 {% block content %} <!-- All of this gets put inside the <body> -->
-    <br />
-    <br />
-    <br />
-    <form action="/to-cow-game" method="POST">
-        <table style="margin: auto; width: 500px; border-radius: 25px; border-width: 4px; border-style: solid; border-color: rgba(2, 68, 0, 0.87); background-color:rgb(135, 202, 115, 0.95);">
-            <tr>
-                <td colspan="2" style="text-align: center;"><h1>Welcome to Cow Clicker 2</h1></td>
-            </tr>
-            <tr>
-                <td style="text-align:center;">Username:<input type="text" name="username"></td>
-            </tr>
-            <tr>
-                <td style="text-align:center;">Password:<input type="password" name="password"></td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align: center;"><input style="margin-top: 10px;" type="submit" value="Submit"></td>
-            </tr>
-            <tr>
-               <td colspan="2" style="text-align: center;">Don't have an account? <a href="register.html">Register</a></td>
-            </tr>
-          <tr>
-            <td><br /></td>
-          </tr>
-        </table>
-        {% extends '_base.html' %}
-  
-{% block bodytype %} <!-- The tag we will use for the <body> -->
-	<body style="background-image: url(static/extras/CowBackground.jpg);">
-{% endblock %}
-
-{% block content %} <!-- All of this gets put inside the <body> -->
 	<br />
 	<br />
 	<br />
@@ -70,7 +39,7 @@
 		<br />
 		{% with messages = get_flashed_messages() %}
 			{% if messages %}
-				<div style="text-align: center; color: red; font-size:large">
+				<div style="text-align: center; color: red; font-size:large;">
 					{% for message in messages %}
 						{{ message }}
 					{% endfor %}
