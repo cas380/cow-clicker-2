@@ -158,6 +158,7 @@
 		}
 
 		#RGBsliders {
+			width: 350px;
 			padding: 4px;
 			background-color: rgba(25,25,25,.2);
 			border-radius: 5px;
