@@ -1,234 +1,255 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:700);
-body{
-  background-color: rgba(57, 199, 44, 0.829);
-  text-align: center;
-  padding: 40px 0 0 0; 
-}
-fieldset{
-  border: none;
-}
-output{
-  display: inline-block;
-  min-width: 2.5em;
-}
-label, output{
-  padding: 2px 9px;
-  border-radius: 3px;
-  font-family: 'Roboto', sans-serif;
-  color: #000;
-  font-size: 1.1em;
-}
-label[for=r], output[for=r]{
-  background-color: #f00;
-}
-label[for=g], output[for=g]{
-  background-color: #0f0;
-}
-label[for=b], output[for=b]{
-  background-color: #00f;
-}
-#hex{
-  min-width: 4.5em;
-  font-size: 1.1em;
-  background: rgba(255,255,255,.3);
-}
 
-#points {
-	color: yellow;
-	font-weight: bold;
-	overflow: hidden;
-	width: 150px;
-	display: inline-block;
-}
+/* ================== General Page Stuff ================== */
 
-td {
-	padding: 4px;
-}
+	h1 {
+		font-size: 30px;
+		text-align: center;
+	}
 
-h1 {
-	font-size: 30px;
-    text-align: center;
-}
+	form {
+		text-align: center;
+	}
 
-form {
-    text-align: center;
-}
-
-#topFence {
-	width: 550px;
-	height: 50px;
-	float: left;
-
-	background-image: url("media/northFence.png");
-	background-repeat: repeat-x;
-	background-size: contain;
-}
-
-#leftFence {
-	width: 50px;
-	height: 350px;
-	float: left;
-
-	background-image: url("media/westFence.png");
-	background-repeat: repeat-y;
-	background-size: contain;
-}
-
-#rightFence {
-	width: 50px;
-	height: 350px;
-	float: right;
-
-	background-image: url("media/eastFence.png");
-	background-repeat: repeat-y;
-	background-size: contain;
-}
-
-#bottomFence {
-	width: 550px;
-	height: 50px;
-	float: right;
-
-	background-image: url("media/southFence.png");
-	background-repeat: repeat-x;
-	background-size: contain;
-}
-
-#largerPasture {
-	width: 600px;
-	height: 400px;
-	margin: auto;
-}
-
-#thePasture {
-	width: 500px;
-	height: 300px;
-	margin: auto;
-	float: right;
-    background-color: forestgreen;
-	overflow: hidden;
-
-	background-image: url("media/grassTexture.jpg");
-	background-repeat: repeat;
-
-	position: relative;
-}
-
-.clickableCow {
-    width: 100px;
-    height: 100px;
-    cursor: pointer;
-	display: none;
+	td {
+		padding: 4px;
+	}
 	
-	position: absolute;
-	left: -100px;
-	top: -100px;
-}
-
-#saveCheckDiv {
-	text-align: center;
-	color: rgb(226, 56, 232);
-	font-size: 18px;
-	opacity: 0.8;
-}
-
-#logBox {
-	width: 400px;
-	height: 100px;
-	overflow-y: scroll;
-
-	border-style: solid;
-	border-width: 4px;
-	border-color: #444;
-	background-color: #f7ffff;
-}
-
-#init_msg {
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-.logItem {
-	border-top: solid;
-	border-width: 1px;
-	border-color: gray;
-	vertical-align: middle;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 12px;
-}
+	/* link colors */
+	a:link {
+	  color: black;
+	}
+	a:visited {
+	  color: black;
+	}
+	a:hover {
+	  color: #333;
+	}
+	a:active {
+	  color: #222;
+	}
 
 
-.green {
-	color: #1cc326;
-}
-.red {
-	color: lightcoral;
-}
+/* ================== Cow Clicker Stuff ================== */
 
-.storeItem {
-	width: 250px;
-	height: 250px;
-	text-align: center;
-	padding: 5px;
-	border: rgba(247, 189, 30, 0.952);
-	border-radius: 5px;
-}
-.storeImg {
-	width: 200px;
-	height: 200px;
-	cursor: pointer;
-}
+	#points {
+		color: yellow;
+		font-weight: bold;
+		overflow: hidden;
+		width: 150px;
+		display: inline-block;
+	}
 
-.descript{
-    text-align:initial;
-    display: block;
-}
+	#saveCheckDiv {
+		text-align: center;
+		color: rgb(226, 56, 232);
+		font-size: 18px;
+		opacity: 0.8;
+	}
 
-#dName{
-    float:left;
-    font-weight: bold;
-    text-align:left;
-}
-#dPoint{
-    text-align:right;
-}
+	/* ================== The Pasture ================== */
 
-.tier1 {
-	background-color: rgba(78, 78, 78, 0.788);
-}
-.tier2 {
-	background-color: rgba(27, 37, 172, 0.788);
-}
-.tier3 {
-	background-color: rgba(128, 34, 165, 0.753);
-}
-.tier4 {
-	background-color: rgba(47, 213, 219, 0.801);
-}
-.tier5 {
-	background-color: rgba(197, 32, 17, 0.788);
-}
-.progenitor {
-	background-color: rgba(247, 189, 30, 0.952);
-}
+		#topFence {
+			width: 550px;
+			height: 50px;
+			float: left;
 
-/* unvisited link */
-a:link {
-  color: black;
-}
+			background-image: url("media/northFence.png");
+			background-repeat: repeat-x;
+			background-size: contain;
+		}
 
-/* visited link */
-a:visited {
-  color: black;
-}
+		#leftFence {
+			width: 50px;
+			height: 350px;
+			float: left;
 
-/* mouse over link */
-a:hover {
-  color: #333;
-}
+			background-image: url("media/westFence.png");
+			background-repeat: repeat-y;
+			background-size: contain;
+		}
 
-/* selected link */
-a:active {
-  color: #222;
-}
+		#rightFence {
+			width: 50px;
+			height: 350px;
+			float: right;
+
+			background-image: url("media/eastFence.png");
+			background-repeat: repeat-y;
+			background-size: contain;
+		}
+
+		#bottomFence {
+			width: 550px;
+			height: 50px;
+			float: right;
+
+			background-image: url("media/southFence.png");
+			background-repeat: repeat-x;
+			background-size: contain;
+		}
+
+		#largerPasture {
+			width: 600px;
+			height: 400px;
+			margin: auto;
+		}
+
+		#thePasture {
+			width: 500px;
+			height: 300px;
+			margin: auto;
+			float: right;
+			background-color: forestgreen;
+			overflow: hidden;
+
+			background-image: url("media/grassTexture.jpg");
+			background-repeat: repeat;
+
+			position: relative;
+		}
+
+		.clickableCow {
+			width: 100px;
+			height: 100px;
+			cursor: pointer;
+			display: none;
+	
+			position: absolute;
+			left: -100px;
+			top: -100px;
+		}
+	
+	/* ================== Background Color Stuff ================== */
+
+		@import url(https://fonts.googleapis.com/css?family=Roboto:700);
+
+		body{
+			background-color: rgba(57, 199, 44, 0.829);
+			text-align: center;
+			padding: 40px 0 0 0; 
+		}
+		fieldset{
+			border: none;
+		}
+		output{
+			display: inline-block;
+			min-width: 2.5em;
+		}
+		label, output{
+			padding: 2px 9px;
+			border-radius: 3px;
+			font-family: 'Roboto', sans-serif;
+			color: #000;
+			font-size: 1.1em;
+		}
+		label[for=r], output[for=r]{
+			background-color: #f00;
+		}
+		label[for=g], output[for=g]{
+			background-color: #0f0;
+		}
+		label[for=b], output[for=b]{
+			background-color: #00f;
+		}
+		#hex{
+			min-width: 4.5em;
+			font-size: 1.1em;
+			background: rgba(255,255,255,.3);
+		}
+
+
+/* ================== Store Stuff ================== */
+
+	.storeItem {
+		width: 250px;
+		height: 250px;
+		text-align: center;
+		padding: 5px;
+		border: rgba(247, 189, 30, 0.952);
+		border-radius: 5px;
+	}
+
+	.storeImg {
+		width: 200px;
+		height: 200px;
+		cursor: pointer;
+	}
+
+	.descript{
+		text-align: initial;
+		display: block;
+	}
+	#dName{
+		float: left;
+		font-weight: bold;
+		text-align: left;
+	}
+	#dPoint{
+		text-align: right;
+	}
+
+	.tier1 {
+		background-color: rgba(78, 78, 78, 0.788);
+	}
+	.tier2 {
+		background-color: rgba(27, 37, 172, 0.788);
+	}
+	.tier3 {
+		background-color: rgba(128, 34, 165, 0.753);
+	}
+	.tier4 {
+		background-color: rgba(47, 213, 219, 0.801);
+	}
+	.tier5 {
+		background-color: rgba(197, 32, 17, 0.788);
+	}
+	.progenitor {
+		background-color: rgba(247, 189, 30, 0.952);
+	}
+
+	
+/* ================== Log Box ================== */
+	
+	.headBox {
+		margin: auto;
+		border-radius: 20px;
+		border-width: 4px;
+		border-style: solid;
+		border-color: rgba(2, 68, 0, 0.87);
+		font-size: 12px;
+		background-color:rgba(155, 93, 36, 0.925);
+	}
+
+	#logBox {
+		width: 400px;
+		height: 100px;
+		overflow-y: scroll;
+
+		border-style: solid;
+		border-width: 4px;
+		border-color: #444;
+		background-color: #f7ffff;
+	}
+
+	#init_msg {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.logItem {
+		border-top: solid;
+		border-width: 1px;
+		border-color: gray;
+		vertical-align: middle;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 12px;
+	}
+
+	/* log colors */
+	.green {
+		color: #1cc326;
+	}
+	.red {
+		color: lightcoral;
+	}
