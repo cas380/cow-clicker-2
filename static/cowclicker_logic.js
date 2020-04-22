@@ -248,8 +248,8 @@ function animateThisCow(cowCount) { // Math.floor(Math.random()*500) + 1; // thi
             newCow.style.top = topSpace+"px";
 
             // Changes every increment, adds a dawdle animation
-            stepX = Math.floor(Math.random()*4) // Random number between 0 and 3
-            stepY = Math.floor(Math.random()*4) // Random number between 0 and 3
+            stepX = Math.floor(Math.random()*4); // Random number between 0 and 3
+            stepY = Math.floor(Math.random()*4); // Random number between 0 and 3
 
             if (directionX) {
                 leftSpace += stepX;
