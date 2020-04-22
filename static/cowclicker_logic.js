@@ -119,8 +119,8 @@ function cowClickSwitch(imgName) {
 			return [200*rollout, "Miltank Cow"];
 		case CHEESE_COW:
 			return [prevClick, "Cheese Cow"];
-		case SECRET_COW: // recursive with random cow
-			var retArr = cowClickSwitch(cowAddressSpace[Math.floor(Math.random()*COW_TOTAL)]); // if it chooses Secret Cow, recurses again
+		case SECRET_COW: // recursive with random cow               cow total - 1 to avoid progenitor cow
+			var retArr = cowClickSwitch(cowAddressSpace[Math.floor(Math.random()*(COW_TOTAL-1))]); // if it chooses Secret Cow, recurses again
 			retArr[1] = "Secret " + retArr[1]; // will add as many "Secret" as there are recursions
 			return retArr;
 		case STRAWBERRY_COW:
