@@ -4,6 +4,17 @@
 		<title>Cow Clicker 2</title>
 		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 		{% block scripts %}{% endblock %}
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#formPassword').bind("cut copy paste", function(e) {
+					e.preventDefault();
+					$('#formPassword').bind("contextmenu", function(e) {
+						e.preventDefault();
+					});
+				});
+			});
+		</script>
 	</head>
 	{% block bodytype %}{% endblock %}
 		{% if pageHeader %}
