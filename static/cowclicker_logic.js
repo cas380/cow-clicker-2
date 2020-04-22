@@ -10,7 +10,7 @@
 Make sure you get the file extensions right! */
 
 // total number of cows (in existence, not of the user), used in loops
-let COW_TOTAL = 16;
+let COW_TOTAL = 17;
 
 // Define the bitwise representations
 // the rightmost number is the cow's ID!
@@ -30,27 +30,29 @@ const AC_ENUM = Math.pow(2, 12)
 const BROKEN_ENUM = Math.pow(2, 13);
 const SPOOKY_ENUM = Math.pow(2, 14);
 const MARIO_ENUM = Math.pow(2, 15);
+const PROGENITOR_ENUM = Math.pow(2, 16);
 
 // Define the cow image addresses...
 const STANDARD_COW = "standardCow.png";
-const CUTE_COW = "cuteCartoonCow.png";
+const CUTE_COW = "cuteCow.png";
 const SILLY_COW = "sillyCow.png";
-const CHONK_COW = "chonkCow2.png";
+const CHONK_COW = "chonkCow.png";
 const MINECRAFT_COW = "minecraftCow.jpg";
 const BABY_COW = "babyCow.png";
 const MILTANK_COW = "miltankCow.png";
-const CHEESE_COW = "cheeseCow2.png";
+const CHEESE_COW = "cheeseCow.png";
 const SECRET_COW = "secretCow.png";
 const STRAWBERRY_COW = "strawberryCow.png";
-const WEBKINZ_COW = "webkinzCow2.png";
-const DUMB_COW = "dumbCow2.png";
+const WEBKINZ_COW = "webkinzCow.png";
+const DUMB_COW = "dumbCow.png";
 const AC_COW = "animalCrossingCow.png";
-const BROKEN_COW = "brokenCow2.png";
-const SPOOKY_COW = "spookyCow2.png";
-const MARIO_COW = "marioCow2.png";
+const BROKEN_COW = "brokenCow.png";
+const SPOOKY_COW = "spookyCow.png";
+const MARIO_COW = "marioCow.png";
+const PROGENITOR_COW = "progenitorCow.png";
 const cowAddressSpace = [STANDARD_COW, CUTE_COW, SILLY_COW, CHONK_COW, MINECRAFT_COW, 
 BABY_COW, MILTANK_COW, CHEESE_COW, SECRET_COW, STRAWBERRY_COW, WEBKINZ_COW, DUMB_COW, 
-AC_COW, BROKEN_COW, SPOOKY_COW, MARIO_COW];
+AC_COW, BROKEN_COW, SPOOKY_COW, MARIO_COW, PROGENITOR_COW];
 
 // global DOM variables for ease of color change
 var body, r, g, b, r_out, g_out, b_out, hex_out, saver;
@@ -151,6 +153,8 @@ function cowClickSwitch(imgName) {
 			// uses some multiple of the previous points
 			var inc = Math.ceil(((Math.random()*10)/5)*prevClick);
 			return [inc, "Mario Kart Cow"];
+		case PROGENITOR_COW:
+			return [Infinity, "Progenitor Cow"];
 		default:
 			alert("Default case ran!\n Problem in cowClickSwitch()\n\n Image name: "+imgName);
 			return null;
@@ -436,6 +440,9 @@ function buyThatCow(imageElement) {
 			break;
 		case MARIO_COW:
 			success = attemptCowPurchase(imageElement, MARIO_ENUM, "Mario Kart Cow");
+			break;
+		case PROGENITOR_COW:
+			success = attemptCowPurchase(imageElement, PROGENITOR_ENUM, "Progenitor Cow");
 			break;
 		default:
 			console.log("buyThatCow switch default case ran.");
