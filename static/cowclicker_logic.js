@@ -34,20 +34,20 @@ const MARIO_ENUM = Math.pow(2, 15);
 // Define the cow image addresses...
 const STANDARD_COW = "standardCow.png";
 const CUTE_COW = "cuteCartoonCow.png";
-const SILLY_COW = "sillyCow.jpg";
-const CHONK_COW = "chonkCow.jpg";
+const SILLY_COW = "sillyCow2.png";
+const CHONK_COW = "chonkCow2.png";
 const MINECRAFT_COW = "minecraftCow.jpg";
 const BABY_COW = "babyCow.png";
 const MILTANK_COW = "miltankCow.png";
 const CHEESE_COW = "cheeseCow.png";
 const SECRET_COW = "secretCow.png";
 const STRAWBERRY_COW = "strawberryCow.png";
-const WEBKINZ_COW = "webkinzCow.png";
-const DUMB_COW = "dumbCow.png";
+const WEBKINZ_COW = "webkinzCow2.png";
+const DUMB_COW = "dumbCow2.png";
 const AC_COW = "animalCrossingCow.png";
-const BROKEN_COW = "brokenCow.jpg";
-const SPOOKY_COW = "spookyCow.jpg";
-const MARIO_COW = "marioCow.png";
+const BROKEN_COW = "brokenCow2.png";
+const SPOOKY_COW = "spookyCow2.png";
+const MARIO_COW = "marioCow2.png";
 const cowAddressSpace = [STANDARD_COW, CUTE_COW, SILLY_COW, CHONK_COW, MINECRAFT_COW, 
 BABY_COW, MILTANK_COW, CHEESE_COW, SECRET_COW, STRAWBERRY_COW, WEBKINZ_COW, DUMB_COW, 
 AC_COW, BROKEN_COW, SPOOKY_COW, MARIO_COW];
