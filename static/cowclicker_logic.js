@@ -442,7 +442,11 @@ function buyThatCow(imageElement) {
 			success = attemptCowPurchase(imageElement, MARIO_ENUM, "Mario Kart Cow");
 			break;
 		case PROGENITOR_COW:
-			success = attemptCowPurchase(imageElement, PROGENITOR_ENUM, "Progenitor Cow");
+			if (cows == 65535) { // hard-coded, would need changed if any more cows are ever added...
+				success = attemptCowPurchase(imageElement, PROGENITOR_ENUM, "Progenitor Cow");
+			} else {
+				success = "IDOL";
+			}
 			break;
 		default:
 			console.log("buyThatCow switch default case ran.");
@@ -456,6 +460,9 @@ function buyThatCow(imageElement) {
 			break;
 		case "POOR":
 			createLog("You don't have enough points to buy that!", -1);
+			break;
+		case "IDOL":
+			createLog("You must buy all other cows before purchasing this one.", -1);
 			break;
 		default:
 			// No errors!
