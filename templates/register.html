@@ -33,7 +33,7 @@
     <br />
     {% with messages = get_flashed_messages() %}
     {% if messages %}
-        <div style="text-align: center;color: red; font-size: large;">
+        <div class="flashError">
             {% for message in messages %}
                 {{ message }}
             {% endfor %}
