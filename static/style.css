@@ -16,8 +16,11 @@
 
 	.flashError {
 		padding: 10px;
-		background-color: rgba(255, 255, 255, 0.3);
+		background-color: rgba(10, 10, 10, 0.8);
 		border-radius: 50px;
+		width: 150px;
+		margin: auto;
+		font-weight: bold;
 		text-align: center;
 		color: red;
 	}
