@@ -34,7 +34,7 @@ const MARIO_ENUM = Math.pow(2, 15);
 // Define the cow image addresses...
 const STANDARD_COW = "standardCow.png";
 const CUTE_COW = "cuteCartoonCow.png";
-const SILLY_COW = "sillyCow2.png";
+const SILLY_COW = "sillyCow.png";
 const CHONK_COW = "chonkCow2.png";
 const MINECRAFT_COW = "minecraftCow.jpg";
 const BABY_COW = "babyCow.png";
