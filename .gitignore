@@ -1,3 +1,5 @@
 # Add anything here you want git to ignore
 .vs
 .vscode
+venv
+__pycache__
