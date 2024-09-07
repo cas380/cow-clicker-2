@@ -2,8 +2,7 @@ from google.cloud import datastore
 import os
 from User import User
 
-# file is uploaded to github (THE PRIVATE KEY IS SHOWING!!!)
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'Cow Clicker 2-b9e05ca406a5.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'CowClicker2Key.json'
 
 def test_put(user, pointsSave, cowSave):
     client = datastore.Client()
@@ -20,7 +19,7 @@ def test_put(user, pointsSave, cowSave):
 
     client.put(task) # Put!!!
 
-#Returns NoneType if user doesn't exist
+# Returns NoneType if user doesn't exist
 def test_grab(user):
     client = datastore.Client()
     
