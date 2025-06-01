@@ -14,9 +14,11 @@ Sooo... I may have broken the key we were keeping in the repo by publishing the 
 1. Navigate to `IAM` > `Service Accounts` on the Cow Clicker 2 project
 2. Access the cowstore service account and navigate to `Keys`
 3. Create a new JSON key and download it
-4. Move the key to the repo root and rename it `CowClicker2Token.json`
+4. Move the key to the repo root and rename it `CowClicker2Key.json`
 
 **This key is needed for logins to function!**
+
+***Note:** I received an email about our OAuth clients being scheduled for deletion, but launching the app and logging in/signing up didn't change anything. I don't think we're actually using our OAuth clients.*
 
 ## Launch on Windows
 1. Run the `launch.cmd` script
